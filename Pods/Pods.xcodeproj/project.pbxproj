@@ -7,69 +7,69 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		004FE0BD5A1D339FD5D2A319BED986EC /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F787EEDE14A5EFCDCC911F70F08534F /* PreviewView.swift */; };
-		648470435A094A3D261123C8614CC44C /* SwiftyCam-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F260082CD9E9D6306D7F71482C3CE01 /* SwiftyCam-dummy.m */; };
-		689F3457329F90A18C71054D0EBD75D4 /* SwiftyCamButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29E40F6235AC4CFA8CF4A2109ADF7C /* SwiftyCamButton.swift */; };
-		8494E7ADBAFD752F6CAA409D3A8E4F10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		84A2207732AA9AAF70D1996E6727B3DD /* Pods-FoodRecipeV2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EE52D281FF4DFCD20095E7CC5DA68B07 /* Pods-FoodRecipeV2-dummy.m */; };
-		B9FC0CA210595011B77116A8C51F2C70 /* Pods-FoodRecipeV2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2996950AC9668837A8218B6191B4144C /* Pods-FoodRecipeV2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7E492F94C6AF28803D3A19781CD8E6E /* SwiftyCamViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD94B353A3FC408FD1DDA00ED95410 /* SwiftyCamViewControllerDelegate.swift */; };
-		E6E6AB673D97BFCE5371DB3421083661 /* SwiftyCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1142CBED6622372D315746E5D725B1E /* SwiftyCamViewController.swift */; };
-		E79E0AF5E84FBEE80071DAB85789F661 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		EDBAE24A5895420464D51659F61470C4 /* SwiftyCam-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6480079F16B172BC91863C932BE8D2F7 /* SwiftyCam-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31E0CABD32F2A3350EFDBDF43B90A1DF /* SwiftyCam-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6480079F16B172BC91863C932BE8D2F7 /* SwiftyCam-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		504249C29607F42A9046C63676DBF09B /* Pods-Seefood-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F224CFD393C0C2F3050C63BF14017AE /* Pods-Seefood-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		532696A3A041B6275202E29CBE91B328 /* SwiftyCamButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29E40F6235AC4CFA8CF4A2109ADF7C /* SwiftyCamButton.swift */; };
+		56596996B09071DE7E798C1F2BB2043D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		5D2DC31C43A049F3ED86D47E8E19267A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		ADDD03E6AB4092C2B8C4AAA60C423C5F /* SwiftyCam-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F260082CD9E9D6306D7F71482C3CE01 /* SwiftyCam-dummy.m */; };
+		EA99B96AA24D84F03E9F03C8DE58CF1C /* SwiftyCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1142CBED6622372D315746E5D725B1E /* SwiftyCamViewController.swift */; };
+		F7E87B0004D4C2EFC1EA81E581A5AC32 /* SwiftyCamViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD94B353A3FC408FD1DDA00ED95410 /* SwiftyCamViewControllerDelegate.swift */; };
+		FA6CB67031067F903D54A8943AB8E413 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F787EEDE14A5EFCDCC911F70F08534F /* PreviewView.swift */; };
+		FE3E504236F84E6ED33A87BCEC885B60 /* Pods-Seefood-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB75155C87DE1BCE65D2EB8D6C2AEB4 /* Pods-Seefood-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		72D94C6D30D4EBD10164BF4F0426254C /* PBXContainerItemProxy */ = {
+		FA1B5C19BD207502A93F3CA758413234 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 27EE00531B2D7584C2720656D2E5F93F;
+			remoteGlobalIDString = A6B902B73D47B5270BD83690E0F47595;
 			remoteInfo = SwiftyCam;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05FF81FE591078B99F3F6BED1B316E12 /* SwiftyCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyCam.framework; path = SwiftyCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2996950AC9668837A8218B6191B4144C /* Pods-FoodRecipeV2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FoodRecipeV2-umbrella.h"; sourceTree = "<group>"; };
-		3C214B509FA8304BE70801E4EBE2EE35 /* Pods-FoodRecipeV2-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FoodRecipeV2-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3DC085E7B5094C051D4BC880D709A468 /* Pods-FoodRecipeV2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FoodRecipeV2.debug.xcconfig"; sourceTree = "<group>"; };
+		355BF3AAC34317159FF5BDE5F7BA761E /* Pods_Seefood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Seefood.framework; path = "Pods-Seefood.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F260082CD9E9D6306D7F71482C3CE01 /* SwiftyCam-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyCam-dummy.m"; sourceTree = "<group>"; };
 		4A11E64F959EAA086856E03B6D50FB92 /* SwiftyCam.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyCam.xcconfig; sourceTree = "<group>"; };
-		5F5B7FD9DE47F7DB4257E25C3BD22696 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FB75155C87DE1BCE65D2EB8D6C2AEB4 /* Pods-Seefood-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Seefood-dummy.m"; sourceTree = "<group>"; };
+		59AA24E2963BD7CD8A73C959CF0040FF /* Pods-Seefood-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Seefood-resources.sh"; sourceTree = "<group>"; };
+		61AE027B32D31E54FDDB19FCBE4DB752 /* Pods-Seefood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Seefood.debug.xcconfig"; sourceTree = "<group>"; };
 		6480079F16B172BC91863C932BE8D2F7 /* SwiftyCam-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyCam-umbrella.h"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6F224CFD393C0C2F3050C63BF14017AE /* Pods-Seefood-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Seefood-umbrella.h"; sourceTree = "<group>"; };
 		7B1A3F4DB5FBFABAF5C70AF5B6B0D04C /* SwiftyCam.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyCam.modulemap; sourceTree = "<group>"; };
-		7E09F8D3FDC48C084E80E9A4306CCCF7 /* Pods-FoodRecipeV2-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FoodRecipeV2-frameworks.sh"; sourceTree = "<group>"; };
 		7E29E40F6235AC4CFA8CF4A2109ADF7C /* SwiftyCamButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyCamButton.swift; path = Source/SwiftyCamButton.swift; sourceTree = "<group>"; };
-		7F429E80066671DD60847E9C9F6200FB /* Pods-FoodRecipeV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FoodRecipeV2.release.xcconfig"; sourceTree = "<group>"; };
 		8A580282FE8C6ACB0CF326D55341D67B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F0297AFB7A7D9218B7D1E54FCF00B85 /* Pods-FoodRecipeV2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-FoodRecipeV2.modulemap"; sourceTree = "<group>"; };
+		8E14CCD7191BBB7EB255480180D0AE23 /* Pods-Seefood-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Seefood-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8F787EEDE14A5EFCDCC911F70F08534F /* PreviewView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewView.swift; path = Source/PreviewView.swift; sourceTree = "<group>"; };
+		8FF5124B032C9701DCE432394D59CF28 /* SwiftyCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyCam.framework; path = SwiftyCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		99CD94B353A3FC408FD1DDA00ED95410 /* SwiftyCamViewControllerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyCamViewControllerDelegate.swift; path = Source/SwiftyCamViewControllerDelegate.swift; sourceTree = "<group>"; };
-		A8C94099C87558F807F352CAA8E96B59 /* Pods-FoodRecipeV2-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FoodRecipeV2-acknowledgements.plist"; sourceTree = "<group>"; };
+		A0161F1855282385E5740EE257A193E1 /* Pods-Seefood.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Seefood.modulemap"; sourceTree = "<group>"; };
+		A4122AD91836F08D5666395411FC0641 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1142CBED6622372D315746E5D725B1E /* SwiftyCamViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyCamViewController.swift; path = Source/SwiftyCamViewController.swift; sourceTree = "<group>"; };
 		B2CE3DC3C379CA2D649EF17291B506A6 /* SwiftyCam-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyCam-prefix.pch"; sourceTree = "<group>"; };
-		D615695DC96F97170814C32CED7E4662 /* Pods-FoodRecipeV2-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FoodRecipeV2-resources.sh"; sourceTree = "<group>"; };
-		EE52D281FF4DFCD20095E7CC5DA68B07 /* Pods-FoodRecipeV2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FoodRecipeV2-dummy.m"; sourceTree = "<group>"; };
-		FFB3FBCD43E0DC8BCF67ABB6A8A00897 /* Pods_FoodRecipeV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FoodRecipeV2.framework; path = "Pods-FoodRecipeV2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD57DA458937B0CC10B2725F74663A88 /* Pods-Seefood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Seefood.release.xcconfig"; sourceTree = "<group>"; };
+		DC00978590B173FC2FA943BEABA230DC /* Pods-Seefood-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Seefood-acknowledgements.plist"; sourceTree = "<group>"; };
+		FB2760920881D448C692348A16261E57 /* Pods-Seefood-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Seefood-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		46F3FDDD4333A0154BBE9F6437A54912 /* Frameworks */ = {
+		15353D75E3119C3100C9E58635C2B481 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8494E7ADBAFD752F6CAA409D3A8E4F10 /* Foundation.framework in Frameworks */,
+				56596996B09071DE7E798C1F2BB2043D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EF858F41B6308501E2C4000ACCA8D467 /* Frameworks */ = {
+		780249EBA6A4BEDA432841D0723A29F8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E79E0AF5E84FBEE80071DAB85789F661 /* Foundation.framework in Frameworks */,
+				5D2DC31C43A049F3ED86D47E8E19267A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,30 +97,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		28BE545F2FC176758D92439823BC41D1 /* Targets Support Files */ = {
+		1CDE28872D0D3ABD47F8A3E32926C019 /* Pods-Seefood */ = {
 			isa = PBXGroup;
 			children = (
-				2AB700D779E7B74118BF97C176B6AC18 /* Pods-FoodRecipeV2 */,
+				A4122AD91836F08D5666395411FC0641 /* Info.plist */,
+				A0161F1855282385E5740EE257A193E1 /* Pods-Seefood.modulemap */,
+				8E14CCD7191BBB7EB255480180D0AE23 /* Pods-Seefood-acknowledgements.markdown */,
+				DC00978590B173FC2FA943BEABA230DC /* Pods-Seefood-acknowledgements.plist */,
+				4FB75155C87DE1BCE65D2EB8D6C2AEB4 /* Pods-Seefood-dummy.m */,
+				FB2760920881D448C692348A16261E57 /* Pods-Seefood-frameworks.sh */,
+				59AA24E2963BD7CD8A73C959CF0040FF /* Pods-Seefood-resources.sh */,
+				6F224CFD393C0C2F3050C63BF14017AE /* Pods-Seefood-umbrella.h */,
+				61AE027B32D31E54FDDB19FCBE4DB752 /* Pods-Seefood.debug.xcconfig */,
+				CD57DA458937B0CC10B2725F74663A88 /* Pods-Seefood.release.xcconfig */,
 			);
-			name = "Targets Support Files";
+			name = "Pods-Seefood";
+			path = "Target Support Files/Pods-Seefood";
 			sourceTree = "<group>";
 		};
-		2AB700D779E7B74118BF97C176B6AC18 /* Pods-FoodRecipeV2 */ = {
+		1F577D51F0AA3DE48808442574CD669D /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				5F5B7FD9DE47F7DB4257E25C3BD22696 /* Info.plist */,
-				8F0297AFB7A7D9218B7D1E54FCF00B85 /* Pods-FoodRecipeV2.modulemap */,
-				3C214B509FA8304BE70801E4EBE2EE35 /* Pods-FoodRecipeV2-acknowledgements.markdown */,
-				A8C94099C87558F807F352CAA8E96B59 /* Pods-FoodRecipeV2-acknowledgements.plist */,
-				EE52D281FF4DFCD20095E7CC5DA68B07 /* Pods-FoodRecipeV2-dummy.m */,
-				7E09F8D3FDC48C084E80E9A4306CCCF7 /* Pods-FoodRecipeV2-frameworks.sh */,
-				D615695DC96F97170814C32CED7E4662 /* Pods-FoodRecipeV2-resources.sh */,
-				2996950AC9668837A8218B6191B4144C /* Pods-FoodRecipeV2-umbrella.h */,
-				3DC085E7B5094C051D4BC880D709A468 /* Pods-FoodRecipeV2.debug.xcconfig */,
-				7F429E80066671DD60847E9C9F6200FB /* Pods-FoodRecipeV2.release.xcconfig */,
+				1CDE28872D0D3ABD47F8A3E32926C019 /* Pods-Seefood */,
 			);
-			name = "Pods-FoodRecipeV2";
-			path = "Target Support Files/Pods-FoodRecipeV2";
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -129,8 +129,8 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				0B908D219F50293D5D6C12BD5B2B02E5 /* Pods */,
-				88E6012B80F0441F82C51D4EC9AF08DD /* Products */,
-				28BE545F2FC176758D92439823BC41D1 /* Targets Support Files */,
+				F47638654A3702050EB5197DEFC96E69 /* Products */,
+				1F577D51F0AA3DE48808442574CD669D /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,15 +146,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftyCam";
-			sourceTree = "<group>";
-		};
-		88E6012B80F0441F82C51D4EC9AF08DD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FFB3FBCD43E0DC8BCF67ABB6A8A00897 /* Pods_FoodRecipeV2.framework */,
-				05FF81FE591078B99F3F6BED1B316E12 /* SwiftyCam.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -173,35 +164,62 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		F47638654A3702050EB5197DEFC96E69 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				355BF3AAC34317159FF5BDE5F7BA761E /* Pods_Seefood.framework */,
+				8FF5124B032C9701DCE432394D59CF28 /* SwiftyCam.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		01E364690AA514954E1C125AE6B247BF /* Headers */ = {
+		5E3110A51365B932690E1272556663A2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9FC0CA210595011B77116A8C51F2C70 /* Pods-FoodRecipeV2-umbrella.h in Headers */,
+				504249C29607F42A9046C63676DBF09B /* Pods-Seefood-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		357475D3E16BAA6B1F284F6564100953 /* Headers */ = {
+		77073910E1BA1B872557ACF9ECC9E93E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDBAE24A5895420464D51659F61470C4 /* SwiftyCam-umbrella.h in Headers */,
+				31E0CABD32F2A3350EFDBDF43B90A1DF /* SwiftyCam-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		27EE00531B2D7584C2720656D2E5F93F /* SwiftyCam */ = {
+		1221ABDFCEE0535BC8A3EA37C9453E09 /* Pods-Seefood */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D77BB19781F3DF0A2B9439CE1852C11 /* Build configuration list for PBXNativeTarget "SwiftyCam" */;
+			buildConfigurationList = BED24C676DB9A54CF87D08ECB8763476 /* Build configuration list for PBXNativeTarget "Pods-Seefood" */;
 			buildPhases = (
-				CEDE1B89F95316CC37680087B345C650 /* Sources */,
-				46F3FDDD4333A0154BBE9F6437A54912 /* Frameworks */,
-				357475D3E16BAA6B1F284F6564100953 /* Headers */,
+				928DCF8E4C75CCCE2F4053A09D70015A /* Sources */,
+				780249EBA6A4BEDA432841D0723A29F8 /* Frameworks */,
+				5E3110A51365B932690E1272556663A2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01D0E212B16E2AC02600C5F7FE4EED45 /* PBXTargetDependency */,
+			);
+			name = "Pods-Seefood";
+			productName = "Pods-Seefood";
+			productReference = 355BF3AAC34317159FF5BDE5F7BA761E /* Pods_Seefood.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A6B902B73D47B5270BD83690E0F47595 /* SwiftyCam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3CA802083743464B7B801E349179884 /* Build configuration list for PBXNativeTarget "SwiftyCam" */;
+			buildPhases = (
+				B1ACC46E82AFCB7BAB7A58A3774A0C00 /* Sources */,
+				15353D75E3119C3100C9E58635C2B481 /* Frameworks */,
+				77073910E1BA1B872557ACF9ECC9E93E /* Headers */,
 			);
 			buildRules = (
 			);
@@ -209,25 +227,7 @@
 			);
 			name = SwiftyCam;
 			productName = SwiftyCam;
-			productReference = 05FF81FE591078B99F3F6BED1B316E12 /* SwiftyCam.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		AC075B27BE958C40F8ACBEC55079D13F /* Pods-FoodRecipeV2 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2EF9B7ED78C9D40ECD463430E212DF89 /* Build configuration list for PBXNativeTarget "Pods-FoodRecipeV2" */;
-			buildPhases = (
-				1A1DD4E374DC8D8F953945123FB71CB6 /* Sources */,
-				EF858F41B6308501E2C4000ACCA8D467 /* Frameworks */,
-				01E364690AA514954E1C125AE6B247BF /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9393F9B718C7D0B7B015B299C2D83716 /* PBXTargetDependency */,
-			);
-			name = "Pods-FoodRecipeV2";
-			productName = "Pods-FoodRecipeV2";
-			productReference = FFB3FBCD43E0DC8BCF67ABB6A8A00897 /* Pods_FoodRecipeV2.framework */;
+			productReference = 8FF5124B032C9701DCE432394D59CF28 /* SwiftyCam.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -247,52 +247,52 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 88E6012B80F0441F82C51D4EC9AF08DD /* Products */;
+			productRefGroup = F47638654A3702050EB5197DEFC96E69 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AC075B27BE958C40F8ACBEC55079D13F /* Pods-FoodRecipeV2 */,
-				27EE00531B2D7584C2720656D2E5F93F /* SwiftyCam */,
+				1221ABDFCEE0535BC8A3EA37C9453E09 /* Pods-Seefood */,
+				A6B902B73D47B5270BD83690E0F47595 /* SwiftyCam */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1A1DD4E374DC8D8F953945123FB71CB6 /* Sources */ = {
+		928DCF8E4C75CCCE2F4053A09D70015A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A2207732AA9AAF70D1996E6727B3DD /* Pods-FoodRecipeV2-dummy.m in Sources */,
+				FE3E504236F84E6ED33A87BCEC885B60 /* Pods-Seefood-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEDE1B89F95316CC37680087B345C650 /* Sources */ = {
+		B1ACC46E82AFCB7BAB7A58A3774A0C00 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				004FE0BD5A1D339FD5D2A319BED986EC /* PreviewView.swift in Sources */,
-				648470435A094A3D261123C8614CC44C /* SwiftyCam-dummy.m in Sources */,
-				689F3457329F90A18C71054D0EBD75D4 /* SwiftyCamButton.swift in Sources */,
-				E6E6AB673D97BFCE5371DB3421083661 /* SwiftyCamViewController.swift in Sources */,
-				D7E492F94C6AF28803D3A19781CD8E6E /* SwiftyCamViewControllerDelegate.swift in Sources */,
+				FA6CB67031067F903D54A8943AB8E413 /* PreviewView.swift in Sources */,
+				ADDD03E6AB4092C2B8C4AAA60C423C5F /* SwiftyCam-dummy.m in Sources */,
+				532696A3A041B6275202E29CBE91B328 /* SwiftyCamButton.swift in Sources */,
+				EA99B96AA24D84F03E9F03C8DE58CF1C /* SwiftyCamViewController.swift in Sources */,
+				F7E87B0004D4C2EFC1EA81E581A5AC32 /* SwiftyCamViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9393F9B718C7D0B7B015B299C2D83716 /* PBXTargetDependency */ = {
+		01D0E212B16E2AC02600C5F7FE4EED45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyCam;
-			target = 27EE00531B2D7584C2720656D2E5F93F /* SwiftyCam */;
-			targetProxy = 72D94C6D30D4EBD10164BF4F0426254C /* PBXContainerItemProxy */;
+			target = A6B902B73D47B5270BD83690E0F47595 /* SwiftyCam */;
+			targetProxy = FA1B5C19BD207502A93F3CA758413234 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		05432211EEFEFE0231B3870EF202AE5A /* Release */ = {
+		07A3004AE1E2CA8F4A0E2373135723C2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F429E80066671DD60847E9C9F6200FB /* Pods-FoodRecipeV2.release.xcconfig */;
+			baseConfigurationReference = CD57DA458937B0CC10B2725F74663A88 /* Pods-Seefood.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -303,17 +303,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-FoodRecipeV2/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Seefood/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FoodRecipeV2/Pods-FoodRecipeV2.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Seefood/Pods-Seefood.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FoodRecipeV2;
+				PRODUCT_NAME = Pods_Seefood;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -323,37 +323,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		2A2D54FF6EF5B974E5E3729993DA34A2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A11E64F959EAA086856E03B6D50FB92 /* SwiftyCam.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyCam/SwiftyCam-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyCam/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyCam/SwiftyCam.modulemap";
-				PRODUCT_NAME = SwiftyCam;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		39C5BC78A31CDE101068C530CAC7FA0F /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -415,9 +384,9 @@
 			};
 			name = Debug;
 		};
-		812106B895E51A0BA382B5DB357D1CAA /* Debug */ = {
+		61D36E5D77500AA0057F456235807D61 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3DC085E7B5094C051D4BC880D709A468 /* Pods-FoodRecipeV2.debug.xcconfig */;
+			baseConfigurationReference = 61AE027B32D31E54FDDB19FCBE4DB752 /* Pods-Seefood.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -428,17 +397,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-FoodRecipeV2/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Seefood/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FoodRecipeV2/Pods-FoodRecipeV2.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Seefood/Pods-Seefood.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FoodRecipeV2;
+				PRODUCT_NAME = Pods_Seefood;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -504,7 +473,7 @@
 			};
 			name = Release;
 		};
-		C14CCC8D914E8B72C5B385B09979A0A7 /* Release */ = {
+		D8BCA713D439D4C9FC1EF3D365BFB775 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4A11E64F959EAA086856E03B6D50FB92 /* SwiftyCam.xcconfig */;
 			buildSettings = {
@@ -536,6 +505,37 @@
 			};
 			name = Release;
 		};
+		EF8BBAA57F08768B4093CCD5EDB909AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A11E64F959EAA086856E03B6D50FB92 /* SwiftyCam.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyCam/SwiftyCam-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyCam/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyCam/SwiftyCam.modulemap";
+				PRODUCT_NAME = SwiftyCam;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -548,20 +548,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2EF9B7ED78C9D40ECD463430E212DF89 /* Build configuration list for PBXNativeTarget "Pods-FoodRecipeV2" */ = {
+		B3CA802083743464B7B801E349179884 /* Build configuration list for PBXNativeTarget "SwiftyCam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				812106B895E51A0BA382B5DB357D1CAA /* Debug */,
-				05432211EEFEFE0231B3870EF202AE5A /* Release */,
+				EF8BBAA57F08768B4093CCD5EDB909AE /* Debug */,
+				D8BCA713D439D4C9FC1EF3D365BFB775 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D77BB19781F3DF0A2B9439CE1852C11 /* Build configuration list for PBXNativeTarget "SwiftyCam" */ = {
+		BED24C676DB9A54CF87D08ECB8763476 /* Build configuration list for PBXNativeTarget "Pods-Seefood" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2A2D54FF6EF5B974E5E3729993DA34A2 /* Debug */,
-				C14CCC8D914E8B72C5B385B09979A0A7 /* Release */,
+				61D36E5D77500AA0057F456235807D61 /* Debug */,
+				07A3004AE1E2CA8F4A0E2373135723C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

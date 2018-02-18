@@ -43,7 +43,7 @@
 		3CCD893920354B6E002CDE47 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCD893820354B6E002CDE47 /* BaseTableViewCell.swift */; };
 		3CCD893D20355D2D002CDE47 /* IngredientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCD893C20355D2D002CDE47 /* IngredientTableViewCell.swift */; };
 		3CCD893F2035622B002CDE47 /* ProcedureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCD893E2035622B002CDE47 /* ProcedureTableViewCell.swift */; };
-		4F48DCEF99E8ABE55E09005C /* Pods_FoodRecipeV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112796B3D775D588E3CA3054 /* Pods_FoodRecipeV2.framework */; };
+		4B78C0E62045E58E2D9080DC /* Pods_Seefood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799A6DAAF4EA020C2FB6D19E /* Pods_Seefood.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,17 +64,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		112796B3D775D588E3CA3054 /* Pods_FoodRecipeV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodRecipeV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C200785202B605E00E72C20 /* FoodRecipeV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodRecipeV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C200785202B605E00E72C20 /* Seefood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seefood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C200788202B605E00E72C20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C20078D202B605E00E72C20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C20078F202B605E00E72C20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C200792202B605E00E72C20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C200794202B605E00E72C20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C200799202B605E00E72C20 /* FoodRecipeV2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodRecipeV2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C200799202B605E00E72C20 /* SeefoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeefoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C20079D202B605E00E72C20 /* FoodRecipeV2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipeV2Tests.swift; sourceTree = "<group>"; };
-		3C20079F202B605E00E72C20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C2007A4202B605E00E72C20 /* FoodRecipeV2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodRecipeV2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C2007A4202B605E00E72C20 /* SeefoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeefoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C2007A8202B605E00E72C20 /* FoodRecipeV2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipeV2UITests.swift; sourceTree = "<group>"; };
 		3C2007AA202B605E00E72C20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C3F2F95202E522A0021F6CE /* AnimatingFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingFlowLayout.swift; sourceTree = "<group>"; };
@@ -107,8 +105,9 @@
 		3CCD893820354B6E002CDE47 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		3CCD893C20355D2D002CDE47 /* IngredientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTableViewCell.swift; sourceTree = "<group>"; };
 		3CCD893E2035622B002CDE47 /* ProcedureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureTableViewCell.swift; sourceTree = "<group>"; };
-		3D90996F9FD481701845F8B7 /* Pods-FoodRecipeV2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodRecipeV2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodRecipeV2/Pods-FoodRecipeV2.debug.xcconfig"; sourceTree = "<group>"; };
-		70C3E1F49CDEDFACDBED4D5F /* Pods-FoodRecipeV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodRecipeV2.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodRecipeV2/Pods-FoodRecipeV2.release.xcconfig"; sourceTree = "<group>"; };
+		61F295CBF9AD91AF5697DD97 /* Pods-Seefood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seefood.release.xcconfig"; path = "Pods/Target Support Files/Pods-Seefood/Pods-Seefood.release.xcconfig"; sourceTree = "<group>"; };
+		799A6DAAF4EA020C2FB6D19E /* Pods_Seefood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seefood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7BD428CA1D4219A436E088C /* Pods-Seefood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seefood.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Seefood/Pods-Seefood.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F48DCEF99E8ABE55E09005C /* Pods_FoodRecipeV2.framework in Frameworks */,
+				4B78C0E62045E58E2D9080DC /* Pods_Seefood.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,9 +139,9 @@
 		3C20077C202B605E00E72C20 = {
 			isa = PBXGroup;
 			children = (
-				3C200787202B605E00E72C20 /* FoodRecipeV2 */,
-				3C20079C202B605E00E72C20 /* FoodRecipeV2Tests */,
-				3C2007A7202B605E00E72C20 /* FoodRecipeV2UITests */,
+				3C200787202B605E00E72C20 /* Seefood */,
+				3C20079C202B605E00E72C20 /* SeefoodTests */,
+				3C2007A7202B605E00E72C20 /* SeefoodUITests */,
 				3C200786202B605E00E72C20 /* Products */,
 				C68E018B58C75E91FE62847B /* Pods */,
 				E85D4E10738882DB71F1E621 /* Frameworks */,
@@ -152,14 +151,14 @@
 		3C200786202B605E00E72C20 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3C200785202B605E00E72C20 /* FoodRecipeV2.app */,
-				3C200799202B605E00E72C20 /* FoodRecipeV2Tests.xctest */,
-				3C2007A4202B605E00E72C20 /* FoodRecipeV2UITests.xctest */,
+				3C200785202B605E00E72C20 /* Seefood.app */,
+				3C200799202B605E00E72C20 /* SeefoodTests.xctest */,
+				3C2007A4202B605E00E72C20 /* SeefoodUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3C200787202B605E00E72C20 /* FoodRecipeV2 */ = {
+		3C200787202B605E00E72C20 /* Seefood */ = {
 			isa = PBXGroup;
 			children = (
 				3C3F2F99202EE3720021F6CE /* coreml.mlmodel */,
@@ -175,25 +174,24 @@
 				3C200794202B605E00E72C20 /* Info.plist */,
 				3CBB9BD420379D4600FCE03E /* PersistenceService.swift */,
 			);
-			path = FoodRecipeV2;
+			path = Seefood;
 			sourceTree = "<group>";
 		};
-		3C20079C202B605E00E72C20 /* FoodRecipeV2Tests */ = {
+		3C20079C202B605E00E72C20 /* SeefoodTests */ = {
 			isa = PBXGroup;
 			children = (
 				3C20079D202B605E00E72C20 /* FoodRecipeV2Tests.swift */,
-				3C20079F202B605E00E72C20 /* Info.plist */,
 			);
-			path = FoodRecipeV2Tests;
+			path = SeefoodTests;
 			sourceTree = "<group>";
 		};
-		3C2007A7202B605E00E72C20 /* FoodRecipeV2UITests */ = {
+		3C2007A7202B605E00E72C20 /* SeefoodUITests */ = {
 			isa = PBXGroup;
 			children = (
 				3C2007A8202B605E00E72C20 /* FoodRecipeV2UITests.swift */,
 				3C2007AA202B605E00E72C20 /* Info.plist */,
 			);
-			path = FoodRecipeV2UITests;
+			path = SeefoodUITests;
 			sourceTree = "<group>";
 		};
 		3CA1254B202B7620001931A1 /* Helpers */ = {
@@ -286,8 +284,8 @@
 		C68E018B58C75E91FE62847B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3D90996F9FD481701845F8B7 /* Pods-FoodRecipeV2.debug.xcconfig */,
-				70C3E1F49CDEDFACDBED4D5F /* Pods-FoodRecipeV2.release.xcconfig */,
+				E7BD428CA1D4219A436E088C /* Pods-Seefood.debug.xcconfig */,
+				61F295CBF9AD91AF5697DD97 /* Pods-Seefood.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -295,7 +293,7 @@
 		E85D4E10738882DB71F1E621 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				112796B3D775D588E3CA3054 /* Pods_FoodRecipeV2.framework */,
+				799A6DAAF4EA020C2FB6D19E /* Pods_Seefood.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -303,9 +301,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3C200784202B605E00E72C20 /* FoodRecipeV2 */ = {
+		3C200784202B605E00E72C20 /* Seefood */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3C2007AD202B605E00E72C20 /* Build configuration list for PBXNativeTarget "FoodRecipeV2" */;
+			buildConfigurationList = 3C2007AD202B605E00E72C20 /* Build configuration list for PBXNativeTarget "Seefood" */;
 			buildPhases = (
 				D628065033775F87D2EDB6B9 /* [CP] Check Pods Manifest.lock */,
 				3C200781202B605E00E72C20 /* Sources */,
@@ -318,14 +316,14 @@
 			);
 			dependencies = (
 			);
-			name = FoodRecipeV2;
+			name = Seefood;
 			productName = FoodRecipeV2;
-			productReference = 3C200785202B605E00E72C20 /* FoodRecipeV2.app */;
+			productReference = 3C200785202B605E00E72C20 /* Seefood.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3C200798202B605E00E72C20 /* FoodRecipeV2Tests */ = {
+		3C200798202B605E00E72C20 /* SeefoodTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3C2007B0202B605E00E72C20 /* Build configuration list for PBXNativeTarget "FoodRecipeV2Tests" */;
+			buildConfigurationList = 3C2007B0202B605E00E72C20 /* Build configuration list for PBXNativeTarget "SeefoodTests" */;
 			buildPhases = (
 				3C200795202B605E00E72C20 /* Sources */,
 				3C200796202B605E00E72C20 /* Frameworks */,
@@ -336,14 +334,14 @@
 			dependencies = (
 				3C20079B202B605E00E72C20 /* PBXTargetDependency */,
 			);
-			name = FoodRecipeV2Tests;
+			name = SeefoodTests;
 			productName = FoodRecipeV2Tests;
-			productReference = 3C200799202B605E00E72C20 /* FoodRecipeV2Tests.xctest */;
+			productReference = 3C200799202B605E00E72C20 /* SeefoodTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3C2007A3202B605E00E72C20 /* FoodRecipeV2UITests */ = {
+		3C2007A3202B605E00E72C20 /* SeefoodUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3C2007B3202B605E00E72C20 /* Build configuration list for PBXNativeTarget "FoodRecipeV2UITests" */;
+			buildConfigurationList = 3C2007B3202B605E00E72C20 /* Build configuration list for PBXNativeTarget "SeefoodUITests" */;
 			buildPhases = (
 				3C2007A0202B605E00E72C20 /* Sources */,
 				3C2007A1202B605E00E72C20 /* Frameworks */,
@@ -354,9 +352,9 @@
 			dependencies = (
 				3C2007A6202B605E00E72C20 /* PBXTargetDependency */,
 			);
-			name = FoodRecipeV2UITests;
+			name = SeefoodUITests;
 			productName = FoodRecipeV2UITests;
-			productReference = 3C2007A4202B605E00E72C20 /* FoodRecipeV2UITests.xctest */;
+			productReference = 3C2007A4202B605E00E72C20 /* SeefoodUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -385,7 +383,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3C200780202B605E00E72C20 /* Build configuration list for PBXProject "FoodRecipeV2" */;
+			buildConfigurationList = 3C200780202B605E00E72C20 /* Build configuration list for PBXProject "Seefood" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -398,9 +396,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3C200784202B605E00E72C20 /* FoodRecipeV2 */,
-				3C200798202B605E00E72C20 /* FoodRecipeV2Tests */,
-				3C2007A3202B605E00E72C20 /* FoodRecipeV2UITests */,
+				3C200784202B605E00E72C20 /* Seefood */,
+				3C200798202B605E00E72C20 /* SeefoodTests */,
+				3C2007A3202B605E00E72C20 /* SeefoodUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -445,7 +443,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodRecipeV2/Pods-FoodRecipeV2-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Seefood/Pods-Seefood-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4423BD54E0428140E58665D5 /* [CP] Embed Pods Frameworks */ = {
@@ -454,7 +452,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FoodRecipeV2/Pods-FoodRecipeV2-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Seefood/Pods-Seefood-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SwiftyCam/SwiftyCam.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -463,7 +461,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodRecipeV2/Pods-FoodRecipeV2-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Seefood/Pods-Seefood-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D628065033775F87D2EDB6B9 /* [CP] Check Pods Manifest.lock */ = {
@@ -477,7 +475,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FoodRecipeV2-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Seefood-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -546,12 +544,12 @@
 /* Begin PBXTargetDependency section */
 		3C20079B202B605E00E72C20 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3C200784202B605E00E72C20 /* FoodRecipeV2 */;
+			target = 3C200784202B605E00E72C20 /* Seefood */;
 			targetProxy = 3C20079A202B605E00E72C20 /* PBXContainerItemProxy */;
 		};
 		3C2007A6202B605E00E72C20 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3C200784202B605E00E72C20 /* FoodRecipeV2 */;
+			target = 3C200784202B605E00E72C20 /* Seefood */;
 			targetProxy = 3C2007A5202B605E00E72C20 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -685,13 +683,13 @@
 		};
 		3C2007AE202B605E00E72C20 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D90996F9FD481701845F8B7 /* Pods-FoodRecipeV2.debug.xcconfig */;
+			baseConfigurationReference = E7BD428CA1D4219A436E088C /* Pods-Seefood.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q2W54465S4;
-				INFOPLIST_FILE = FoodRecipeV2/Info.plist;
+				INFOPLIST_FILE = Seefood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.ufl.siddhatiwari.FoodRecipeV2;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ufl.siddhatiwari.Seefood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -700,13 +698,13 @@
 		};
 		3C2007AF202B605E00E72C20 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70C3E1F49CDEDFACDBED4D5F /* Pods-FoodRecipeV2.release.xcconfig */;
+			baseConfigurationReference = 61F295CBF9AD91AF5697DD97 /* Pods-Seefood.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q2W54465S4;
-				INFOPLIST_FILE = FoodRecipeV2/Info.plist;
+				INFOPLIST_FILE = Seefood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.ufl.siddhatiwari.FoodRecipeV2;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ufl.siddhatiwari.Seefood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -726,7 +724,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodRecipeV2.app/FoodRecipeV2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seefood.app/Seefood";
 			};
 			name = Debug;
 		};
@@ -743,7 +741,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodRecipeV2.app/FoodRecipeV2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seefood.app/Seefood";
 			};
 			name = Release;
 		};
@@ -782,7 +780,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3C200780202B605E00E72C20 /* Build configuration list for PBXProject "FoodRecipeV2" */ = {
+		3C200780202B605E00E72C20 /* Build configuration list for PBXProject "Seefood" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C2007AB202B605E00E72C20 /* Debug */,
@@ -791,7 +789,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3C2007AD202B605E00E72C20 /* Build configuration list for PBXNativeTarget "FoodRecipeV2" */ = {
+		3C2007AD202B605E00E72C20 /* Build configuration list for PBXNativeTarget "Seefood" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C2007AE202B605E00E72C20 /* Debug */,
@@ -800,7 +798,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3C2007B0202B605E00E72C20 /* Build configuration list for PBXNativeTarget "FoodRecipeV2Tests" */ = {
+		3C2007B0202B605E00E72C20 /* Build configuration list for PBXNativeTarget "SeefoodTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C2007B1202B605E00E72C20 /* Debug */,
@@ -809,7 +807,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3C2007B3202B605E00E72C20 /* Build configuration list for PBXNativeTarget "FoodRecipeV2UITests" */ = {
+		3C2007B3202B605E00E72C20 /* Build configuration list for PBXNativeTarget "SeefoodUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C2007B4202B605E00E72C20 /* Debug */,

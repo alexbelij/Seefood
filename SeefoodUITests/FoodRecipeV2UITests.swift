@@ -1,6 +1,6 @@
 //
-//  FoodRecipeV2UITests.swift
-//  FoodRecipeV2UITests
+//  SeefoodUITests.swift
+//  SeefoodUITests
 //
 //  Created by Siddha Tiwari on 2/7/18.
 //  Copyright © 2018 Siddha Tiwari. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class FoodRecipeV2UITests: XCTestCase {
+class SeefoodITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
