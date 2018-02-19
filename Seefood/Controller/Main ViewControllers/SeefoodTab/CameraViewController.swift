@@ -75,6 +75,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 //            let tabViewController = TabBarController()
 //
 //            self.present(loadingViewController, animated: false, completion: nil)
+            
             self.navigationController?.pushViewController(LoadingViewController(), animated: true)
         }
         return handler

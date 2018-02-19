@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
     
@@ -33,6 +34,7 @@ class RecipesViewController: UIViewController, UICollectionViewDataSource, UICol
         calculateRecipes()
         recipesCollectionView.reloadData()
         setupViews()
+        
     }
     
     let cellId = "cellId"
@@ -77,6 +79,35 @@ class RecipesViewController: UIViewController, UICollectionViewDataSource, UICol
             recipeViewController.title = cell.recipe?.name
             recipeViewController.recipeTableViewController.recipe = cell.recipe
             self.navigationController?.pushViewController(recipeViewController, animated: true)
+        }
+        cell.handleBookmarkTap = {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "SavedRecipes", in: context)
+            let savedRecipe = NSManagedObject(entity: entity!, insertInto: context)
+            savedRecipe.setValue(cell.recipe, forKey: "recipe")
+            do {
+                try context.save()
+                print("saved")
+            } catch {
+                print("Failed save")
+            }
+            
+            let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
+            do {
+                let savedRecipes = try context.fetch(fetchRequest)
+                let rs = savedRecipes
+                for r in rs {
+                    if let a = r.recipe as? Recipe {
+                        print(a.name)
+                    }
+
+                }
+
+            } catch {
+                print("Failed fetch request")
+            }
+
         }
         return cell
     }

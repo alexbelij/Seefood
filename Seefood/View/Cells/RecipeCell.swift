@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RecipeCell: BaseCollectionViewCell {
     
@@ -20,6 +21,7 @@ class RecipeCell: BaseCollectionViewCell {
     }
     
     var handleRecipeTap: (()->())?
+    var handleBookmarkTap: (()->())?
     
     let recipeName: UILabel = {
         let label = UILabel()
@@ -97,7 +99,7 @@ class RecipeCell: BaseCollectionViewCell {
         containingView.addSubview(recipeImageView)
         containingView.addSubview(recipeName)
         containingView.addSubview(interactionLayer)
-        containingView.addSubview(bookmarkButton)
+        self.addSubview(bookmarkButton)
         
         NSLayoutConstraint.activate([
             
@@ -114,10 +116,10 @@ class RecipeCell: BaseCollectionViewCell {
             recipeName.topAnchor.constraint(equalTo: containingView.topAnchor, constant: 15),
             recipeName.leadingAnchor.constraint(equalTo: containingView.leadingAnchor, constant: 15),
             
-            interactionLayer.topAnchor.constraint(equalTo: self.topAnchor),
-            interactionLayer.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            interactionLayer.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            interactionLayer.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            interactionLayer.topAnchor.constraint(equalTo: containingView.topAnchor),
+            interactionLayer.bottomAnchor.constraint(equalTo: containingView.bottomAnchor),
+            interactionLayer.leadingAnchor.constraint(equalTo: containingView.leadingAnchor),
+            interactionLayer.trailingAnchor.constraint(equalTo: containingView.trailingAnchor),
             
             bookmarkButton.bottomAnchor.constraint(equalTo: containingView.bottomAnchor, constant: -15),
             bookmarkButton.trailingAnchor.constraint(equalTo: containingView.trailingAnchor, constant: -15),
@@ -146,7 +148,7 @@ class RecipeCell: BaseCollectionViewCell {
     }
     
     @objc func bookmarkButtonTouchUpInside() {
-        
+        handleBookmarkTap?()
     }
     
     @objc func containingViewTouchDown() {
@@ -160,7 +162,6 @@ class RecipeCell: BaseCollectionViewCell {
     @objc func containingViewTouchUpInside() {
         containingView.expand(scale: 1)
         handleRecipeTap?()
-        // TODO: do something
     }
     
 }
