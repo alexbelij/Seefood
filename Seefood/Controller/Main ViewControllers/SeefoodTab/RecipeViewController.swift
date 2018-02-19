@@ -82,10 +82,4 @@ class RecipeViewController: UIViewController {
         self.present(activityVC, animated: true, completion: nil)
     }
     
-//    let recipeTableViewController: RecipeTableViewController = {
-//        let tv = RecipeTableViewController()
-//        tv.view.translatesAutoresizingMaskIntoConstraints = false
-//        return tv
-//    }()
-    
 }

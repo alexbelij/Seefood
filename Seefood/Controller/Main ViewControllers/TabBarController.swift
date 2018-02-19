@@ -19,10 +19,11 @@ class TabBarController: UITabBarController {
         let cameraNavigationController = UINavigationController(rootViewController: cameraViewController)
         
         let recipeBookViewController = RecipeBookViewController()
+        let recipeBookNavigationController = UINavigationController(rootViewController: recipeBookViewController)
         
         let vcData: [(vc: UIViewController, image: UIImage, title: String)] = [
             (cameraNavigationController, UIImage(named: "ic_camera_alt")!, "Seefood"),
-            (recipeBookViewController, UIImage(named: "ic_bookmark")!, "Recipe Book")]
+            (recipeBookNavigationController, UIImage(named: "ic_bookmark")!, "Recipe Book")]
         
         var tabViewControllers: [UIViewController] = []
         for item in vcData {

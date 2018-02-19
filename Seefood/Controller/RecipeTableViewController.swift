@@ -18,7 +18,7 @@ class RecipeTableViewController: UITableViewController {
         tableView.register(ProcedureTableViewCell.self, forCellReuseIdentifier: procedureCellId)
         tableView.separatorInset.left = 0
         tableView.separatorStyle = .none
-        setupView()
+        setupViews()
     }
     
     let headerId = "headerId"
@@ -33,7 +33,6 @@ class RecipeTableViewController: UITableViewController {
             let recipe = self.recipe!
             var ingredientAndAmount = [String]()
             for r in recipe.ingredients {
-                
                 // MARK: ingredient and amount combined into one string
                 ingredientAndAmount.append("\(r.name);\(r.amount)")
             }
@@ -65,7 +64,7 @@ class RecipeTableViewController: UITableViewController {
         updateView()
     }
     
-    func setupView() {
+    func setupViews() {
         
         if let window = UIApplication.shared.keyWindow {
             headerHeight = window.frame.height / 1.65
