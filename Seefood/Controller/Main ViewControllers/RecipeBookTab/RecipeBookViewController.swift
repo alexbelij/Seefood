@@ -45,7 +45,7 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
     lazy var recipeCategoriesTableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         return view
     }()
     

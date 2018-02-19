@@ -27,6 +27,10 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         setupViews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     var onTakePicture: (()->())?
     
     let captureButton: SwiftyCamButton = {

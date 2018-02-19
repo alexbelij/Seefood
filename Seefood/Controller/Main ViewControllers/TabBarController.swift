@@ -21,9 +21,14 @@ class TabBarController: UITabBarController {
         let recipeBookViewController = RecipeBookViewController()
         let recipeBookNavigationController = UINavigationController(rootViewController: recipeBookViewController)
         
+        // TODO: Make settings view controller
+        let settingsViewController = SettingsViewController()
+        let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
+        
         let vcData: [(vc: UIViewController, image: UIImage, title: String)] = [
             (cameraNavigationController, UIImage(named: "ic_camera_alt")!, "Seefood"),
-            (recipeBookNavigationController, UIImage(named: "ic_bookmark")!, "Recipe Book")]
+            (recipeBookNavigationController, UIImage(named: "ic_bookmark")!, "Recipe Book"),
+            (settingsNavigationController, UIImage(), title: "Settings")]
         
         var tabViewControllers: [UIViewController] = []
         for item in vcData {

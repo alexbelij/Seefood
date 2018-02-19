@@ -22,7 +22,7 @@ class AllRecipesViewController: UIViewController {
             //navigationItem.hidesSearchBarWhenScrolling = false
             nav.barTintColor = Constants.Colors().primaryColor
             nav.isTranslucent = false
-            self.title = "Recipes"
+            self.title = "All"
             nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
             self.navigationController?.navigationBar.tintColor = UIColor.black
             UIApplication.shared.statusBarStyle = .default

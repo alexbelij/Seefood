@@ -139,7 +139,7 @@ class RecipeTableViewController: UITableViewController {
                 return ingredientCell
             }
         case 1:
-            // TODO: Procedure custom heading ?
+            // TODO: Procedure cell custom heading ?
             if row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: procedureHeaderId) as! ProcedureHeaderCell
                 cell.name = recipeData[section][row]
