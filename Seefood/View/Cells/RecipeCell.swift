@@ -23,10 +23,11 @@ class RecipeCell: BaseCollectionViewCell {
             let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
             do {
                 let savedRecipes = try context.fetch(fetchRequest)
-                for saveRecipe in savedRecipes {
+                for savedRecipe in savedRecipes {
                     let cellRecipe = self.recipe!
                     if let savedImage = UIImage(named: "ic_bookmark_white") {
-                        if cellRecipe.isEqual(saveRecipe.recipe as? Recipe) {
+                        if cellRecipe.isEqual(savedRecipe.recipe as? Recipe) {
+                            print("\((savedRecipe.recipe as! Recipe).name) : \(cellRecipe.name)")
                             bookmarkButton.setImage(savedImage, for: .normal)
                             saved = true
                             break

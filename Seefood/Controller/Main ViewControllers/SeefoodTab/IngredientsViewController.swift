@@ -108,7 +108,7 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     @objc func viewRecipesButtonTapped() {
-        self.navigationController?.pushViewController(RecipesViewController(), animated: true)
+        self.navigationController?.pushViewController(CalculatedRecipesViewController(), animated: true)
     }
     
     @objc func viewRecipesButtonTouchDown() {

@@ -21,6 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = TabBarController()
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
+        do {
+            let savedRecipes = try context.fetch(fetchRequest)
+            for savedRecipe in savedRecipes {
+                context.delete(savedRecipe)
+                print((savedRecipe.recipe as! Recipe).name)
+            }
+            print("-----")
+        } catch {
+            print("rip saved recipe")
+        }
+        
         return true
     }
 
