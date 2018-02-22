@@ -29,17 +29,17 @@ class AllRecipesViewController: UIViewController {
         }
     
         for recipe in FoodsKnown().allRecipes {
-            savedRecipes.append(recipe)
+            allRecipes.append(recipe)
         }
         
         setupViews()
     }
     
-    var savedRecipes = [Recipe]()
+    var allRecipes = [Recipe]()
     
     lazy var recipesCollectionViewController: RecipesCollectionViewController = {
         let layout = UICollectionViewFlowLayout()
-        let vc = RecipesCollectionViewController(layout: layout, recipes: savedRecipes)
+        let vc = RecipesCollectionViewController(layout: layout, recipes: allRecipes, containingParent: self)
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         vc.view.backgroundColor = .red
         return vc

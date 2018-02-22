@@ -17,11 +17,31 @@ class RecipeCell: BaseCollectionViewCell {
             recipeImageView.image = UIImage(named: recipe.imageName)
             recipeName.text = recipe.name
             recipeIngredients.text = recipe.getCommaRecipeString()
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
+            do {
+                let savedRecipes = try context.fetch(fetchRequest)
+                for saveRecipe in savedRecipes {
+                    let cellRecipe = self.recipe!
+                    if let savedImage = UIImage(named: "ic_bookmark_white") {
+                        if cellRecipe.isEqual(saveRecipe.recipe as? Recipe) {
+                            bookmarkButton.setImage(savedImage, for: .normal)
+                            saved = true
+                            break
+                        }
+                    }
+                }
+            } catch {
+                print("rip saved recipe")
+            }
         }
     }
     
     var handleRecipeTap: (()->())?
-    var handleBookmarkTap: (()->())?
+    var handleBookmarkTap: (() throws ->())?
+    var saved = false
     
     let recipeName: UILabel = {
         let label = UILabel()
@@ -69,8 +89,8 @@ class RecipeCell: BaseCollectionViewCell {
     let bookmarkButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = Constants.Colors().secondaryColor
-        if let image = UIImage(named: "ic_bookmark_border_white") {
-            button.setImage(image, for: .normal)
+        if let notSavedImage = UIImage(named: "ic_bookmark_border_white") {
+            button.setImage(notSavedImage, for: .normal)
         }
         button.layer.cornerRadius = 20
         button.clipsToBounds = false
@@ -148,7 +168,11 @@ class RecipeCell: BaseCollectionViewCell {
     }
     
     @objc func bookmarkButtonTouchUpInside() {
-        handleBookmarkTap?()
+        do {
+            try handleBookmarkTap?()
+        } catch {
+            print("error")
+        }
     }
     
     @objc func containingViewTouchDown() {

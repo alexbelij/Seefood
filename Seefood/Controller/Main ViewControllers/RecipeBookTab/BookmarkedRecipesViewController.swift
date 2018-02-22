@@ -27,6 +27,18 @@ class BookmarkedRecipesViewController: UIViewController {
             UIApplication.shared.statusBarStyle = .default
         }
         
+        refreshBookmarkedRecipeData()
+        setupViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refreshBookmarkedRecipeData()
+    }
+    
+    func refreshBookmarkedRecipeData() {
+        savedRecipes.removeAll()
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
@@ -40,15 +52,14 @@ class BookmarkedRecipesViewController: UIViewController {
         } catch {
             print("Failed saved recipes fetch request")
         }
-        
-        setupViews()
+        recipesCollectionViewController.collectionView?.reloadData()
     }
     
     var savedRecipes = [Recipe]()
     
     lazy var recipesCollectionViewController: RecipesCollectionViewController = {
         let layout = UICollectionViewFlowLayout()
-        let vc = RecipesCollectionViewController(layout: layout, recipes: savedRecipes)
+        let vc = RecipesCollectionViewController(layout: layout, recipes: savedRecipes, containingParent: self)
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         vc.view.backgroundColor = .red
         return vc

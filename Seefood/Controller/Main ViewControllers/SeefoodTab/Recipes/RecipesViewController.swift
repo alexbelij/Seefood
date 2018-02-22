@@ -30,7 +30,7 @@ class RecipesViewController: UIViewController {
     
     lazy var recipesCollectionViewController: RecipesCollectionViewController = {
         let layout = UICollectionViewFlowLayout()
-        let vc = RecipesCollectionViewController(layout: layout, recipes: FoodData.calculatedRecipes)
+        let vc = RecipesCollectionViewController(layout: layout, recipes: FoodData.calculatedRecipes, containingParent: self)
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         vc.view.backgroundColor = .red
         return vc

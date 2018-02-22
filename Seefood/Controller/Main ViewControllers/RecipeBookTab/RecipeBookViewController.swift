@@ -63,6 +63,19 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
+            do {
+                let savedRecipes = try context.fetch(fetchRequest)
+                for savedRecipe in savedRecipes {
+                    let recipe = savedRecipe.recipe as! Recipe
+                    print(recipe.name)
+                }
+                print("-----")
+            } catch {
+                print("rip saved recipe")
+            }
             self.navigationController?.pushViewController(BookmarkedRecipesViewController(), animated: true)
         case 1:
             self.navigationController?.pushViewController(AllRecipesViewController(), animated: true)

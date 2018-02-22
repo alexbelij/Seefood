@@ -276,8 +276,8 @@
 				3C3F2FAB20303BFF0021F6CE /* RecipeCell.swift */,
 				3CCD893620354A98002CDE47 /* IngredientHeaderCell.swift */,
 				3CCD893C20355D2D002CDE47 /* IngredientTableViewCell.swift */,
-				3CCD893E2035622B002CDE47 /* ProcedureTableViewCell.swift */,
 				3CBB9BC62036959E00FCE03E /* ProcedureHeaderCell.swift */,
+				3CCD893E2035622B002CDE47 /* ProcedureTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -297,8 +297,8 @@
 		3CCD893A203556EB002CDE47 /* Base Cells */ = {
 			isa = PBXGroup;
 			children = (
-				3CCD893820354B6E002CDE47 /* BaseTableViewCell.swift */,
 				3CA1255B202B7E66001931A1 /* BaseCell.swift */,
+				3CCD893820354B6E002CDE47 /* BaseTableViewCell.swift */,
 			);
 			path = "Base Cells";
 			sourceTree = "<group>";
@@ -344,6 +344,7 @@
 				3C200783202B605E00E72C20 /* Resources */,
 				4423BD54E0428140E58665D5 /* [CP] Embed Pods Frameworks */,
 				0F49A31D6CBD0A8289B91B68 /* [CP] Copy Pods Resources */,
+				3C9D81A1203CB7F20009FD63 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -478,6 +479,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Seefood/Pods-Seefood-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3C9D81A1203CB7F20009FD63 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
 		};
 		4423BD54E0428140E58665D5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

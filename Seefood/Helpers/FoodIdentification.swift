@@ -67,8 +67,8 @@ class FoodIdentification: NSObject{
             let items = result.featureValue.multiArrayValue!
             self.queue = self.queue - 1
             
-            var identifiedItem = "unidentified"
             let foodNames = FoodsKnown().foodLabels
+            var identifiedItem = foodNames[0]
             var confidence = items[0].doubleValue
             for i in 0 ..< foodNames.count {
                 let currentConfidence = items[i].doubleValue

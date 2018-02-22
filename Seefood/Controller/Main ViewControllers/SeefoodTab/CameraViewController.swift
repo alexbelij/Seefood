@@ -20,15 +20,16 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         shouldUseDeviceOrientation = false
         allowAutoRotate = false
         audioEnabled = false
-        UIApplication.shared.statusBarStyle = .lightContent
-        
-        self.navigationController?.isNavigationBarHidden = true
         
         setupViews()
     }
     
+    // In viewDidAppear so the viewDidLoad settings dont get overwritten
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     var onTakePicture: (()->())?
