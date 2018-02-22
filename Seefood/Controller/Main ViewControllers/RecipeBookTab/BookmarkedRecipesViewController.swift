@@ -37,6 +37,17 @@ class BookmarkedRecipesViewController: UIViewController, UICollectionViewDelegat
     let cellId = "cellId"
     var recipes = [Recipe]()
     
+    lazy var recipesViewController: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let vc = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        vc.delegate = self
+        vc.dataSource = self
+        vc.register(RecipeCell.self, forCellWithReuseIdentifier: cellId)
+        vc.translatesAutoresizingMaskIntoConstraints = false
+        vc.backgroundColor = .white
+        return vc
+    }()
+    
     func refreshData() {
         recipes.removeAll()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -49,17 +60,6 @@ class BookmarkedRecipesViewController: UIViewController, UICollectionViewDelegat
             }
         } catch { }
     }
-    
-    lazy var recipesViewController: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let vc = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        vc.delegate = self
-        vc.dataSource = self
-        vc.register(RecipeCell.self, forCellWithReuseIdentifier: cellId)
-        vc.translatesAutoresizingMaskIntoConstraints = false
-        vc.backgroundColor = .white
-        return vc
-    }()
     
     func setupViews() {
         view.addSubview(recipesViewController)
@@ -108,7 +108,6 @@ class BookmarkedRecipesViewController: UIViewController, UICollectionViewDelegat
                 do {
                     try context.save()
                     cell.bookmarkButton.setImage(UIImage(named: "ic_bookmark_white"), for: .normal)
-                    cell.saved = true
                 } catch {
                     print("Save failed")
                 }

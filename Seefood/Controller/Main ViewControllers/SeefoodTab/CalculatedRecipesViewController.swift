@@ -32,6 +32,7 @@ class CalculatedRecipesViewController: UIViewController, UICollectionViewDelegat
     override func viewDidAppear(_ animated: Bool) {
         calculateRecipes()
         recipesViewController.reloadData()
+        print(12341234)
     }
 
     let cellId = "cellId"
@@ -60,6 +61,7 @@ class CalculatedRecipesViewController: UIViewController, UICollectionViewDelegat
 
     func calculateRecipes() {
         recipes.removeAll()
+        recipesViewController.reloadData()
         var ingredients = [String]()
         for picture in FoodData.currentPictures {
             ingredients.append(picture.name.lowercased())
@@ -111,12 +113,12 @@ class CalculatedRecipesViewController: UIViewController, UICollectionViewDelegat
                 do {
                     try context.save()
                     cell.bookmarkButton.setImage(UIImage(named: "ic_bookmark_white"), for: .normal)
-                    cell.saved = true
                 } catch {
                     print("Save failed")
                 }
             }
         }
+        print("cell dequed")
         return cell
     }
     
@@ -124,6 +126,8 @@ class CalculatedRecipesViewController: UIViewController, UICollectionViewDelegat
         let width = collectionView.frame.width
         return CGSize(width: width, height: width * 0.56)
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0

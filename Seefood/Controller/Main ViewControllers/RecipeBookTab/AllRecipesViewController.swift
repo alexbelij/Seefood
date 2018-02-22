@@ -102,7 +102,6 @@ class AllRecipesViewController: UIViewController, UICollectionViewDelegate, UICo
                 do {
                     try context.save()
                     cell.bookmarkButton.setImage(UIImage(named: "ic_bookmark_white"), for: .normal)
-                    cell.saved = true
                 } catch {
                     print("Save failed")
                 }

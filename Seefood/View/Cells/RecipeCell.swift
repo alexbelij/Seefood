@@ -13,6 +13,7 @@ class RecipeCell: BaseCollectionViewCell {
     
     var recipe: Recipe? {
         didSet {
+            print(1)
             let recipe = self.recipe!
             recipeImageView.image = UIImage(named: recipe.imageName)
             recipeName.text = recipe.name
@@ -25,13 +26,10 @@ class RecipeCell: BaseCollectionViewCell {
                 let savedRecipes = try context.fetch(fetchRequest)
                 for savedRecipe in savedRecipes {
                     let cellRecipe = self.recipe!
-                    if let savedImage = UIImage(named: "ic_bookmark_white") {
-                        if cellRecipe.isEqual(savedRecipe.recipe as? Recipe) {
-                            print("\((savedRecipe.recipe as! Recipe).name) : \(cellRecipe.name)")
-                            bookmarkButton.setImage(savedImage, for: .normal)
-                            saved = true
-                            break
-                        }
+                    if cellRecipe.isEqual(savedRecipe.recipe as? Recipe) {
+                        print("\((savedRecipe.recipe as! Recipe).name) : \(cellRecipe.name)")
+                        bookmarkButton.setImage(UIImage(named: "ic_bookmark_white"), for: .normal)
+                        break
                     }
                 }
             } catch {
@@ -42,7 +40,6 @@ class RecipeCell: BaseCollectionViewCell {
     
     var handleRecipeTap: (()->())?
     var handleBookmarkTap: (() throws ->())?
-    var saved = false
     
     let recipeName: UILabel = {
         let label = UILabel()
@@ -158,6 +155,11 @@ class RecipeCell: BaseCollectionViewCell {
         bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTouchUpInside), for: .touchUpInside)
         //recipeView.addGestureRecognizer(UIgesture)
         
+    }
+    
+    // MARK: THIS IS WHAT I NEEDED
+    override func prepareForReuse() {
+        bookmarkButton.setImage(UIImage(named: "ic_bookmark_border_white"), for: .normal)
     }
     
     @objc func bookmarkButtonTouchDown() {
