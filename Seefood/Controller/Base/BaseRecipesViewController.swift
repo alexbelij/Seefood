@@ -1,52 +1,61 @@
 //
-//  RecipesViewController.swift
+//  BaseRecipesViewController.swift
 //  Seefood
 //
-//  Created by Siddha Tiwari on 2/11/18.
+//  Created by Siddha Tiwari on 2/22/18.
 //  Copyright © 2018 Siddha Tiwari. All rights reserved.
 //
 
 import UIKit
 
-class RecipesViewController: UIViewController {
+class BaseRecipesViewController: UIViewController {
     
-    // TODO: color of search bar
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         if let nav = navigationController?.navigationBar {
-            let searchController = UISearchController(searchResultsController: nil)
-            navigationItem.searchController = searchController
-            //navigationItem.hidesSearchBarWhenScrolling = false
             nav.barTintColor = Constants.Colors().primaryColor
             nav.isTranslucent = false
-            self.title = "Recipes"
             nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
-            self.navigationController?.navigationBar.tintColor = UIColor.black
+            nav.tintColor = UIColor.black
             UIApplication.shared.statusBarStyle = .default
         }
+        
+        recipesData = calculateRecipes()
+        recipesCollectionViewController.collectionView?.reloadData()
         setupViews()
     }
     
-    lazy var recipesCollectionViewController: RecipesCollectionViewController = {
+    override func viewDidAppear(_ animated: Bool) {
+        recipesData = calculateRecipes()
+        recipesCollectionViewController.collectionView?.reloadData()
+    }
+    
+    // MARK: Should be implemented in child classes
+    func calculateRecipes() -> [Recipe] {
+        return [Recipe]()
+    }
+    
+    var recipesData = [Recipe]()
+    
+    lazy var recipesCollectionViewController: UICollectionViewController = {
         let layout = UICollectionViewFlowLayout()
-        let vc = RecipesCollectionViewController(layout: layout, recipes: FoodData.calculatedRecipes, containingParent: self)
+        let vc = RecipesCollectionViewController(collectionViewLayout: layout)
+        vc.recipesData = self.recipesData
         vc.view.translatesAutoresizingMaskIntoConstraints = false
-        vc.view.backgroundColor = .red
         return vc
     }()
     
     func setupViews() {
-        let containerView: UIView? = view
+        let containerView = view
         addChildViewController(recipesCollectionViewController)
         containerView?.addSubview(recipesCollectionViewController.view)
         recipesCollectionViewController.didMove(toParentViewController: self)
         
         NSLayoutConstraint.activate(
             NSLayoutConstraint.constraints(withVisualFormat: "|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": recipesCollectionViewController.view]) +
-                NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": recipesCollectionViewController.view])
-        )
+            NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": recipesCollectionViewController.view])
+            )
     }
     
 }
-

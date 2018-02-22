@@ -14,9 +14,6 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         super.init(nibName: nil, bundle: nil)
     }
     
-    let cellId = "cellId"
-    let footerId = "footerId"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -31,10 +28,6 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         }
         setupNavBarButtons()
         setupViews()
-        ingredientsCollectionView.dataSource = self
-        ingredientsCollectionView.delegate = self
-        ingredientsCollectionView.register(IngredientCell.self, forCellWithReuseIdentifier: cellId)
-        ingredientsCollectionView.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerId)
         ingredientsCollectionView.reloadData()
     }
     
@@ -75,16 +68,21 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         navigationItem.setLeftBarButton(searchBarButtonItem, animated: true)
     }
     
-    let ingredientsCollectionView: UICollectionView = {
+    lazy var ingredientsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-//        layout.minimumInteritemSpacing = 0
-//        layout.minimumLineSpacing = 0
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.dataSource = self
+        view.delegate = self
+        view.register(IngredientCell.self, forCellWithReuseIdentifier: cellId)
+        view.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerId)
         view.backgroundColor = .white
         view.alwaysBounceVertical = true
         return view
     }()
+    
+    let cellId = "cellId"
+    let footerId = "footerId"
     
     let viewRecipesButton: UIButton = {
         let button = UIButton()

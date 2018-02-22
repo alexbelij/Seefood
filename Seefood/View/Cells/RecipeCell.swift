@@ -13,7 +13,6 @@ class RecipeCell: BaseCollectionViewCell {
     
     var recipe: Recipe? {
         didSet {
-            print(1)
             let recipe = self.recipe!
             recipeImageView.image = UIImage(named: recipe.imageName)
             recipeName.text = recipe.name
