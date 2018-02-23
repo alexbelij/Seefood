@@ -53,7 +53,7 @@ class RecipeCell: BaseCollectionViewCell {
         return label
     }()
     
-    // TODO: Vertically align to top
+    // TODO: Vertically align text to top
     let recipeIngredients: UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear

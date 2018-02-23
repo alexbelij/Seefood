@@ -31,7 +31,7 @@ class BaseRecipesViewController: UIViewController {
         recipesCollectionViewController.collectionView?.reloadData()
     }
     
-    // MARK: Should be implemented in child classes
+    // MARK: Should be overriden in child classes
     func calculateRecipes() -> [Recipe] {
         return [Recipe]()
     }
