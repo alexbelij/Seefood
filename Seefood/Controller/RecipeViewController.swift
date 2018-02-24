@@ -19,7 +19,7 @@ class RecipeViewController: UIViewController {
             nav.barTintColor = Constants.Colors().primaryColor
             nav.isTranslucent = false
             nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
-            self.navigationController?.navigationBar.tintColor = UIColor.black
+            nav.tintColor = UIColor.black
             UIApplication.shared.statusBarStyle = .default
         }
         setupViews()
@@ -85,7 +85,7 @@ class RecipeViewController: UIViewController {
         let bookmarkImage = UIImage(named: bookmarked ? "ic_bookmark_white" : "ic_bookmark_border_white")?.withRenderingMode(.alwaysTemplate)
         bookmarkButton.setImage(bookmarkImage, for: .normal)
         
-        navigationItem.setRightBarButtonItems([bookmarkBarButton, shareBarButton], animated: bookmarked)
+        navigationItem.setRightBarButtonItems([bookmarkBarButton, shareBarButton], animated: true)
         
     }
     

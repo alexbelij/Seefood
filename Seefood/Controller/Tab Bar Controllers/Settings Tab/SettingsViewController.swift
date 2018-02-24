@@ -16,7 +16,6 @@ class SettingsViewController: UIViewController {
         
         view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.hidesBackButton = true
         self.tabBarController?.tabBar.isHidden = false
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = true
@@ -160,8 +159,6 @@ class TableViewToggleCell: BaseTableViewCell {
     @objc func toggled(sender: UISwitch) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(sender.isOn, forKey: "limited_recipes")
-        let value = userDefaults.object(forKey: "limited_recipes") as! Bool
-        print(value)
     }
     
 }

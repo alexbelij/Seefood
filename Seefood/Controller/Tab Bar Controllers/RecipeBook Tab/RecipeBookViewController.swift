@@ -11,31 +11,31 @@ import CoreData
 
 class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        recipeCategoriesTableView.dataSource = self
-        recipeCategoriesTableView.delegate = self
-        recipeCategoriesTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        recipeCategoriesTableView.reloadData()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.hidesBackButton = true
         self.tabBarController?.tabBar.isHidden = false
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = true
             nav.barTintColor = Constants.Colors().primaryColor
+            nav.tintColor = UIColor.black
             nav.isTranslucent = false
             self.title = "Recipe Book"
         }
+        recipeCategoriesTableView.dataSource = self
+        recipeCategoriesTableView.delegate = self
+        recipeCategoriesTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        recipeCategoriesTableView.reloadData()
+        
+        let button = UIButton()
+        if let image = UIImage(named: "ic_settings")?.withRenderingMode(.alwaysTemplate) {
+            button.setImage(image, for: .normal)
+        }
+        button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: button)
+        navigationItem.setRightBarButton(barButton, animated: true)
+
         setupViews()
     }
     
@@ -60,22 +60,14 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
             ])
     }
     
+    @objc func settingsButtonTapped() {
+        print(4312)
+        self.navigationController?.pushViewController(SettingsViewController(), animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            let context = appDelegate.persistentContainer.viewContext
-//            let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
-//            do {
-//                let savedRecipes = try context.fetch(fetchRequest)
-//                for savedRecipe in savedRecipes {
-//                    let recipe = savedRecipe.recipe as! Recipe
-//                    print(recipe.name)
-//                }
-//                print("-----")
-//            } catch {
-//                print("rip saved recipe")
-//            }
             self.navigationController?.pushViewController(BookmarkedRecipesViewController(), animated: true)
         case 1:
             self.navigationController?.pushViewController(AllRecipesViewController(), animated: true)

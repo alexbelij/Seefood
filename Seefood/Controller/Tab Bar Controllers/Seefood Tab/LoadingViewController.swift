@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class LoadingViewController: UIViewController {
     
@@ -16,24 +17,10 @@ class LoadingViewController: UIViewController {
         UIApplication.shared.statusBarStyle = .default
         //self.tabBarController?.tabBar.isHidden = false
         
-        
         foodIdentifier = FoodIdentification()
         foodIdentifier.foodsIdentified = {
-//            let ingredientsViewController = IngredientsViewController()
-//            let transition = CATransition()
-//            transition.duration = 0.5
-//            transition.type = kCATransitionPush
-//            transition.subtype = kCATransitionFromRight
-//            transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
-//            self.view.window!.layer.add(transition, forKey: kCATransition)
-//            self.present(UINavigationController(rootViewController: ingredientsViewController), animated: false, completion: nil)
             self.navigationController?.pushViewController(IngredientsViewController(), animated: true)
         }
-        
-//        FoodData.guessedFoods.removeAll()
-//        for _ in 0...FoodData.currentPictures.count {
-//            FoodData.guessedFoods.append("")
-//        }
 
         for (index, imagePair) in  FoodData.currentPictures.enumerated() {
             foodIdentifier.queue = foodIdentifier.queue + 1
@@ -41,11 +28,54 @@ class LoadingViewController: UIViewController {
         }
         
         view.backgroundColor = Constants.Colors().primaryColor
+        
+        setupViews()
+        showAnimate()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        disappearAnimate()
     }
     
     lazy var foodIdentifier: FoodIdentification = {
         let identifier = FoodIdentification()
         return identifier
     }()
+    
+    let loadingText: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.text = "Loading"
+        label.font = UIFont(name: "AvenirNext-Bold", size: 50)
+        return label
+    }()
+    
+    func setupViews() {
+        view.addSubview(loadingText)
+        
+        NSLayoutConstraint.activate([
+            loadingText.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60),
+            loadingText.heightAnchor.constraint(equalToConstant: 60),
+            loadingText.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingText.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ])
+    }
+    
+    func showAnimate() {
+        loadingText.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        loadingText.alpha = 0
+        UIView.animate(withDuration: 0.5, animations: {
+            self.loadingText.alpha = 1.0
+            self.loadingText.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+    }
+    
+    func disappearAnimate() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.loadingText.alpha = 0.0
+            self.loadingText.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        })
+    }
     
 }

@@ -70,16 +70,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
             self.checkButton.expand(scale: FoodData.currentPictures.count < 1 ? 0.001 : 1)
         }
         handler.picturesDismissed = {
-//            let loadingViewController = LoadingViewController()
-//            let transition = CATransition()
-//            transition.duration = 0.5
-//            transition.type = kCATransitionFade
-//            transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
-//            self.view.window!.layer.add(transition, forKey: kCATransition)
-//
-//            let tabViewController = TabBarController()
-//
-//            self.present(loadingViewController, animated: false, completion: nil)
             
             self.navigationController?.pushViewController(LoadingViewController(), animated: true)
         }
