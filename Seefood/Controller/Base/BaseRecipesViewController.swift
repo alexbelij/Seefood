@@ -27,8 +27,12 @@ class BaseRecipesViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print(1234)
         recipesData = calculateRecipes()
-        recipesCollectionViewController.collectionView?.reloadData()
+        DispatchQueue.main.async {
+            self.recipesCollectionViewController.collectionView?.reloadData()
+        }
+        
     }
     
     // MARK: Should be overriden in child classes

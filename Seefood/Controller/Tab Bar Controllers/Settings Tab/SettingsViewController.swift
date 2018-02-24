@@ -132,6 +132,12 @@ class TableViewToggleCell: BaseTableViewCell {
     
     let toggle: UISwitch = {
         let toggle = UISwitch()
+        let userDefaults = UserDefaults.standard
+        if userDefaults.object(forKey: "limited_recipes") as! Bool {
+            toggle.setOn(true, animated: false)
+        } else {
+            toggle.setOn(false, animated: false)
+        }
         toggle.translatesAutoresizingMaskIntoConstraints = false
         return toggle
     }()
@@ -178,11 +184,6 @@ class TableViewDescCell: BaseTableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         let userDefaults = UserDefaults.standard
-//        let settingsBundle = Bundle.main.path(forResource: "Root", ofType: "plist")
-//        let settings = NSDictionary(contentsOfFile: settingsBundle!)
-//        let preferences = settings?.object(forKey: "PreferenceSpecifiers") as! NSArray
-//        let defaultsToRegister = NSMutableDictionary(capacity: preferences.count)
-        // TODO: Get verion data from Settings.bundle
         label.text = userDefaults.value(forKey: "version") as? String
         return label
     }()

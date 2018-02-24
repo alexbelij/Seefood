@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 class RecipeViewController: UIViewController {
     
@@ -24,6 +24,10 @@ class RecipeViewController: UIViewController {
         }
         setupViews()
         setupNavBarButtons()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateBookmarkButton()
     }
     
     lazy var recipeTableViewController: RecipeTableViewController = {
@@ -45,9 +49,12 @@ class RecipeViewController: UIViewController {
     }
     
     func setupNavBarButtons() {
-        let bookmarkImage = UIImage(named: "ic_bookmark_border_white")?.withRenderingMode(.alwaysTemplate)
+        updateBookmarkButton()
+    }
+    
+    func updateBookmarkButton() {
+        
         let bookmarkButton = UIButton()
-        bookmarkButton.setImage(bookmarkImage, for: .normal)
         bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTouchUpInside), for: .touchUpInside)
         let bookmarkBarButton = UIBarButtonItem(customView: bookmarkButton)
         
@@ -57,11 +64,62 @@ class RecipeViewController: UIViewController {
         shareButton.addTarget(self, action: #selector(shareButtonTouchUpInside), for: .touchUpInside)
         let shareBarButton = UIBarButtonItem(customView: shareButton)
         
-        navigationItem.setRightBarButtonItems([bookmarkBarButton, shareBarButton], animated: true)
+        let recipe = self.recipeTableViewController.recipe!
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
+        var bookmarked = false
+        do {
+            let savedRecipes = try context.fetch(fetchRequest)
+            for savedRecipe in savedRecipes {
+                if recipe.isEqual(savedRecipe.recipe as? Recipe) {
+                    print("\((savedRecipe.recipe as! Recipe).name) : \(recipe.name)")
+                    bookmarked = true
+                    break
+                }
+            }
+        } catch {
+            print("rip saved recipe")
+        }
+        
+        let bookmarkImage = UIImage(named: bookmarked ? "ic_bookmark_white" : "ic_bookmark_border_white")?.withRenderingMode(.alwaysTemplate)
+        bookmarkButton.setImage(bookmarkImage, for: .normal)
+        
+        navigationItem.setRightBarButtonItems([bookmarkBarButton, shareBarButton], animated: bookmarked)
+        
     }
     
     @objc func bookmarkButtonTouchUpInside() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
         
+        let recipe = self.recipeTableViewController.recipe!
+        do {
+            let savedRecipes = try context.fetch(fetchRequest)
+            var found = false
+            for savedRecipe in savedRecipes {
+                let aRecipe = savedRecipe.recipe as! Recipe
+                found = (recipe.isEqual(aRecipe))
+                if found {
+                    context.delete(savedRecipe)
+                    updateBookmarkButton()
+                    break
+                }
+            }
+            
+            if !found {
+                let entity = NSEntityDescription.entity(forEntityName: "SavedRecipes", in: context)
+                let newSavedRecipe = NSManagedObject(entity: entity!, insertInto: context)
+                newSavedRecipe.setValue(recipe, forKey: "recipe")
+                do {
+                    try context.save()
+                    updateBookmarkButton()
+                } catch {
+                    print("Save failed")
+                }
+            }
+        } catch { }
     }
     
     @objc func shareButtonTouchUpInside() {

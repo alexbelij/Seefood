@@ -23,10 +23,27 @@ class CalculatedRecipesViewController: BaseRecipesViewController {
         for picture in FoodData.currentPictures {
             ingredients.append(picture.name.lowercased())
         }
+        let userDefaults = UserDefaults.standard
+        let restricted = userDefaults.object(forKey: "limited_recipes") as! Bool
+        let value = userDefaults.object(forKey: "limited_recipes") as! Bool
+        print(value)
         for recipe in FoodsKnown().allRecipes {
             let recipeIngredients = recipe.ingredients
-            for neededIngredient in recipeIngredients {
-                if ingredients.contains(neededIngredient.name) {
+            if !restricted {
+                for neededIngredient in recipeIngredients {
+                    if ingredients.contains(neededIngredient.name) {
+                        recipes.append(recipe)
+                    }
+                }
+            } else {
+                var containsAll: Bool = true
+                for neededIngredient in recipeIngredients {
+                    if !ingredients.contains(neededIngredient.name) {
+                        containsAll = false
+                        break
+                    }
+                }
+                if containsAll {
                     recipes.append(recipe)
                 }
             }

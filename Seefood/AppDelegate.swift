@@ -35,6 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("rip saved recipe")
         }
         
+        let userDefaults = UserDefaults.standard
+        if userDefaults.object(forKey: "limited_recipes") == nil {
+            userDefaults.set(false, forKey: "limited_recipes")
+        }
+        
         return true
     }
 
