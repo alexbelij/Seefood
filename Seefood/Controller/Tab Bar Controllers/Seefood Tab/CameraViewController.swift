@@ -24,12 +24,18 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         setupViews()
     }
     
-    // In viewDidAppear so the viewDidLoad settings dont get overwritten
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         UIApplication.shared.statusBarStyle = .lightContent
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        picturesHandler.showPictures()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        picturesHandler.disappearPictures()
     }
     
     var onTakePicture: (()->())?
@@ -115,22 +121,13 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
-        var lastIndex: IndexPath? = nil
-        picturesHandler.picturesView.performBatchUpdates({
-            FoodData.currentPictures.append((photo, ""))
-            lastIndex = IndexPath(item: FoodData.currentPictures.count - 1, section: 0)
-            picturesHandler.picturesView.insertItems(at: [lastIndex!])
-        }, completion: { completed in
-            self.picturesHandler.picturesView.scrollToFooter(lastIndex!)
-        })
-        
+        picturesHandler.addPicture(picture: photo)
         checkButton.expand(scale: 1)
     }
     
     func clearViewForLoading(clear: Bool, duration: Double) {
         clearCaptureButton(clear: clear)
         clearCheckButton(clear: clear)
-        
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: { completed in

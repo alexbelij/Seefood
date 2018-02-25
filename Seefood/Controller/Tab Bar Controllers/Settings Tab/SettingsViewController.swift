@@ -10,7 +10,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    // TODO: move some properties to viewDidAppear
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -27,7 +27,7 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
     var cellDeleted: (()->())?
     var picturesDismissed: (()->())?
     
-    let picturesView: UICollectionView = {
+    private let picturesView: UICollectionView = {
         let layout = CustomFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -40,6 +40,25 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
             window.addSubview(picturesView)
             picturesView.frame = CGRect(x: 0, y: window.frame.height - 240, width: window.frame.width, height: collectionHeight)
         }
+    }
+    
+    func addPicture(picture: UIImage) {
+        var lastIndex: IndexPath? = nil
+        picturesView.performBatchUpdates({
+            FoodData.currentPictures.append((picture, ""))
+            lastIndex = IndexPath(item: FoodData.currentPictures.count - 1, section: 0)
+            self.picturesView.insertItems(at: [lastIndex!])
+        }, completion: { completed in
+            self.picturesView.scrollToFooter(lastIndex!)
+        })
+    }
+    
+    func showPictures() {
+        picturesView.isHidden = false
+    }
+    
+    func disappearPictures() {
+        picturesView.isHidden = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
