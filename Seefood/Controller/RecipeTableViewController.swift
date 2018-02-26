@@ -73,7 +73,7 @@ class RecipeTableViewController: UITableViewController {
         tableView?.contentInset = UIEdgeInsets(top: headerHeight!, left: 0, bottom: 0, right: 0)
         
         headerView.frame = CGRect(x: 0, y: -1 * headerHeight!, width: 100, height: headerHeight!)
-        tableView?.backgroundColor = .blue
+        tableView?.backgroundColor = .white
         tableView?.addSubview(headerView)
         headerView.addSubview(recipeImageView)
         

@@ -29,12 +29,25 @@ class TabBarController: UITabBarController {
         for item in vcData {
             item.vc.tabBarItem.image = item.image.withRenderingMode(.alwaysTemplate)
             item.vc.tabBarItem.title = item.title
+            item.vc.tabBarItem.imageInsets = UIEdgeInsets(top: 0, left: -3, bottom: -3, right: -3)
             tabViewControllers.append(item.vc)
         }
         
-        tabBar.isTranslucent = true
-        tabBar.barTintColor = Constants.Colors().primaryColor
-        tabBar.tintColor = Constants.Colors().secondaryDarkColor
+        /*let backgroundView = UIImageView(image: UIImage(named: "black_gradient"))
+        backgroundView.isOpaque = false
+        backgroundView.contentMode = .scaleToFill
+        var tabBarFrame = tabBar.frame.size
+        backgroundView.frame.size = tabBarFrame
+        
+        tabBar.addSubview(backgroundView)
+        tabBar.backgroundImage = UIImage(color: .clear)*/
+        
+        tabBar.barStyle = UIBarStyle.black
+        tabBar.unselectedItemTintColor = .white
+        tabBar.tintColor = Constants.Colors().primaryColor
+        
+        tabBar.layer.borderWidth = 0
+        tabBar.clipsToBounds = true
         
         viewControllers = tabViewControllers
         selectedIndex = 0

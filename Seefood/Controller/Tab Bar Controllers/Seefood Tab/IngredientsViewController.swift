@@ -69,12 +69,14 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         view.dataSource = self
         view.delegate = self
         view.register(IngredientCell.self, forCellWithReuseIdentifier: cellId)
+        view.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         view.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerId)
         view.backgroundColor = .white
         view.alwaysBounceVertical = true
         return view
     }()
     
+    let headerId = "headerId"
     let cellId = "cellId"
     let footerId = "footerId"
     
@@ -144,13 +146,26 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerId, for: indexPath)
-        return footer
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
+            return header
+        case UICollectionElementKindSectionFooter:
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerId, for: indexPath)
+            return footer
+        default:
+            assert(false, "Not Header or Footer")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let width = ingredientsCollectionView.frame.width / 2
+        return CGSize(width: width, height: 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         let width = ingredientsCollectionView.frame.width / 2
-        return CGSize(width: width, height: width * 1.78)
+        return CGSize(width: width, height: 20)
     }
     
 }

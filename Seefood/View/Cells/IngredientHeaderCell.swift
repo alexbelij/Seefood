@@ -29,11 +29,13 @@ class IngredientHeaderCell: BaseTableViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.clipsToBounds = false
-        button.backgroundColor = Constants.Colors().secondaryColor
-        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .white //Constants.Colors().secondaryColor
+        button.setTitleColor(Constants.Colors().secondaryColor, for: .normal)
         button.setTitle("Export", for: .normal)
         button.titleLabel?.font = UIFont(name: "AvenirNext-Demibold", size: 17)
         button.layer.cornerRadius = 5
+        button.layer.borderWidth = 2
+        button.layer.borderColor = Constants.Colors().secondaryColor.cgColor
         return button
     }()
     

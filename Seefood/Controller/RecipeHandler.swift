@@ -134,9 +134,7 @@ class RecipeHandler: NSObject {
         if let window = UIApplication.shared.keyWindow {
             
             let windowMargin = window.safeAreaInsets
-            
             NSLayoutConstraint.activate([
-                
                 blurView.topAnchor.constraint(equalTo: window.topAnchor),
                 blurView.bottomAnchor.constraint(equalTo: window.bottomAnchor),
                 blurView.leadingAnchor.constraint(equalTo: window.leadingAnchor),
@@ -151,10 +149,7 @@ class RecipeHandler: NSObject {
                 bodyView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -20),
                 bodyView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: 20),
                 bodyView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor, constant: -20)
-                
                 ])
-            
-            
             baseView.frame = CGRect(x: 30, y: window.frame.maxY, width: window.frame.width - 60, height: window.frame.height - 80)
         }
         

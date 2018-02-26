@@ -103,8 +103,6 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         let cellHeight = collectionHeight
         return CGSize(width: 10, height: cellHeight)

@@ -30,13 +30,25 @@ class IngredientCell: BaseCollectionViewCell, UITextViewDelegate {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isUserInteractionEnabled = true
         view.clipsToBounds = true
+        view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
+        view.layer.cornerRadius = 15
+        return view
+    }()
+    
+    let blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .light)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        view.layer.cornerRadius = 15
         return view
     }()
     
     let ingredientName: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.75)
         textView.textColor = .white
+        textView.backgroundColor = .clear
         textView.textAlignment = .center
         textView.isEditable = true
         textView.isScrollEnabled = false
@@ -44,39 +56,20 @@ class IngredientCell: BaseCollectionViewCell, UITextViewDelegate {
         textView.font = UIFont(name: "AvenirNext-Demibold", size: 17)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.clipsToBounds = true
+        textView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        textView.layer.cornerRadius = 15
         return textView
     }()
     
     // TODO: fix shadow
     let containingView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
-        
-        view.clipsToBounds = true
-        
-//        view.layer.shadowRadius = 15
-//        view.layer.shadowColor = UIColor.darkGray.cgColor
-//        view.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-//        view.layer.shadowOpacity = 0.75
-//
-        view.layer.cornerRadius = 15
-        
-        let shadow: CAShapeLayer =  {
-            let shadowLayer = CAShapeLayer()
-            shadowLayer.path = UIBezierPath(roundedRect: view.bounds, cornerRadius: 10).cgPath
-            //shadowLayer.fillColor = UIColor.white.cgColor
-
-            shadowLayer.shadowColor = UIColor.darkGray.cgColor
-            shadowLayer.shadowPath = shadowLayer.path
-            shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-            shadowLayer.shadowOpacity = 0.8
-            shadowLayer.shadowRadius = 10
-            return shadowLayer
-        }()
-        
-        //view.layer.addSublayer(shadow)
-        //view.layer.sublayers![0].masksToBounds = false
-        
+        view.backgroundColor = .clear
+        view.clipsToBounds = false
+        view.layer.shadowRadius = 10
+        view.layer.shadowColor = UIColor.darkGray.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+        view.layer.shadowOpacity = 0.75
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -84,14 +77,20 @@ class IngredientCell: BaseCollectionViewCell, UITextViewDelegate {
     override func setupViews() {
         self.addSubview(containingView)
         containingView.addSubview(pictureImageView)
+        containingView.addSubview(blurView)
         containingView.addSubview(ingredientName)
         
         NSLayoutConstraint.activate([
             
-            containingView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            containingView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            containingView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            containingView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             containingView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             containingView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            
+            blurView.bottomAnchor.constraint(equalTo: containingView.bottomAnchor),
+            blurView.leadingAnchor.constraint(equalTo: containingView.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: containingView.trailingAnchor),
+            blurView.heightAnchor.constraint(equalToConstant: 40),
             
             pictureImageView.topAnchor.constraint(equalTo: containingView.topAnchor),
             pictureImageView.leadingAnchor.constraint(equalTo: containingView.leadingAnchor),
@@ -106,7 +105,7 @@ class IngredientCell: BaseCollectionViewCell, UITextViewDelegate {
             
             ])
         
-        self.backgroundColor = .white
+        self.backgroundColor = .clear
         self.isUserInteractionEnabled = true
         ingredientName.delegate = self
         pictureImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pictureTapped)))
@@ -122,12 +121,13 @@ class IngredientCell: BaseCollectionViewCell, UITextViewDelegate {
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        containingView.expand(scale: 1.05)
+        self.expand(scale: 1.05)
+        self.layer.zPosition = 999
         return true
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        containingView.expand(scale: 1)
+        self.expand(scale: 1)
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

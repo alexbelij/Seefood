@@ -15,6 +15,7 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.register(RecipeCell.self, forCellWithReuseIdentifier: recipeCellId)
+        collectionView?.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerId)
         collectionView?.backgroundColor = .white
         collectionView?.alwaysBounceVertical = true
         setupViews()
@@ -22,7 +23,6 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     
     func setupViews() {
         collectionView?.backgroundView = noResults
-        
         NSLayoutConstraint.activate([
             noResults.topAnchor.constraint(equalTo: view.topAnchor),
             noResults.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -33,6 +33,7 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     
     var recipesData = [Recipe]()
     let recipeCellId = "recipeCellId"
+    let footerId = "footerId"
     
     let noResults: UILabel = {
         let label = UILabel()
@@ -94,7 +95,7 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width
-        return CGSize(width: width, height: width * 0.56)
+        return CGSize(width: width, height: width * 0.64)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -103,6 +104,21 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionFooter:
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerId, for: indexPath)
+            return footer
+        default:
+            assert(false, "Not Header or Footer")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        let width = collectionView.frame.width
+        return CGSize(width: width, height: 20)
     }
     
 }

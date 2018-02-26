@@ -40,6 +40,16 @@ class RecipeCell: BaseCollectionViewCell {
     var handleRecipeTap: (()->())?
     var handleBookmarkTap: (() throws ->())?
     
+    let blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .light)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        view.layer.cornerRadius = 15
+        return view
+    }()
+    
     let recipeName: UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
@@ -79,7 +89,8 @@ class RecipeCell: BaseCollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
-        view.backgroundColor = .red
+        view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
+        view.layer.cornerRadius = 15
         return view
     }()
     
@@ -91,6 +102,10 @@ class RecipeCell: BaseCollectionViewCell {
         }
         button.layer.cornerRadius = 20
         button.clipsToBounds = false
+        button.layer.shadowRadius = 10
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 0)
+        button.layer.shadowOpacity = 0.5
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -98,8 +113,11 @@ class RecipeCell: BaseCollectionViewCell {
     let containingView: UIView = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 15
+        view.clipsToBounds = false
+        view.layer.shadowRadius = 10
+        view.layer.shadowColor = UIColor.darkGray.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+        view.layer.shadowOpacity = 0.75
         return view
     }()
     
@@ -114,20 +132,26 @@ class RecipeCell: BaseCollectionViewCell {
     override func setupViews() {
         self.addSubview(containingView)
         containingView.addSubview(recipeImageView)
+        containingView.addSubview(blurView)
         containingView.addSubview(recipeName)
         containingView.addSubview(interactionLayer)
         containingView.addSubview(bookmarkButton)
         
         NSLayoutConstraint.activate([
-            containingView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            containingView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             containingView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            containingView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            containingView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            containingView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            containingView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             
             recipeImageView.topAnchor.constraint(equalTo: containingView.topAnchor),
             recipeImageView.bottomAnchor.constraint(equalTo: containingView.bottomAnchor),
             recipeImageView.leadingAnchor.constraint(equalTo: containingView.leadingAnchor),
             recipeImageView.trailingAnchor.constraint(equalTo: containingView.trailingAnchor),
+            
+            blurView.topAnchor.constraint(equalTo: containingView.topAnchor),
+            blurView.leadingAnchor.constraint(equalTo: containingView.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: containingView.trailingAnchor),
+            blurView.heightAnchor.constraint(equalToConstant: 60),
             
             recipeName.topAnchor.constraint(equalTo: containingView.topAnchor, constant: 15),
             recipeName.leadingAnchor.constraint(equalTo: containingView.leadingAnchor, constant: 15),

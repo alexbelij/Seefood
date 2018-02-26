@@ -15,10 +15,10 @@ class SettingsViewController: UIViewController {
         
         view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = false
-        //self.tabBarController?.tabBar.isHidden = false
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = false
-            nav.barTintColor = Constants.Colors().primaryColor
+            nav.barTintColor = .white
+            nav.tintColor = Constants.Colors().secondaryColor
             nav.isTranslucent = true
             self.title = "Settings"
         }
@@ -32,7 +32,6 @@ class SettingsViewController: UIViewController {
         let closeButton = UIButton()
         closeButton.contentMode = .scaleAspectFill
         closeButton.setImage(closeButtonImage, for: .normal)
-        closeButton.tintColor = .black
         closeButton.addTarget(self, action: #selector(closeButtonTouchUpInside(sender:)), for: .touchUpInside)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         let searchBarButtonItem = UIBarButtonItem(customView: closeButton)
