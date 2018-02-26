@@ -19,6 +19,7 @@
 		3C20079E202B605E00E72C20 /* FoodRecipeV2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20079D202B605E00E72C20 /* FoodRecipeV2Tests.swift */; };
 		3C2007A9202B605E00E72C20 /* FoodRecipeV2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2007A8202B605E00E72C20 /* FoodRecipeV2UITests.swift */; };
 		3C2CB0E520400D09004A558F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C2CB0E420400D09004A558F /* Settings.bundle */; };
+		3C38271E2044659A001EF605 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C38271D2044659A001EF605 /* ThemeManager.swift */; };
 		3C3F2F96202E522A0021F6CE /* AnimatingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3F2F95202E522A0021F6CE /* AnimatingFlowLayout.swift */; };
 		3C3F2F9A202EE3720021F6CE /* coreml.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C3F2F99202EE3720021F6CE /* coreml.mlmodel */; };
 		3C3F2F9C202EE3C90021F6CE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3F2F9B202EE3C90021F6CE /* LoadingViewController.swift */; };
@@ -86,6 +87,7 @@
 		3C2007A8202B605E00E72C20 /* FoodRecipeV2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipeV2UITests.swift; sourceTree = "<group>"; };
 		3C2007AA202B605E00E72C20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C2CB0E420400D09004A558F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		3C38271D2044659A001EF605 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		3C3F2F95202E522A0021F6CE /* AnimatingFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingFlowLayout.swift; sourceTree = "<group>"; };
 		3C3F2F99202EE3720021F6CE /* coreml.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = coreml.mlmodel; sourceTree = "<group>"; };
 		3C3F2F9B202EE3C90021F6CE /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				3CA1254C202B763E001931A1 /* Constants.swift */,
 				3C3F2F9D202EE4780021F6CE /* Extensions.swift */,
 				3C3F2FA3202FBF660021F6CE /* FoodIdentification.swift */,
+				3C38271D2044659A001EF605 /* ThemeManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				3CCD89352034E30C002CDE47 /* RecipeTableViewController.swift in Sources */,
 				3CBB9BD320378F7F00FCE03E /* SeefoodDataModel.xcdatamodeld in Sources */,
 				3C3F2F9E202EE4780021F6CE /* Extensions.swift in Sources */,
+				3C38271E2044659A001EF605 /* ThemeManager.swift in Sources */,
 				3C46EF3B203E5BF60045AF8C /* CalculatedRecipesViewController.swift in Sources */,
 				3CCD893920354B6E002CDE47 /* BaseTableViewCell.swift in Sources */,
 				3CBB9BC72036959E00FCE03E /* ProcedureHeaderCell.swift in Sources */,

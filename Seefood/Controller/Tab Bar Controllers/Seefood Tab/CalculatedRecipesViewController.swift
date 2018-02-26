@@ -23,8 +23,6 @@ class CalculatedRecipesViewController: BaseRecipesViewController {
         }
         let userDefaults = UserDefaults.standard
         let restricted = userDefaults.object(forKey: "limited_recipes") as! Bool
-        let value = userDefaults.object(forKey: "limited_recipes") as! Bool
-        print(value)
         for recipe in FoodsKnown().allRecipes {
             let recipeIngredients = recipe.ingredients
             if !restricted {

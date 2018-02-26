@@ -11,29 +11,44 @@ import CoreData
 
 class RecipesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    override init(collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(collectionViewLayout: layout)
-    }
-    
     override func viewDidLoad() {
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.register(RecipeCell.self, forCellWithReuseIdentifier: recipeCellId)
         collectionView?.backgroundColor = .white
         collectionView?.alwaysBounceVertical = true
+        setupViews()
+    }
+    
+    func setupViews() {
+        NSLayoutConstraint.activate([
+            noResults.topAnchor.constraint(equalTo: view.topAnchor),
+            noResults.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            noResults.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            noResults.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ])
     }
     
     var recipesData = [Recipe]()
     let recipeCellId = "recipeCellId"
     
+    let noResults: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .white
+        label.textAlignment = .center
+        label.text = "No Results"
+        return label
+    }()
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        collectionView.backgroundView = recipesData.count > 0 ? nil : noResults
         return recipesData.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipeCellId, for: indexPath) as! RecipeCell
         
-        // TODO: check
         cell.recipe = recipesData[indexPath.row]
         cell.handleRecipeTap = {
             let recipeViewController = RecipeViewController()
@@ -85,10 +100,6 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
 }

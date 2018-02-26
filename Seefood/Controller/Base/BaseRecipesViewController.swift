@@ -31,7 +31,6 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print(1234)
         recipesData = calculateRecipes()
         DispatchQueue.main.async {
             self.recipesCollectionViewController.collectionView?.reloadData()

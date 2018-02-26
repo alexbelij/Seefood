@@ -97,7 +97,7 @@ class Recipe: NSObject, NSCoding {
         let recipeDescription = aDecoder.decodeObject(forKey: "recipeDescription") as? String,
         let ingredients = aDecoder.decodeObject(forKey: "ingredients") as? [RecipeIngredient],
         let recipeSteps = aDecoder.decodeObject(forKey: "recipeSteps") as? [String],
-            let imageName = aDecoder.decodeObject(forKey: "imageName") as? String else {print(1234); return nil}
+        let imageName = aDecoder.decodeObject(forKey: "imageName") as? String else {print(1234); return nil}
         
         self.init(name: name, description: recipeDescription, ingredients: ingredients, recipeSteps: recipeSteps, imageName: imageName)
     }

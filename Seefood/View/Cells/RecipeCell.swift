@@ -116,10 +116,9 @@ class RecipeCell: BaseCollectionViewCell {
         containingView.addSubview(recipeImageView)
         containingView.addSubview(recipeName)
         containingView.addSubview(interactionLayer)
-        self.addSubview(bookmarkButton)
+        containingView.addSubview(bookmarkButton)
         
         NSLayoutConstraint.activate([
-            
             containingView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             containingView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             containingView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
@@ -142,7 +141,6 @@ class RecipeCell: BaseCollectionViewCell {
             bookmarkButton.trailingAnchor.constraint(equalTo: containingView.trailingAnchor, constant: -15),
             bookmarkButton.widthAnchor.constraint(equalToConstant: 40),
             bookmarkButton.heightAnchor.constraint(equalToConstant: 40),
-            
             ])
         
         interactionLayer.addTarget(self, action: #selector(containingViewTouchDown), for: .touchDown)
