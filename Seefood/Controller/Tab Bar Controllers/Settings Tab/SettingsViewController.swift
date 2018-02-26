@@ -15,17 +15,19 @@ class SettingsViewController: UIViewController {
         
         view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = false
-        self.tabBarController?.tabBar.isHidden = false
+        //self.tabBarController?.tabBar.isHidden = false
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = false
             nav.barTintColor = Constants.Colors().primaryColor
             nav.isTranslucent = false
             self.title = "Settings"
         }
-        //setupNavBarButtons()
+        setupNavBarButtons()
         setupViews()
-        
-        self.navigationItem.hidesBackButton = true
+    }
+    
+    func setupNavBarButtons() {
+        //self.navigationItem.hidesBackButton = true
         let closeButtonImage = UIImage(named: "ic_close_white")?.withRenderingMode(.alwaysTemplate)
         let closeButton = UIButton()
         closeButton.contentMode = .scaleAspectFill
@@ -36,15 +38,8 @@ class SettingsViewController: UIViewController {
         let searchBarButtonItem = UIBarButtonItem(customView: closeButton)
         navigationItem.setLeftBarButton(searchBarButtonItem, animated: true)
     }
-    
-    func setupNavBarButtons() {
-        print("asfd")
 
-    }
-    
-    var settingsButtonTapped: (()->())?
-
-    let settingsTableViewController: SettingsTableViewController = {
+    lazy var settingsTableViewController: SettingsTableViewController = {
         let vc = SettingsTableViewController()
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         return vc
@@ -63,8 +58,7 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func closeButtonTouchUpInside(sender: UIButton) {
-        print(134)
-        settingsButtonTapped?()
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -74,6 +68,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
+        tableView.dataSource = self
         tableView.register(TableViewToggleCell.self, forCellReuseIdentifier: toggleCellId)
         tableView.register(TableViewDescCell.self, forCellReuseIdentifier: descCellId)
         tableView.allowsSelection = false

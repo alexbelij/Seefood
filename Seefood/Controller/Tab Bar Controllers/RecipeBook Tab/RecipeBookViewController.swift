@@ -52,9 +52,6 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
     lazy var settingsContainer: UIView = {
         let view = UIView()
         let settingsViewController = SettingsViewController()
-        settingsViewController.settingsButtonTapped = {
-            self.settingsDisappearAnimate()
-        }
         let navController = UINavigationController(rootViewController: settingsViewController)
         view.addSubview(navController.view)
         navController.didMove(toParentViewController: self)
@@ -73,28 +70,7 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func settingsButtonTapped() {
-        if let window = UIApplication.shared.keyWindow {
-            settingsContainer.frame.size = window.frame.size
-            settingsContainer.frame.origin = CGPoint(x: 0, y: window.frame.height)
-            window.addSubview(settingsContainer)
-            settingsContainer.backgroundColor = .red
-            //self.navigationController?.view.addSubview(settingsContainer)
-            settingsShowAnimate()
-        }
-    }
-    
-    func settingsShowAnimate() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.settingsContainer.frame.origin = CGPoint(x: 0, y: 0)
-        })
-    }
-    
-    func settingsDisappearAnimate() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            if let window = UIApplication.shared.keyWindow {
-                self.settingsContainer.frame.origin = CGPoint(x: 0, y: window.frame.height)
-            }
-        })
+        self.tabBarController?.present(UINavigationController(rootViewController: SettingsViewController()), animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
