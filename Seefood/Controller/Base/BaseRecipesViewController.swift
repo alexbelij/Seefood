@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseRecipesViewController: UIViewController {
+class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,9 @@ class BaseRecipesViewController: UIViewController {
             nav.tintColor = UIColor.black
         }
         let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         recipesData = calculateRecipes()
         recipesCollectionViewController.collectionView?.reloadData()
@@ -34,23 +36,39 @@ class BaseRecipesViewController: UIViewController {
         DispatchQueue.main.async {
             self.recipesCollectionViewController.collectionView?.reloadData()
         }
-        
     }
     
     // MARK: Should be overriden in child classes
     func calculateRecipes() -> [Recipe] {
         return [Recipe]()
     }
-    
     var recipesData = [Recipe]()
+    fileprivate var filtering = false
+    fileprivate var filteredRecipes = [Recipe]()
     
-    lazy var recipesCollectionViewController: UICollectionViewController = {
+    lazy var recipesCollectionViewController: RecipesCollectionViewController = {
         let layout = UICollectionViewFlowLayout()
         let vc = RecipesCollectionViewController(collectionViewLayout: layout)
         vc.recipesData = self.recipesData
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         return vc
     }()
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text, !text.isEmpty {
+            self.filteredRecipes = self.recipesData.filter({ (recipe) -> Bool in
+                return recipe.name.lowercased().contains(text.lowercased())
+            })
+            self.recipesCollectionViewController.recipesData = filteredRecipes
+            self.filtering = true
+        }
+        else {
+            self.filtering = false
+            self.recipesCollectionViewController.recipesData = recipesData
+            self.filteredRecipes.removeAll()
+        }
+        self.recipesCollectionViewController.collectionView?.reloadData()
+    }
     
     func setupViews() {
         let containerView = view
@@ -64,4 +82,10 @@ class BaseRecipesViewController: UIViewController {
             )
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.navigationItem.searchController?.searchBar.endEditing(true)
+    }
+    
 }
+

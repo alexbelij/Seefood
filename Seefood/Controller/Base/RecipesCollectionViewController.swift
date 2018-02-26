@@ -20,6 +20,7 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
         collectionView?.dataSource = self
         collectionView?.register(RecipeCell.self, forCellWithReuseIdentifier: recipeCellId)
         collectionView?.backgroundColor = .white
+        collectionView?.alwaysBounceVertical = true
     }
     
     var recipesData = [Recipe]()

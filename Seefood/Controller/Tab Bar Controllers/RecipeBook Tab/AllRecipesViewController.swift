@@ -13,8 +13,6 @@ class AllRecipesViewController: BaseRecipesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "All"
-        let searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchController
     }
     
     override func calculateRecipes() -> [Recipe] {
