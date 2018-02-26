@@ -16,10 +16,10 @@ class RecipeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         if let nav = navigationController?.navigationBar {
-            nav.barTintColor = Constants.Colors().primaryColor
+            nav.barTintColor = .white //Constants.Colors().primaryColor
             nav.isTranslucent = true
             nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
-            nav.tintColor = UIColor.black
+            nav.tintColor = Constants.Colors().secondaryColor
             UIApplication.shared.statusBarStyle = .default
         }
         setupViews()

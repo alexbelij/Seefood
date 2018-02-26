@@ -34,7 +34,7 @@ class TabBarController: UITabBarController {
         
         tabBar.isTranslucent = true
         tabBar.barTintColor = Constants.Colors().primaryColor
-        tabBar.tintColor = .black
+        tabBar.tintColor = Constants.Colors().secondaryDarkColor
         
         viewControllers = tabViewControllers
         selectedIndex = 0

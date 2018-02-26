@@ -17,7 +17,8 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         self.tabBarController?.tabBar.isHidden = false
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = true
-            nav.barTintColor = Constants.Colors().primaryColor
+            nav.barTintColor = .white//Constants.Colors().primaryColor
+            nav.tintColor = Constants.Colors().secondaryColor
             nav.isTranslucent = true
             self.title = "Ingredients"
         }
@@ -55,7 +56,6 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         let closeButton = UIButton()
         closeButton.contentMode = .scaleAspectFill
         closeButton.setImage(closeButtonImage, for: .normal)
-        closeButton.tintColor = .black
         closeButton.addTarget(self, action: #selector(closeButtonTouchUpInside(sender:)), for: .touchUpInside)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         let searchBarButtonItem = UIBarButtonItem(customView: closeButton)

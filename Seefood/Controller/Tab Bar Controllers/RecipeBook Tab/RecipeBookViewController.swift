@@ -18,8 +18,8 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tabBarController?.tabBar.isHidden = false
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = true
-            nav.barTintColor = Constants.Colors().primaryColor
-            nav.tintColor = UIColor.black
+            nav.barTintColor = .white //Constants.Colors().primaryColor
+            nav.tintColor = Constants.Colors().secondaryColor
             nav.isTranslucent = true
             self.title = "Recipe Book"
         }

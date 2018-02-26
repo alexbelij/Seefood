@@ -156,6 +156,9 @@ class RecipeCell: BaseCollectionViewCell {
     
     // MARK: THIS IS WHAT I NEEDED
     override func prepareForReuse() {
+        UIView.animate(withDuration: 0, animations: {
+            self.containingView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        })
         bookmarkButton.setImage(UIImage(named: "ic_bookmark_border_white"), for: .normal)
     }
     

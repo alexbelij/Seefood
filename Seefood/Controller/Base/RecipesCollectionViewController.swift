@@ -21,6 +21,8 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     func setupViews() {
+        collectionView?.backgroundView = noResults
+        
         NSLayoutConstraint.activate([
             noResults.topAnchor.constraint(equalTo: view.topAnchor),
             noResults.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -42,13 +44,14 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     }()
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        collectionView.backgroundView = recipesData.count > 0 ? nil : noResults
+        collectionView.backgroundView?.isHidden = recipesData.count > 0
         return recipesData.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipeCellId, for: indexPath) as! RecipeCell
         
+        // TODO: check
         cell.recipe = recipesData[indexPath.row]
         cell.handleRecipeTap = {
             let recipeViewController = RecipeViewController()

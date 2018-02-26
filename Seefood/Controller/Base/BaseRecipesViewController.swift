@@ -15,10 +15,10 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         view.backgroundColor = .red
         UIApplication.shared.statusBarStyle = .default
         if let nav = navigationController?.navigationBar {
-            nav.barTintColor = Constants.Colors().primaryColor
+            nav.barTintColor = .white //Constants.Colors().primaryColor
             nav.isTranslucent = true
-            nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
-            nav.tintColor = UIColor.black
+            //nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Constants.Colors().secondaryColor]
+            nav.tintColor = Constants.Colors().secondaryColor
         }
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self

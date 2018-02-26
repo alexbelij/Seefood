@@ -14,8 +14,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //rxself.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        //kCAGravityResizeAspectFill
         cameraDelegate = self
         captureButton.delegate = self
         
