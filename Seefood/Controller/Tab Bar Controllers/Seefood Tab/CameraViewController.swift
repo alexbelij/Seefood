@@ -8,12 +8,14 @@
 
 import UIKit
 import SwiftyCam
+import AVKit
 
 class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //rxself.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        //kCAGravityResizeAspectFill
         cameraDelegate = self
         captureButton.delegate = self
         
@@ -26,6 +28,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        //viewDidLayoutSubviews()
         UIApplication.shared.statusBarStyle = .lightContent
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -76,7 +79,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
             self.checkButton.expand(scale: FoodData.currentPictures.count < 1 ? 0.001 : 1)
         }
         handler.picturesDismissed = {
-            
             self.navigationController?.pushViewController(LoadingViewController(), animated: true)
         }
         return handler
@@ -98,7 +100,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         captureButtonDismissedBottomConstraint = captureButton.topAnchor.constraint(equalTo: view.bottomAnchor)
         
         NSLayoutConstraint.activate([
-            
             captureButtonInitialBottomConstraint!,
             captureButton.centerXAnchor.constraint(equalTo: viewSafeMargins.centerXAnchor),
             captureButton.widthAnchor.constraint(equalToConstant: 70),
@@ -108,7 +109,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
             checkButton.bottomAnchor.constraint(equalTo: viewSafeMargins.bottomAnchor, constant: -30),
             checkButton.widthAnchor.constraint(equalToConstant: 50),
             checkButton.heightAnchor.constraint(equalToConstant: 50)
-            
             ])
         
         checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)

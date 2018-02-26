@@ -17,15 +17,34 @@ class SettingsViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
         if let nav = navigationController?.navigationBar {
-            nav.prefersLargeTitles = true
+            nav.prefersLargeTitles = false
             nav.barTintColor = Constants.Colors().primaryColor
             nav.isTranslucent = false
             self.title = "Settings"
         }
+        //setupNavBarButtons()
         setupViews()
+        
+        self.navigationItem.hidesBackButton = true
+        let closeButtonImage = UIImage(named: "ic_close_white")?.withRenderingMode(.alwaysTemplate)
+        let closeButton = UIButton()
+        closeButton.contentMode = .scaleAspectFill
+        closeButton.setImage(closeButtonImage, for: .normal)
+        closeButton.tintColor = .black
+        closeButton.addTarget(self, action: #selector(closeButtonTouchUpInside(sender:)), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        let searchBarButtonItem = UIBarButtonItem(customView: closeButton)
+        navigationItem.setLeftBarButton(searchBarButtonItem, animated: true)
     }
+    
+    func setupNavBarButtons() {
+        print("asfd")
 
-    lazy var settingsTableViewController: SettingsTableViewController = {
+    }
+    
+    var settingsButtonTapped: (()->())?
+
+    let settingsTableViewController: SettingsTableViewController = {
         let vc = SettingsTableViewController()
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         return vc
@@ -41,6 +60,11 @@ class SettingsViewController: UIViewController {
             NSLayoutConstraint.constraints(withVisualFormat: "|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": settingsTableViewController.view]) +
                 NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": settingsTableViewController.view])
         )
+    }
+    
+    @objc func closeButtonTouchUpInside(sender: UIButton) {
+        print(134)
+        settingsButtonTapped?()
     }
     
 }

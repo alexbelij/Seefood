@@ -10,15 +10,10 @@ import UIKit
 
 class IngredientsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.hidesBackButton = true
         self.tabBarController?.tabBar.isHidden = false
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = true
@@ -37,7 +32,6 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         
         let safeViewMargins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            
             viewRecipesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             viewRecipesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             viewRecipesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -47,7 +41,6 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
             ingredientsCollectionView.leadingAnchor.constraint(equalTo: safeViewMargins.leadingAnchor),
             ingredientsCollectionView.trailingAnchor.constraint(equalTo: safeViewMargins.trailingAnchor),
             ingredientsCollectionView.bottomAnchor.constraint(equalTo: viewRecipesButton.topAnchor),
-            
             ])
         
         viewRecipesButton.addTarget(self, action: #selector(viewRecipesButtonTapped), for: .touchUpInside)
@@ -57,6 +50,7 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func setupNavBarButtons() {
+        self.navigationItem.hidesBackButton = true
         let closeButtonImage = UIImage(named: "ic_close_white")?.withRenderingMode(.alwaysTemplate)
         let closeButton = UIButton()
         closeButton.contentMode = .scaleAspectFill
@@ -157,10 +151,6 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         let width = ingredientsCollectionView.frame.width / 2
         return CGSize(width: width, height: width * 1.78)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
 }
