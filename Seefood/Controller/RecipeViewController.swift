@@ -17,7 +17,7 @@ class RecipeViewController: UIViewController {
         view.backgroundColor = .white
         if let nav = navigationController?.navigationBar {
             nav.barTintColor = Constants.Colors().primaryColor
-            nav.isTranslucent = false
+            nav.isTranslucent = true
             nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
             nav.tintColor = UIColor.black
             UIApplication.shared.statusBarStyle = .default

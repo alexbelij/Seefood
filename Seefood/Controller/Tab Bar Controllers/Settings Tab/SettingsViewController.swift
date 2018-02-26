@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController {
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = false
             nav.barTintColor = Constants.Colors().primaryColor
-            nav.isTranslucent = false
+            nav.isTranslucent = true
             self.title = "Settings"
         }
         setupNavBarButtons()

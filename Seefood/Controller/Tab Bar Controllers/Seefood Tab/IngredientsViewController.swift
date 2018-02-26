@@ -18,7 +18,7 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = true
             nav.barTintColor = Constants.Colors().primaryColor
-            nav.isTranslucent = false
+            nav.isTranslucent = true
             self.title = "Ingredients"
         }
         setupNavBarButtons()
@@ -34,8 +34,8 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         NSLayoutConstraint.activate([
             viewRecipesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             viewRecipesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            viewRecipesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            viewRecipesButton.heightAnchor.constraint(equalToConstant: 65),
+            viewRecipesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49),
+            viewRecipesButton.heightAnchor.constraint(equalToConstant: 49),
             
             ingredientsCollectionView.topAnchor.constraint(equalTo: safeViewMargins.topAnchor),
             ingredientsCollectionView.leadingAnchor.constraint(equalTo: safeViewMargins.leadingAnchor),

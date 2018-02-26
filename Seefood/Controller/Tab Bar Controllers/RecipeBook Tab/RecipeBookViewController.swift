@@ -20,7 +20,7 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
             nav.prefersLargeTitles = true
             nav.barTintColor = Constants.Colors().primaryColor
             nav.tintColor = UIColor.black
-            nav.isTranslucent = false
+            nav.isTranslucent = true
             self.title = "Recipe Book"
         }
         recipeCategoriesTableView.dataSource = self

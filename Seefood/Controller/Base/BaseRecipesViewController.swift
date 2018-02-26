@@ -12,14 +12,16 @@ class BaseRecipesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .red
+        UIApplication.shared.statusBarStyle = .default
         if let nav = navigationController?.navigationBar {
             nav.barTintColor = Constants.Colors().primaryColor
-            nav.isTranslucent = false
+            nav.isTranslucent = true
             nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
             nav.tintColor = UIColor.black
-            UIApplication.shared.statusBarStyle = .default
         }
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
         
         recipesData = calculateRecipes()
         recipesCollectionViewController.collectionView?.reloadData()
