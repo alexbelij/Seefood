@@ -42,7 +42,7 @@ class PreviewPictureCell: BaseCollectionViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderColor = UIColor.white.cgColor
-        view.layer.borderWidth = 4
+        view.layer.borderWidth = 2
         view.clipsToBounds = true
         view.layer.cornerRadius = 10
         return view

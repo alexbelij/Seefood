@@ -27,7 +27,7 @@ class TabBarController: UITabBarController {
         for item in vcData {
             item.vc.tabBarItem.image = item.image.withRenderingMode(.alwaysTemplate)
             item.vc.tabBarItem.title = item.title
-            item.vc.tabBarItem.imageInsets = UIEdgeInsets(top: 0, left: -3, bottom: -3, right: -3)
+            item.vc.tabBarItem.imageInsets = UIEdgeInsets(top: 2, left: -3, bottom: -2, right: -3)
             tabViewControllers.append(item.vc)
         }
         

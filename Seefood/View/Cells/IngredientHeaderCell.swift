@@ -32,9 +32,9 @@ class IngredientHeaderCell: BaseTableViewCell {
         button.backgroundColor = .white //Constants.Colors().secondaryColor
         button.setTitleColor(Constants.Colors().secondaryColor, for: .normal)
         button.setTitle("Export", for: .normal)
-        button.titleLabel?.font = UIFont(name: "AvenirNext-Demibold", size: 17)
+        button.titleLabel?.font = UIFont(name: "AvenirNext", size: 13)
         button.layer.cornerRadius = 5
-        button.layer.borderWidth = 2
+        button.layer.borderWidth = 1.2
         button.layer.borderColor = Constants.Colors().secondaryColor.cgColor
         return button
     }()
@@ -52,10 +52,10 @@ class IngredientHeaderCell: BaseTableViewCell {
             ingredientLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             ingredientLabel.widthAnchor.constraint(equalToConstant: 200),
             
-            exportButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            exportButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             exportButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            exportButton.widthAnchor.constraint(equalToConstant: 100),
-            exportButton.heightAnchor.constraint(equalToConstant: 40)
+            exportButton.widthAnchor.constraint(equalToConstant: 73),
+            exportButton.heightAnchor.constraint(equalToConstant: 37)
             
             ])
         

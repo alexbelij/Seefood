@@ -17,20 +17,21 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         captureButton.delegate = self
         audioEnabled = false
         setupViews()
+        presentElements(duration: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if FoodData.fromPopped {
-            FoodData.currentPictures.removeAll()
-            self.picturesHandler.picturesView.reloadData()
-            FoodData.fromPopped = false
-        }
         super.viewDidAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        presentElements()
+        if FoodData.fromPopped {
+            FoodData.currentPictures.removeAll()
+            self.picturesHandler.picturesView.reloadData()
+            FoodData.fromPopped = false
+        }
+        presentElements(duration: 0.3)
         picturesHandler.presentPictures()
     }
     
@@ -52,7 +53,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         button.layer.cornerRadius = 35
         button.clipsToBounds = false
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         return button
     }()
     
@@ -91,7 +91,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     var captureButtonDismissedBottomConstraint: NSLayoutConstraint?
     
     func setupViews() {
-        
         view.addSubview(captureButton)
         view.addSubview(checkButton)
         
@@ -113,7 +112,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
             ])
         
         checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
-
     }
     
     @objc func checkButtonTapped() {
@@ -138,12 +136,12 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         })
     }
     
-    func presentElements() {
+    func presentElements(duration: Double) {
         clearCaptureButton(clear: false)
         clearCheckButton(clear: !(FoodData.currentPictures.count > 0))
         self.captureButton.isHidden = false
         self.checkButton.isHidden = false
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.captureButton.alpha = 1
             self.view.layoutIfNeeded()
         }, completion: nil)

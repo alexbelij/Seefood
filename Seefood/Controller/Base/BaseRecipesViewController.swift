@@ -19,14 +19,16 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
             nav.isTranslucent = true
             nav.tintColor = Constants.Colors().secondaryColor
         }
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        
         recipesData = calculateRecipes()
+        if recipesCollectionViewController.getNumberOfData() > 0 {
+            let searchController = UISearchController(searchResultsController: nil)
+            searchController.searchResultsUpdater = self
+            navigationItem.searchController = searchController
+            navigationItem.hidesSearchBarWhenScrolling = false
+        }
         recipesCollectionViewController.collectionView?.reloadData()
         setupViews()
+        setupNavBarButtons()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,6 +36,33 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         DispatchQueue.main.async {
             self.recipesCollectionViewController.collectionView?.reloadData()
         }
+    }
+    
+    func setupNavBarButtons() {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 13))
+        button.clipsToBounds = false
+        button.backgroundColor = .clear
+        button.setTitleColor(Constants.Colors().secondaryColor, for: .normal)
+        button.setTitle("Filter", for: .normal)
+        button.titleLabel?.font = UIFont(name: "AvenirNext", size: 8)
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1.2
+        button.layer.borderColor = Constants.Colors().secondaryColor.cgColor
+        button.addTarget(self, action: #selector(filterButtonTouchUpInside), for: .touchUpInside)
+        let barButtonItem = UIBarButtonItem(customView: button)
+        navigationItem.setRightBarButton(barButtonItem, animated: true)
+    }
+    
+    func setupViews() {
+        let containerView = view
+        addChildViewController(recipesCollectionViewController)
+        containerView?.addSubview(recipesCollectionViewController.view)
+        recipesCollectionViewController.didMove(toParentViewController: self)
+        
+        NSLayoutConstraint.activate(
+            NSLayoutConstraint.constraints(withVisualFormat: "|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": recipesCollectionViewController.view]) +
+                NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": recipesCollectionViewController.view])
+        )
     }
     
     // MARK: Should be overriden in child classes
@@ -68,16 +97,8 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         self.recipesCollectionViewController.collectionView?.reloadData()
     }
     
-    func setupViews() {
-        let containerView = view
-        addChildViewController(recipesCollectionViewController)
-        containerView?.addSubview(recipesCollectionViewController.view)
-        recipesCollectionViewController.didMove(toParentViewController: self)
+    @objc func filterButtonTouchUpInside() {
         
-        NSLayoutConstraint.activate(
-            NSLayoutConstraint.constraints(withVisualFormat: "|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": recipesCollectionViewController.view]) +
-            NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": recipesCollectionViewController.view])
-            )
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

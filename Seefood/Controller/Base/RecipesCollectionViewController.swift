@@ -17,7 +17,7 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
         collectionView?.register(RecipeCell.self, forCellWithReuseIdentifier: recipeCellId)
         collectionView?.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerId)
         collectionView?.backgroundColor = .white
-        collectionView?.alwaysBounceVertical = true
+        collectionView?.alwaysBounceVertical = false
         setupViews()
     }
     
@@ -44,6 +44,11 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
         label.text = "No Results"
         return label
     }()
+    
+    func getNumberOfData() -> Int {
+        print(recipesData.count)
+        return recipesData.count
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         collectionView.backgroundView?.isHidden = recipesData.count > 0
