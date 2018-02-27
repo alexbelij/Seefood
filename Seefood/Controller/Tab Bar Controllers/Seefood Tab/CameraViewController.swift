@@ -16,27 +16,26 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         super.viewDidLoad()
         cameraDelegate = self
         captureButton.delegate = self
-        
-        shouldUseDeviceOrientation = false
-        allowAutoRotate = false
         audioEnabled = false
-        
         setupViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //viewDidLayoutSubviews()
-        UIApplication.shared.statusBarStyle = .lightContent
         self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        picturesHandler.showPictures()
+        presentElements()
+        picturesHandler.presentPictures()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         picturesHandler.disappearPictures()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     var onTakePicture: (()->())?
@@ -115,7 +114,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     
     @objc func checkButtonTapped() {
         picturesHandler.dismissPictures()
-        clearViewForLoading(clear: true, duration: 0.25)
+        clearViewForLoading()
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
@@ -123,15 +122,27 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         checkButton.expand(scale: 1)
     }
     
-    func clearViewForLoading(clear: Bool, duration: Double) {
-        clearCaptureButton(clear: clear)
-        clearCheckButton(clear: clear)
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+    func clearViewForLoading() {
+        clearCaptureButton(clear: true)
+        clearCheckButton(clear: true)
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.captureButton.alpha = 0
             self.view.layoutIfNeeded()
         }, completion: { completed in
             self.captureButton.isHidden = true
             self.checkButton.isHidden = true
         })
+    }
+    
+    func presentElements() {
+        clearCaptureButton(clear: false)
+        clearCheckButton(clear: false)
+        self.captureButton.isHidden = false
+        self.checkButton.isHidden = false
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.captureButton.alpha = 1
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     func clearCaptureButton(clear: Bool) {

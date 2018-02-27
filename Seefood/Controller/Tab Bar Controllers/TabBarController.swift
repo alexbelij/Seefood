@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: camera and loading views are constrained above tab; need to be whole window
-
 class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
@@ -23,7 +21,7 @@ class TabBarController: UITabBarController {
         
         let vcData: [(vc: UIViewController, image: UIImage, title: String)] = [
             (cameraNavigationController, UIImage(named: "ic_camera_alt")!, "Seefood"),
-            (recipeBookNavigationController, UIImage(named: "ic_bookmark")!, "Recipe Book")]
+            (recipeBookNavigationController, UIImage(named: "ic_book")!, "Recipe Book")]
         
         var tabViewControllers: [UIViewController] = []
         for item in vcData {
@@ -43,7 +41,7 @@ class TabBarController: UITabBarController {
         tabBar.backgroundImage = UIImage(color: .clear)*/
         
         tabBar.barStyle = UIBarStyle.black
-        tabBar.unselectedItemTintColor = .white
+        tabBar.unselectedItemTintColor = .lightGray
         tabBar.tintColor = Constants.Colors().primaryColor
         
         tabBar.layer.borderWidth = 0

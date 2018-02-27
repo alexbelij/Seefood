@@ -65,7 +65,6 @@ class RecipeTableViewController: UITableViewController {
     }
     
     func setupViews() {
-        
         if let window = UIApplication.shared.keyWindow {
             headerHeight = window.frame.height / 1.65
         }

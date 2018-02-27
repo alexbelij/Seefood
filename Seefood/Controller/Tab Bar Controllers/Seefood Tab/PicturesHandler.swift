@@ -38,7 +38,7 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
     func setupViews() {
         if let window = UIApplication.shared.keyWindow {
             window.addSubview(picturesView)
-            picturesView.frame = CGRect(x: 0, y: window.frame.height - 240, width: window.frame.width, height: collectionHeight)
+            picturesView.frame = CGRect(x: 0, y: window.frame.height - 280, width: window.frame.width, height: collectionHeight)
         }
     }
     
@@ -120,13 +120,23 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
     
     func dismissPictures() {
         if let window = UIApplication.shared.keyWindow {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.picturesView.frame.origin.x = window.frame.maxX
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.picturesView.frame.origin.x = 0 - window.frame.maxX
+                self.picturesView.alpha = 0
             }, completion: {completed in
                 self.picturesView.isHidden = true
                 self.picturesDismissed?()
             })
         }
+    }
+    
+    func presentPictures() {
+        self.picturesView.isHidden = false
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.picturesView.frame.origin.x = 0
+            self.picturesView.alpha = 1
+        }, completion: nil)
+        
     }
     
 }

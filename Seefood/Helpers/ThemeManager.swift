@@ -48,27 +48,22 @@ enum Theme: Int {
     var barStyle: UIBarStyle {
         switch self {
         case .theme1:
-            return .default
-        case .theme2:
             return .black
+        case .theme2:
+            return .default
         }
     }
     
     var navigationBackgroundImage: UIImage? {
-        return self == .theme1 ? UIImage(named: "navBackground") : nil
+        return nil
     }
     
     var tabBarBackgroundImage: UIImage? {
-        return self == .theme1 ? UIImage(named: "tabBarBackground") : nil
+        return nil
     }
     
     var backgroundColor: UIColor {
-        switch self {
-        case .theme1:
-            return UIColor().colorFromHexString("ffffff")
-        case .theme2:
-            return UIColor().colorFromHexString("000000")
-        }
+        return .white
     }
     
     var secondaryColor: UIColor {

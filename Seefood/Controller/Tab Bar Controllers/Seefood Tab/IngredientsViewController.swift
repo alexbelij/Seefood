@@ -30,18 +30,24 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
     func setupViews() {
         view.addSubview(ingredientsCollectionView)
         view.addSubview(viewRecipesButton)
+        viewRecipesButton.addSubview(viewRecipesArrow)
         
         let safeViewMargins = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             viewRecipesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             viewRecipesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             viewRecipesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49),
-            viewRecipesButton.heightAnchor.constraint(equalToConstant: 49),
+            viewRecipesButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            viewRecipesArrow.topAnchor.constraint(equalTo: viewRecipesButton.topAnchor, constant: 5),
+            viewRecipesArrow.bottomAnchor.constraint(equalTo: viewRecipesButton.bottomAnchor, constant: -5),
+            viewRecipesArrow.trailingAnchor.constraint(equalTo: viewRecipesButton.trailingAnchor),
+            viewRecipesArrow.widthAnchor.constraint(equalToConstant: 40),
             
             ingredientsCollectionView.topAnchor.constraint(equalTo: safeViewMargins.topAnchor),
             ingredientsCollectionView.leadingAnchor.constraint(equalTo: safeViewMargins.leadingAnchor),
             ingredientsCollectionView.trailingAnchor.constraint(equalTo: safeViewMargins.trailingAnchor),
-            ingredientsCollectionView.bottomAnchor.constraint(equalTo: viewRecipesButton.topAnchor),
+            ingredientsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             ])
         
         viewRecipesButton.addTarget(self, action: #selector(viewRecipesButtonTapped), for: .touchUpInside)
@@ -80,12 +86,19 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
     let cellId = "cellId"
     let footerId = "footerId"
     
+    let viewRecipesArrow: UIImageView = {
+        let image = UIImage(named: "ic_keyboard_arrow_right_white-1")
+        let view = UIImageView(image: image)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let viewRecipesButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = Constants.Colors().secondaryColor
         button.setTitleColor(.white, for: .normal)
         button.setTitle("VIEW RECIPES", for: .normal)
-        button.titleLabel?.font = UIFont(name: "AvenirNext-Demibold", size: 25)
+        button.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 25)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -165,7 +178,7 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         let width = ingredientsCollectionView.frame.width / 2
-        return CGSize(width: width, height: 20)
+        return CGSize(width: width, height: 70)
     }
     
 }
