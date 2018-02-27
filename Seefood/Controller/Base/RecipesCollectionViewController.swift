@@ -80,13 +80,6 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
                             }, completion: nil)
                         }
                     }
-
-//                    if self.isBookmarkController {
-//                        self.recipesData.remove(at: indexPath.row)
-//                        self.collectionView?.performBatchUpdates({
-//                            self.collectionView?.deleteItems(at: [indexPath])
-//                        }, completion: nil)
-//                    }
                     context.delete(savedRecipe)
                     cell.bookmarkButton.setImage(UIImage(named: "ic_bookmark_border_white"), for: .normal)
                     break

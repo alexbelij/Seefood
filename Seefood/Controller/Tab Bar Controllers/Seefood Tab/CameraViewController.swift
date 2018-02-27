@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftyCam
-import AVKit
 
 class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
@@ -21,6 +20,11 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if FoodData.fromPopped {
+            FoodData.currentPictures.removeAll()
+            self.picturesHandler.picturesView.reloadData()
+            FoodData.fromPopped = false
+        }
         super.viewDidAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -48,6 +52,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         button.layer.cornerRadius = 35
         button.clipsToBounds = false
         button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
     }()
     
@@ -61,6 +66,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         button.layer.cornerRadius = 25
         button.clipsToBounds = false
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.expand(scale: 0.001)
 
         button.layer.shadowRadius = 10
         button.layer.shadowColor = UIColor.darkGray.cgColor
@@ -88,8 +94,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         
         view.addSubview(captureButton)
         view.addSubview(checkButton)
-        
-        checkButton.expand(scale: 0.001)
         
         let viewSafeMargins = view.safeAreaLayoutGuide
         
@@ -136,7 +140,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     
     func presentElements() {
         clearCaptureButton(clear: false)
-        clearCheckButton(clear: false)
+        clearCheckButton(clear: !(FoodData.currentPictures.count > 0))
         self.captureButton.isHidden = false
         self.checkButton.isHidden = false
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -151,7 +155,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     }
     
     func clearCheckButton(clear: Bool) {
-        checkButton.expand(scale: 0.001)
+        checkButton.expand(scale: clear ? 0.001 : 1)
     }
     
 }

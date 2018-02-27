@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class FoodData {
+    static var fromPopped = false
     static var currentPictures: [(image: UIImage, name: String)] = []
     static var calculatedRecipes = [Recipe]()
 }

@@ -13,9 +13,7 @@ class LoadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadingCircle.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         UIApplication.shared.statusBarStyle = .default
-        //self.tabBarController?.tabBar.isHidden = false
         
         foodIdentifier = FoodIdentification()
         foodIdentifier.foodsIdentified = {

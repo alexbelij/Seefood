@@ -27,7 +27,7 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
     var cellDeleted: (()->())?
     var picturesDismissed: (()->())?
     
-    private let picturesView: UICollectionView = {
+    lazy var picturesView: UICollectionView = {
         let layout = CustomFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -112,11 +112,6 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
         let cellHeight = collectionHeight
         return CGSize(width: 10, height: cellHeight)
     }
-    
-//    func scrollToEnd() {
-//        let lastItemIndex = NSIndexPath(item: FoodData.currentPictures.count - 1, section: 0)
-//        picturesView.scrollToItem(at: lastItemIndex as IndexPath, at: .right, animated: true)
-//    }
     
     func dismissPictures() {
         if let window = UIApplication.shared.keyWindow {

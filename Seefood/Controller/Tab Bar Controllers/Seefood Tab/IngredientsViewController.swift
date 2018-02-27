@@ -22,6 +22,7 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
             nav.isTranslucent = true
             self.title = "Ingredients"
         }
+        FoodData.fromPopped = true
         setupNavBarButtons()
         setupViews()
         ingredientsCollectionView.reloadData()
@@ -111,7 +112,13 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         transition.subtype = kCATransitionFromLeft
         transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
         self.view.window!.layer.add(transition, forKey: kCATransition)
-        self.present(TabBarController(), animated: false, completion: nil)
+        
+        let stackedControllers = self.navigationController?.viewControllers
+        for controller in stackedControllers! {
+            if controller.isKind(of: CameraViewController.self) {
+                self.navigationController?.popToViewController(controller, animated: true)
+            }
+        }
     }
     
     @objc func viewRecipesButtonTapped() {
