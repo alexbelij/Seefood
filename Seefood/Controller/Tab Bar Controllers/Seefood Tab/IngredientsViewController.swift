@@ -17,7 +17,7 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         self.tabBarController?.tabBar.isHidden = false
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = true
-            nav.barTintColor = .white//Constants.Colors().primaryColor
+            nav.barTintColor = .white
             nav.tintColor = Constants.Colors().secondaryColor
             nav.isTranslucent = true
             self.title = "Ingredients"

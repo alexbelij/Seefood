@@ -8,16 +8,15 @@
 
 import UIKit
 
-class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
         UIApplication.shared.statusBarStyle = .default
         if let nav = navigationController?.navigationBar {
-            nav.barTintColor = .white //Constants.Colors().primaryColor
+            nav.barTintColor = .white
             nav.isTranslucent = true
-            //nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: Constants.Colors().secondaryColor]
             nav.tintColor = Constants.Colors().secondaryColor
         }
         let searchController = UISearchController(searchResultsController: nil)
@@ -82,7 +81,6 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         self.navigationItem.searchController?.searchBar.endEditing(true)
     }
     

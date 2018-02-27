@@ -34,6 +34,7 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     var recipesData = [Recipe]()
     let recipeCellId = "recipeCellId"
     let footerId = "footerId"
+    var isBookmarkController = false
     
     let noResults: UILabel = {
         let label = UILabel()
@@ -71,6 +72,21 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
                 let aRecipe = savedRecipe.recipe as! Recipe
                 found = (cell.recipe?.isEqual(aRecipe))!
                 if found {
+                    if self.isBookmarkController {
+                        if let currentIndexPath = self.collectionView?.indexPath(for: cell) {
+                            self.recipesData.remove(at: currentIndexPath.row)
+                            self.collectionView?.performBatchUpdates({
+                                self.collectionView?.deleteItems(at: [currentIndexPath])
+                            }, completion: nil)
+                        }
+                    }
+
+//                    if self.isBookmarkController {
+//                        self.recipesData.remove(at: indexPath.row)
+//                        self.collectionView?.performBatchUpdates({
+//                            self.collectionView?.deleteItems(at: [indexPath])
+//                        }, completion: nil)
+//                    }
                     context.delete(savedRecipe)
                     cell.bookmarkButton.setImage(UIImage(named: "ic_bookmark_border_white"), for: .normal)
                     break

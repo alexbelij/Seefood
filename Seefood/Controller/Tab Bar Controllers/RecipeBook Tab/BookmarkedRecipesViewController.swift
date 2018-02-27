@@ -18,6 +18,15 @@ class BookmarkedRecipesViewController: BaseRecipesViewController {
         navigationItem.searchController = searchController
     }
     
+    override lazy var recipesCollectionViewController: RecipesCollectionViewController = {
+        let layout = CustomFlowLayout()
+        let vc = RecipesCollectionViewController(collectionViewLayout: layout)
+        vc.recipesData = self.recipesData
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        vc.isBookmarkController = true
+        return vc
+    }()
+    
     override func calculateRecipes() -> [Recipe] {
         var recipes = [Recipe]()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
