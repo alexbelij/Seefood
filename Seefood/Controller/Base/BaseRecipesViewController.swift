@@ -25,10 +25,10 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
             searchController.searchResultsUpdater = self
             navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
+            setupNavBarButtons()
         }
         recipesCollectionViewController.collectionView?.reloadData()
         setupViews()
-        setupNavBarButtons()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,14 +39,12 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     }
     
     func setupNavBarButtons() {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 13))
+        let button = UIButton()
         button.clipsToBounds = false
         button.backgroundColor = .clear
         button.setTitleColor(Constants.Colors().secondaryColor, for: .normal)
         button.setTitle("Filter", for: .normal)
         button.titleLabel?.font = UIFont(name: "AvenirNext", size: 8)
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 1.2
         button.layer.borderColor = Constants.Colors().secondaryColor.cgColor
         button.addTarget(self, action: #selector(filterButtonTouchUpInside), for: .touchUpInside)
         let barButtonItem = UIBarButtonItem(customView: button)

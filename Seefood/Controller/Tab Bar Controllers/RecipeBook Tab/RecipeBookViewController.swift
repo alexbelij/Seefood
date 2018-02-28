@@ -91,6 +91,7 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.textLabel?.text = recipeCategories[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
     

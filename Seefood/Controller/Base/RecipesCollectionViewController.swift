@@ -46,7 +46,6 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     }()
     
     func getNumberOfData() -> Int {
-        print(recipesData.count)
         return recipesData.count
     }
     
@@ -58,7 +57,6 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipeCellId, for: indexPath) as! RecipeCell
         
-        // TODO: check
         cell.recipe = recipesData[indexPath.row]
         cell.handleRecipeTap = {
             let recipeViewController = RecipeViewController()

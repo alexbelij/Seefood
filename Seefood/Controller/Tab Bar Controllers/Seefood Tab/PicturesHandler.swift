@@ -32,13 +32,16 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        //collectionView.bounces = false
+        collectionView.bouncesZoom = false
         return collectionView
     }()
     
     func setupViews() {
         if let window = UIApplication.shared.keyWindow {
             window.addSubview(picturesView)
-            picturesView.frame = CGRect(x: 0, y: window.frame.height - 280, width: window.frame.width, height: collectionHeight)
+            picturesView.frame = CGRect(x: 0, y: window.frame.height - 270, width: window.frame.width, height: collectionHeight)
         }
     }
     

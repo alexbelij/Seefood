@@ -9,14 +9,69 @@
 import UIKit
 import CoreData
 
+class BookmarkAlert: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = .red
+        self.addSubview(textLabel)
+        NSLayoutConstraint.activate([
+            textLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            textLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            textLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            textLabel.heightAnchor.constraint(equalToConstant: 44)
+            ])
+    }
+    
+    private let textLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = UIFont(name: "AvenirNext-Bold", size: 15)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    func show(hasBookmarked: Bool) {
+        if hasBookmarked {
+            textLabel.text = "Saved to Bookmarked Recipes"
+            self.backgroundColor = Constants.Colors().secondaryColor
+        } else {
+            textLabel.text = "Removed from Bookmarked Recipes"
+            self.backgroundColor = .red
+        }
+        UIView.animate(withDuration: 0.1, animations: {
+            self.frame.origin = CGPoint(x: 0, y: 0)
+        }, completion: { completed in
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(900), execute: {
+                self.hide()
+            })
+        })
+    }
+    
+    func hide() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.frame.origin = CGPoint(x: 0, y: -self.frame.height)
+        })
+    }
+    
+    func updateFrame(frame: CGRect) {
+        self.frame = frame
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
 class RecipeViewController: UIViewController {
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         view.backgroundColor = .white
         if let nav = navigationController?.navigationBar {
-            nav.barTintColor = .white //Constants.Colors().primaryColor
+            nav.barTintColor = .white
             nav.isTranslucent = true
             nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
             nav.tintColor = Constants.Colors().secondaryColor
@@ -36,6 +91,16 @@ class RecipeViewController: UIViewController {
         return vc
     }()
     
+    var bookmarkAlert: BookmarkAlert? {
+        didSet {
+            guard let window = UIApplication.shared.keyWindow else {
+                assert(false, "Window missing")
+            }
+            window.addSubview(bookmarkAlert!)
+            print(window.subviews)
+        }
+    }
+    
     func setupViews() {
         let containerView: UIView? = view
         addChildViewController(recipeTableViewController)
@@ -44,16 +109,28 @@ class RecipeViewController: UIViewController {
         
         NSLayoutConstraint.activate(
             NSLayoutConstraint.constraints(withVisualFormat: "|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": recipeTableViewController.view]) +
-            NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": recipeTableViewController.view])
+                NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[v0]-0-|", options: [], metrics: nil, views: ["v0": recipeTableViewController.view])
         )
+        
+        bookmarkAlert = BookmarkAlert()
+        updateBookmarkAlertFrame()
     }
     
     func setupNavBarButtons() {
         updateBookmarkButton()
     }
     
+    //TODO: figure out how to get height of small type navbar in program (the 44 value), and not when its large too
+    func updateBookmarkAlertFrame() {
+        guard let window = UIApplication.shared.keyWindow /*let navBar = navigationController?.navigationBar*/ else {
+            assert(false, "Window missing")
+        }
+        let alertHeight = 44 + UIApplication.shared.statusBarFrame.height
+        let alertFrame = CGRect(x: 0, y: -alertHeight, width: window.frame.width, height: alertHeight)
+        bookmarkAlert?.updateFrame(frame: alertFrame)
+    }
+    
     func updateBookmarkButton() {
-        
         let bookmarkButton = UIButton()
         bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTouchUpInside), for: .touchUpInside)
         let bookmarkBarButton = UIBarButtonItem(customView: bookmarkButton)
@@ -68,13 +145,13 @@ class RecipeViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
-        var bookmarked = false
+        var isBookmarked = false
         do {
             let savedRecipes = try context.fetch(fetchRequest)
             for savedRecipe in savedRecipes {
                 if recipe.isEqual(savedRecipe.recipe as? Recipe) {
                     print("\((savedRecipe.recipe as! Recipe).name) : \(recipe.name)")
-                    bookmarked = true
+                    isBookmarked = true
                     break
                 }
             }
@@ -82,11 +159,10 @@ class RecipeViewController: UIViewController {
             print("rip saved recipe")
         }
         
-        let bookmarkImage = UIImage(named: bookmarked ? "ic_bookmark_white" : "ic_bookmark_border_white")?.withRenderingMode(.alwaysTemplate)
+        let bookmarkImage = UIImage(named: isBookmarked ? "ic_bookmark_white" : "ic_bookmark_border_white")?.withRenderingMode(.alwaysTemplate)
         bookmarkButton.setImage(bookmarkImage, for: .normal)
         
         navigationItem.setRightBarButtonItems([bookmarkBarButton, shareBarButton], animated: true)
-        
     }
     
     @objc func bookmarkButtonTouchUpInside() {
@@ -107,7 +183,6 @@ class RecipeViewController: UIViewController {
                     break
                 }
             }
-            
             if !found {
                 let entity = NSEntityDescription.entity(forEntityName: "SavedRecipes", in: context)
                 let newSavedRecipe = NSManagedObject(entity: entity!, insertInto: context)
@@ -119,6 +194,8 @@ class RecipeViewController: UIViewController {
                     print("Save failed")
                 }
             }
+            updateBookmarkAlertFrame()
+            bookmarkAlert?.show(hasBookmarked: !found)
         } catch { }
     }
     
@@ -126,7 +203,7 @@ class RecipeViewController: UIViewController {
         let recipe = self.recipeTableViewController.recipe!
         
         var textToExport = "\(recipe.name)\n\n"
-        textToExport.append("\(recipe.description)\n\nIngredients\n\n")
+        textToExport.append("\(recipe.recipeDescription)\n\nIngredients\n\n")
         for item in recipe.ingredients {
             textToExport.append("\(item.amount) \(item.name)\n")
         }

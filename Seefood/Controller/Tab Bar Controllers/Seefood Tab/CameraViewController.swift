@@ -69,9 +69,9 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         button.expand(scale: 0.001)
 
         button.layer.shadowRadius = 10
-        button.layer.shadowColor = UIColor.darkGray.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        button.layer.shadowOpacity = 0.5
+        button.layer.shadowOpacity = 0.75
         
         return button
     }()
@@ -96,7 +96,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         
         let viewSafeMargins = view.safeAreaLayoutGuide
         
-        captureButtonInitialBottomConstraint = captureButton.bottomAnchor.constraint(equalTo: viewSafeMargins.bottomAnchor, constant: -30)
+        captureButtonInitialBottomConstraint = captureButton.bottomAnchor.constraint(equalTo: viewSafeMargins.bottomAnchor, constant: -20)
         captureButtonDismissedBottomConstraint = captureButton.topAnchor.constraint(equalTo: view.bottomAnchor)
         
         NSLayoutConstraint.activate([

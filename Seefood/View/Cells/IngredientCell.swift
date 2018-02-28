@@ -61,7 +61,6 @@ class IngredientCell: BaseCollectionViewCell, UITextViewDelegate {
         return textView
     }()
     
-    // TODO: fix shadow
     let containingView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
