@@ -98,7 +98,7 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         let button = UIButton()
         button.backgroundColor = Constants.Colors().secondaryColor
         button.setTitleColor(.white, for: .normal)
-        button.setTitle("VIEW RECIPES", for: .normal)
+        button.setTitle("SEE RECIPES", for: .normal)
         button.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 25)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

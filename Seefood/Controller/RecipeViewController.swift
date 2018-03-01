@@ -97,7 +97,6 @@ class RecipeViewController: UIViewController {
                 assert(false, "Window missing")
             }
             window.addSubview(bookmarkAlert!)
-            print(window.subviews)
         }
     }
     
@@ -194,7 +193,6 @@ class RecipeViewController: UIViewController {
                     print("Save failed")
                 }
             }
-            updateBookmarkAlertFrame()
             bookmarkAlert?.show(hasBookmarked: !found)
         } catch { }
     }
