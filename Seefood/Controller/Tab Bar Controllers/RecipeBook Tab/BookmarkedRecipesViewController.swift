@@ -14,8 +14,6 @@ class BookmarkedRecipesViewController: BaseRecipesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Bookmarked"
-        let searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchController
     }
     
     override lazy var recipesCollectionViewController: RecipesCollectionViewController = {
@@ -24,6 +22,11 @@ class BookmarkedRecipesViewController: BaseRecipesViewController {
         vc.recipesData = self.recipesData
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         vc.isBookmarkController = true
+        vc.cellDeleted = {
+            if vc.recipesData.count < 1 {
+                self.navigationItem.searchController = nil
+            }
+        }
         return vc
     }()
     

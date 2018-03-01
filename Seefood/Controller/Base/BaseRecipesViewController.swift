@@ -12,6 +12,7 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        definesPresentationContext = true
         view.backgroundColor = .red
         UIApplication.shared.statusBarStyle = .default
         if let nav = navigationController?.navigationBar {
@@ -92,13 +93,11 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         }
         else {
             self.filtering = false
-            self.recipesCollectionViewController.recipesData = recipesData
+            self.recipesCollectionViewController.recipesData = calculateRecipes()
             self.filteredRecipes.removeAll()
         }
         self.recipesCollectionViewController.collectionView?.reloadData()
     }
-    
-    
     
     @objc func filterButtonTouchUpInside() {
         

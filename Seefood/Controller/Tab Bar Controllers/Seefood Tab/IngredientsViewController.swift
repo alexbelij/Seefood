@@ -104,15 +104,7 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         return button
     }()
     
-    @objc func closeButtonTouchUpInside(sender: UIButton) {
-        FoodData.currentPictures.removeAll()
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = kCATransitionPush
-        transition.subtype = kCATransitionFromLeft
-        transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
-        self.view.window!.layer.add(transition, forKey: kCATransition)
-        
+    @objc func closeButtonTouchUpInside(sender: UIButton) {        
         let stackedControllers = self.navigationController?.viewControllers
         for controller in stackedControllers! {
             if controller.isKind(of: CameraViewController.self) {
