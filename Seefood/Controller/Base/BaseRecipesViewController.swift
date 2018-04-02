@@ -48,7 +48,7 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         button.backgroundColor = .clear
         button.setTitleColor(Constants.Colors().secondaryColor, for: .normal)
         button.setTitle("Filter", for: .normal)
-        button.titleLabel?.font = UIFont(name: "AvenirNext", size: 8)
+        button.titleLabel?.font = UIFont(name: "AvenirNext", size: 10)
         button.layer.borderColor = Constants.Colors().secondaryColor.cgColor
         button.addTarget(self, action: #selector(filterButtonTouchUpInside), for: .touchUpInside)
         let barButtonItem = UIBarButtonItem(customView: button)

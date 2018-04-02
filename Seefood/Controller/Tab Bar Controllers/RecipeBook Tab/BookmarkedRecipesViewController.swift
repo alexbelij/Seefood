@@ -25,6 +25,7 @@ class BookmarkedRecipesViewController: BaseRecipesViewController {
         vc.cellDeleted = {
             if vc.recipesData.count < 1 {
                 self.navigationItem.searchController = nil
+                self.navigationItem.setRightBarButton(UIBarButtonItem(), animated: true)
             }
         }
         return vc

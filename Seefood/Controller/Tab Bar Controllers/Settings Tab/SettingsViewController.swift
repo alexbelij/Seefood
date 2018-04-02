@@ -71,6 +71,7 @@ class SettingsTableViewController: UITableViewController {
         tableView.register(TableViewToggleCell.self, forCellReuseIdentifier: toggleCellId)
         tableView.register(TableViewDescCell.self, forCellReuseIdentifier: descCellId)
         tableView.allowsSelection = false
+        tableView.alwaysBounceVertical = false
     }
     
     func registerSettingsBundle() {

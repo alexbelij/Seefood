@@ -33,6 +33,7 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.alwaysBounceHorizontal = true
         //collectionView.bounces = false
         collectionView.bouncesZoom = false
         return collectionView

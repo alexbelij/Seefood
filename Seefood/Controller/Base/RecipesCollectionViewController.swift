@@ -43,6 +43,7 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
         label.backgroundColor = .white
         label.textAlignment = .center
         label.text = "No Results"
+        label.textColor = .lightGray
         return label
     }()
     

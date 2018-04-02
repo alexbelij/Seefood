@@ -40,7 +40,7 @@ class IngredientCell: BaseCollectionViewCell, UITextViewDelegate {
         let view = UIVisualEffectView(effect: blurEffect)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
-        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.cornerRadius = 15
         return view
     }()
@@ -56,7 +56,7 @@ class IngredientCell: BaseCollectionViewCell, UITextViewDelegate {
         textView.font = UIFont(name: "AvenirNext-Demibold", size: 17)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.clipsToBounds = true
-        textView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        textView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         textView.layer.cornerRadius = 15
         return textView
     }()
@@ -80,13 +80,12 @@ class IngredientCell: BaseCollectionViewCell, UITextViewDelegate {
         containingView.addSubview(ingredientName)
         
         NSLayoutConstraint.activate([
-            
             containingView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             containingView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             containingView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             containingView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             
-            blurView.bottomAnchor.constraint(equalTo: containingView.bottomAnchor),
+            blurView.topAnchor.constraint(equalTo: containingView.topAnchor),
             blurView.leadingAnchor.constraint(equalTo: containingView.leadingAnchor),
             blurView.trailingAnchor.constraint(equalTo: containingView.trailingAnchor),
             blurView.heightAnchor.constraint(equalToConstant: 40),
@@ -96,12 +95,10 @@ class IngredientCell: BaseCollectionViewCell, UITextViewDelegate {
             pictureImageView.trailingAnchor.constraint(equalTo: containingView.trailingAnchor),
             pictureImageView.bottomAnchor.constraint(equalTo: containingView.bottomAnchor),
             
-            //ingredientName.topAnchor.constraint(equalTo: pictureImageView.bottomAnchor),
             ingredientName.heightAnchor.constraint(equalToConstant: 40),
             ingredientName.leadingAnchor.constraint(equalTo: containingView.leadingAnchor),
             ingredientName.trailingAnchor.constraint(equalTo: containingView.trailingAnchor),
-            ingredientName.bottomAnchor.constraint(equalTo: containingView.bottomAnchor)
-            
+            ingredientName.topAnchor.constraint(equalTo: containingView.topAnchor)
             ])
         
         self.backgroundColor = .clear
