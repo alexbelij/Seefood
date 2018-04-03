@@ -105,7 +105,6 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
                         }, completion: nil)
                         self.cellDeleted?()
                     }
-                    try context.save()
                     break
                 }
             }
@@ -113,12 +112,12 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
                 let entity = NSEntityDescription.entity(forEntityName: "SavedRecipes", in: context)
                 let newSavedRecipe = NSManagedObject(entity: entity!, insertInto: context)
                 newSavedRecipe.setValue(cell.recipe, forKey: "recipe")
-                do {
-                    try context.save()
-                    cell.bookmarkButton.setImage(UIImage(named: "ic_bookmark_white"), for: .normal)
-                } catch {
-                    print("Save failed")
-                }
+                cell.bookmarkButton.setImage(UIImage(named: "ic_bookmark_white"), for: .normal)
+            }
+            do {
+                try context.save()
+            } catch {
+                print("Save failed")
             }
         }
         

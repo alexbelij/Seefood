@@ -133,6 +133,8 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         return FoodData.currentPictures.count
     }
     
+    // MARK: Ingredient cells setup
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ingredientsCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! IngredientCell
         let ingredient = FoodData.currentPictures[indexPath.row]
@@ -156,6 +158,8 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+    // MARK: Header and Footer setup
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {

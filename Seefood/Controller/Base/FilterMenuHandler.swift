@@ -14,6 +14,10 @@ class FilterMenuHandler: NSObject {
         super.init()
         setupViews()
     }
+
+    let filterCategories = ["Diet", "Another"]
+    let filters = [["Vegan", "Vegetarian", "Non-Veg"], ["asdf", "4312"]]
+    let currentFilters = [String]()
     
     let darkView: UIView = {
         let view = UIView()
@@ -27,6 +31,7 @@ class FilterMenuHandler: NSObject {
     let baseView: UIView = {
         let view = UIView()
         view.isHidden = true
+        view.backgroundColor = .white
         return view
     }()
     
@@ -38,9 +43,17 @@ class FilterMenuHandler: NSObject {
         return view
     }()
     
+    let headerBottomBorder: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let headerTitle: UILabel = {
         let label = UILabel()
-        label.text = "Filter"
+        label.text = "Add Filters"
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -60,6 +73,8 @@ class FilterMenuHandler: NSObject {
         let layout = UICollectionViewFlowLayout()
         let vc = FiltersCollectionViewController(collectionViewLayout: layout)
         vc.view.translatesAutoresizingMaskIntoConstraints = false
+        vc.availableFilterHeaders = filterCategories
+        vc.availableFilters = filters
         return vc
     }()
     
@@ -73,6 +88,7 @@ class FilterMenuHandler: NSObject {
         baseView.addSubview(filtersCollectionViewController.view)
         baseView.addSubview(headerView)
         headerView.contentView.addSubview(headerTitle)
+        headerView.contentView.addSubview(headerBottomBorder)
         headerView.contentView.addSubview(doneButton)
         
         baseView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: window.frame.height / 2)
@@ -83,15 +99,20 @@ class FilterMenuHandler: NSObject {
             darkView.trailingAnchor.constraint(equalTo: window.trailingAnchor),
             darkView.bottomAnchor.constraint(equalTo: window.bottomAnchor),
             
-            filtersCollectionViewController.view.topAnchor.constraint(equalTo: baseView.topAnchor),
-            filtersCollectionViewController.view.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
-            filtersCollectionViewController.view.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
+            filtersCollectionViewController.view.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            filtersCollectionViewController.view.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: 14),
+            filtersCollectionViewController.view.trailingAnchor.constraint(equalTo: baseView.trailingAnchor, constant: -14),
             filtersCollectionViewController.view.bottomAnchor.constraint(equalTo: baseView.bottomAnchor),
             
             headerView.topAnchor.constraint(equalTo: baseView.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 44),
+            
+            headerBottomBorder.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            headerBottomBorder.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            headerBottomBorder.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            headerBottomBorder.heightAnchor.constraint(equalToConstant: 0.5),
             
             headerTitle.topAnchor.constraint(equalTo: headerView.topAnchor),
             headerTitle.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
@@ -100,7 +121,7 @@ class FilterMenuHandler: NSObject {
             doneButton.topAnchor.constraint(equalTo: headerView.topAnchor),
             doneButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             doneButton.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
-            doneButton.widthAnchor.constraint(equalToConstant: 90)
+            doneButton.widthAnchor.constraint(equalToConstant: 80)
             ])
         
         darkView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(doneButtonTouchUpInside)))
@@ -111,7 +132,7 @@ class FilterMenuHandler: NSObject {
     func showFilterMenu() {
         baseView.isHidden = false
         UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.darkView.alpha = 0.5
+            self.darkView.alpha = 1
             self.baseView.frame.origin.y = self.baseView.frame.height
         })
     }
@@ -160,13 +181,139 @@ class FilterMenuHandler: NSObject {
     
 }
 
-class FiltersCollectionViewController: UICollectionViewController {
+class FiltersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        collectionView?.alwaysBounceVertical = true
+        collectionView?.backgroundColor = .white
         
+        // TODO: Add filter section headers
+        
+        collectionView?.register(FilterHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader.self, withReuseIdentifier: filterSectionHeaderId)
+        collectionView?.register(FilterCell.self, forCellWithReuseIdentifier: filterCellId)
+    }
+
+    let filterSectionHeaderId = "filterSectionHeaderId"
+    let filterCellId = "filterCellId"
+    var availableFilterHeaders = [String]()
+    var availableFilters = [[String]]()
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return availableFilterHeaders.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return availableFilters[section].count
+    }
+    
+    // MARK: Filter cell setup
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterCellId, for: indexPath) as! FilterCell
+        cell.name = availableFilters[indexPath.section][indexPath.row]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let text = availableFilters[indexPath.section][indexPath.row]
+        let font = UIFont(name: "AvenirNext-Demibold", size: 30)
+        let fontAttributes = [NSAttributedStringKey.font: font]
+        var baseSize = (text as NSString).size(withAttributes: fontAttributes)
+        baseSize.height = 50
+        return baseSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    // MARK: Header and Footer setup
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: filterSectionHeaderId, for: indexPath) as! FilterHeaderCell
+            header.name = availableFilterHeaders[indexPath.section]
+            return header
+        default:
+            assert(false, "Not a Header or Footer")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 40)
     }
     
     
+    
+}
+
+class FilterCell: BaseCollectionViewCell {
+    
+    var name: String? {
+        didSet {
+            filterName.text = name
+        }
+    }
+    
+    let filterName: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = Constants.Colors().primaryColor
+        label.textColor = .black
+        label.font = UIFont(name: "AvenirNext-Demibold", size: 17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.clipsToBounds = true
+        label.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
+        label.layer.cornerRadius = 20
+        return label
+    }()
+    
+    override func setupViews() {
+        self.addSubview(filterName)
+        
+        NSLayoutConstraint.activate([
+            filterName.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
+            filterName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
+            filterName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
+            filterName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4)
+            ])
+    }
+    
+}
+
+class FilterHeaderCell: BaseCollectionViewCell {
+    
+    var name: String? {
+        didSet {
+            filterHeaderName.text = name
+        }
+    }
+    
+    let filterHeaderName: UILabel = {
+        let label = UILabel()
+        label.textColor = Constants.Colors().secondaryColor
+        label.font = UIFont(name: "AvenirNext-Demibold", size: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    override func setupViews() {
+        self.addSubview(filterHeaderName)
+        
+        NSLayoutConstraint.activate([
+            filterHeaderName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            filterHeaderName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            filterHeaderName.heightAnchor.constraint(equalToConstant: 30)
+            ])
+    }
     
 }
 

@@ -26,7 +26,6 @@ class RecipeCell: BaseCollectionViewCell {
                 for savedRecipe in savedRecipes {
                     let cellRecipe = self.recipe!
                     if cellRecipe.isEqual(savedRecipe.recipe as? Recipe) {
-                        print("\((savedRecipe.recipe as! Recipe).name) : \(cellRecipe.name)")
                         bookmarkButton.setImage(UIImage(named: "ic_bookmark_white"), for: .normal)
                         break
                     }
