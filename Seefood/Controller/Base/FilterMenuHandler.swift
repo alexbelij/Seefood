@@ -138,13 +138,12 @@ class FilterMenuHandler: NSObject {
         }
         let translation = panGesture.translation(in: baseView)
         panGesture.setTranslation(CGPoint.zero, in: baseView)
-        let menuMaxY = baseView.frame.maxY
         let menuMinY = baseView.frame.minY
         let menuHeight = baseView.frame.height
         
         if menuMinY + translation.y >= menuHeight {
             baseView.center = CGPoint(x: baseView.center.x, y: baseView.center.y + translation.y)
-            darkView.alpha = menuHeight / menuMaxY
+            darkView.alpha = (window.frame.height - menuMinY) / menuHeight
         }
         
         if panGesture.state == .ended {

@@ -105,6 +105,7 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
                         }, completion: nil)
                         self.cellDeleted?()
                     }
+                    try context.save()
                     break
                 }
             }
