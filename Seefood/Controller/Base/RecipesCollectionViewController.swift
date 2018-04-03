@@ -58,8 +58,24 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipeCellId, for: indexPath) as! RecipeCell
-        
         cell.recipe = recipesData[indexPath.row]
+        
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = appDelegate.persistentContainer.viewContext
+//        let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
+//        do {
+//            let savedRecipes = try context.fetch(fetchRequest)
+//            var found = false
+//            for savedRecipe in savedRecipes {
+//                let aRecipe = savedRecipe.recipe as! Recipe
+//                found = (cell.recipe?.isEqual(aRecipe))!
+//            }
+//            if self.isBookmarkController && !found {
+//                print(4321)                
+//                return cell
+//            }
+//        } catch {}
+        
         cell.handleRecipeTap = {
             let recipeViewController = RecipeViewController()
             recipeViewController.title = cell.recipe?.name
@@ -92,7 +108,6 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
                     break
                 }
             }
-            
             if !found {
                 let entity = NSEntityDescription.entity(forEntityName: "SavedRecipes", in: context)
                 let newSavedRecipe = NSManagedObject(entity: entity!, insertInto: context)

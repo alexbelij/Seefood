@@ -91,7 +91,7 @@ class FilterMenuHandler: NSObject {
             headerView.topAnchor.constraint(equalTo: baseView.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 45),
+            headerView.heightAnchor.constraint(equalToConstant: 44),
             
             headerTitle.topAnchor.constraint(equalTo: headerView.topAnchor),
             headerTitle.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),

@@ -119,6 +119,23 @@ class RecipeViewController: UIViewController {
         updateBookmarkButton()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        if let parent = navigationController?.viewControllers[(navigationController?.viewControllers.count)! - 1] as?  BookmarkedRecipesViewController {
+            do {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let context = appDelegate.persistentContainer.viewContext
+                let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
+                let savedRecipes = try context.fetch(fetchRequest)
+                var savedRecipesArray = [Recipe]()
+                for savedRecipe in savedRecipes {
+                    savedRecipesArray.append((savedRecipe.recipe as? Recipe)!)
+                }
+                parent.recipesCollectionViewController.recipesData = savedRecipesArray
+                
+            } catch {}
+        }
+    }
+    
     //TODO: figure out how to get height of small type navbar in program (the 44 value), and not when its large too
     func updateBookmarkAlertFrame() {
         guard let window = UIApplication.shared.keyWindow /*let navBar = navigationController?.navigationBar*/ else {
