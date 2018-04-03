@@ -39,7 +39,7 @@ class SettingsViewController: UIViewController {
     }
 
     lazy var settingsTableViewController: SettingsTableViewController = {
-        let vc = SettingsTableViewController()
+        let vc = SettingsTableViewController.init(style: .grouped)
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         return vc
     }()
@@ -72,6 +72,8 @@ class SettingsTableViewController: UITableViewController {
         tableView.register(TableViewDescCell.self, forCellReuseIdentifier: descCellId)
         tableView.allowsSelection = false
         tableView.alwaysBounceVertical = false
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
     }
     
     func registerSettingsBundle() {
@@ -91,14 +93,17 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = tableSections[section]
-        label.backgroundColor = .lightGray
-        return label
+        let view = UIView()
+        let label = UILabel(frame: CGRect(x: 18, y: 5, width: 200, height: 25))
+        label.text = tableSections[section].uppercased()
+        label.textColor = UIColor.gray
+        label.font = UIFont.systemFont(ofSize: 14)
+        view.addSubview(label)
+        return view
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        return 30
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -130,6 +135,8 @@ class SettingsTableViewController: UITableViewController {
         }
         assert(false, "missing cell")
     }
+
+    
     
 }
 
@@ -165,8 +172,7 @@ class TableViewToggleCell: BaseTableViewCell {
         
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 7),
-            
+            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 13),
             toggle.topAnchor.constraint(equalTo: self.topAnchor, constant: 7),
             toggle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
             ])
@@ -209,19 +215,11 @@ class TableViewDescCell: BaseTableViewCell {
         
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 7),
+            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 13),
             
             versionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 7),
             versionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
             ])
-        
     }
     
 }
-
-
-
-
-
-
-
