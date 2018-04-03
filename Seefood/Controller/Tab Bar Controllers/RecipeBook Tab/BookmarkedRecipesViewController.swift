@@ -16,6 +16,20 @@ class BookmarkedRecipesViewController: BaseRecipesViewController {
         self.title = "Bookmarked"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        do {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchRequest: NSFetchRequest<SavedRecipes> = SavedRecipes.fetchRequest()
+            let savedRecipes = try context.fetch(fetchRequest)
+            var savedRecipesArray = [Recipe]()
+            for savedRecipe in savedRecipes {
+                savedRecipesArray.append((savedRecipe.recipe as? Recipe)!)
+            }
+            self.recipesCollectionViewController.recipesData = savedRecipesArray
+        } catch {}
+    }
+    
     override lazy var recipesCollectionViewController: RecipesCollectionViewController = {
         let layout = CustomFlowLayout()
         let vc = RecipesCollectionViewController(collectionViewLayout: layout)
