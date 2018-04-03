@@ -135,9 +135,6 @@ class SettingsTableViewController: UITableViewController {
         }
         assert(false, "missing cell")
     }
-
-    
-    
 }
 
 class TableViewToggleCell: BaseTableViewCell {

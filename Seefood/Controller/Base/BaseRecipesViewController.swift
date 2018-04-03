@@ -42,6 +42,11 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         }
     }
     
+    lazy var filterMenu: FilterMenuHandler = {
+        let filter = FilterMenuHandler()
+        return filter
+    }()
+    
     func setupNavBarButtons() {
         let button = UIButton()
         button.clipsToBounds = false
@@ -100,7 +105,7 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     }
     
     @objc func filterButtonTouchUpInside() {
-        
+        filterMenu.showFilterMenu()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
