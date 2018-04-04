@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class FilterMenuHandler: NSObject {
     
@@ -79,6 +81,7 @@ class FilterMenuHandler: NSObject {
     }()
     
     func setupViews() {
+        
         guard let window = UIApplication.shared.keyWindow else {
             assert(false, "Window missing")
         }
@@ -126,7 +129,7 @@ class FilterMenuHandler: NSObject {
         
         darkView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(doneButtonTouchUpInside)))
         darkView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
-        doneButton.addTarget(self, action: #selector(doneButtonTouchUpInside), for: .touchUpInside)
+        //doneButton.addTarget(self, action: #selector(doneButtonTouchUpInside), for: .touchUpInside)
     }
     
     func showFilterMenu() {
@@ -259,32 +262,45 @@ class FilterCell: BaseCollectionViewCell {
     
     var name: String? {
         didSet {
-            filterName.text = name
+            filterName.setTitle(name, for: .normal)
         }
     }
     
-    let filterName: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = Constants.Colors().primaryColor
-        label.textColor = .black
-        label.font = UIFont(name: "AvenirNext-Demibold", size: 17)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.clipsToBounds = true
-        label.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
-        label.layer.cornerRadius = 20
-        return label
+    let filterName: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = Constants.Colors().primaryColor
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont(name: "AvenirNext-Demibold", size: 17)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.textAlignment = .center
+        button.clipsToBounds = true
+        button.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
+        button.layer.cornerRadius = 20
+        button.sizeToFit()
+        return button
     }()
     
     override func setupViews() {
+        
+        filterName.rx.tap.bind {
+            print(2134)
+        }
+        
         self.addSubview(filterName)
         
         NSLayoutConstraint.activate([
             filterName.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
             filterName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
             filterName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
-            filterName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4)
+            filterName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
+            
+//            (filterName.titleLabel?.topAnchor.constraint(equalTo: filterName.topAnchor))!,
+//            (filterName.titleLabel?.leadingAnchor.constraint(equalTo: filterName.leadingAnchor))!,
+//            (filterName.titleLabel?.trailingAnchor.constraint(equalTo: filterName.trailingAnchor))!,
+//            (filterName.titleLabel?.bottomAnchor.constraint(equalTo: filterName.bottomAnchor))!,
             ])
+    
+        
     }
     
 }

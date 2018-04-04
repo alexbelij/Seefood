@@ -1,12 +1,19 @@
 PODS:
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
   - SwiftyCam (2.6.0)
 
 DEPENDENCIES:
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
   - SwiftyCam
 
 SPEC CHECKSUMS:
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
   SwiftyCam: 86c114177a1b1f5dc2c82384577d0c20b922a31b
 
-PODFILE CHECKSUM: e715582887c48ff236fea541dfb424d389e102be
+PODFILE CHECKSUM: 6df1b655d9d49f16e5dc0db2e67c2681d12b1071
 
 COCOAPODS: 1.3.1

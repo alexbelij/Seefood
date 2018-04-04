@@ -27,7 +27,7 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         setupViews()
         ingredientsCollectionView.reloadData()
     }
-    
+
     func setupViews() {
         view.addSubview(ingredientsCollectionView)
         view.addSubview(viewRecipesButton)
