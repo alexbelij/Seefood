@@ -55,14 +55,15 @@ class Recipe: NSObject, NSCoding {
     let ingredients: [RecipeIngredient]
     let recipeSteps: [String]
     let imageName: String
+    let tags: [String]
     
-    init(name: String, description: String, ingredients: [RecipeIngredient], recipeSteps: [String], imageName: String) {
+    init(name: String, description: String, ingredients: [RecipeIngredient], recipeSteps: [String], imageName: String, tags: [String]) {
         self.name = name
         self.recipeDescription = description
         self.ingredients = ingredients
         self.recipeSteps = recipeSteps
         self.imageName = imageName
-        
+        self.tags = tags
     }
     
     override func isEqual(_ object: Any?) -> Bool {
@@ -86,10 +87,10 @@ class Recipe: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
         aCoder.encode(recipeDescription, forKey: "recipeDescription")
-        //aCoder.encode(self.ingredients, forKey: "ingredients")
         aCoder.encode(ingredients, forKey: "ingredients")
         aCoder.encode(recipeSteps, forKey: "recipeSteps")
         aCoder.encode(imageName, forKey: "imageName")
+        //aCoder.encode(tags, forKey: "tags")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -97,9 +98,11 @@ class Recipe: NSObject, NSCoding {
         let recipeDescription = aDecoder.decodeObject(forKey: "recipeDescription") as? String,
         let ingredients = aDecoder.decodeObject(forKey: "ingredients") as? [RecipeIngredient],
         let recipeSteps = aDecoder.decodeObject(forKey: "recipeSteps") as? [String],
-        let imageName = aDecoder.decodeObject(forKey: "imageName") as? String else {print(1234); return nil}
+        let imageName = aDecoder.decodeObject(forKey: "imageName") as? String
+        //let tags = aDecoder.decodeObject(forKey: "tags") as? [String]
+            else { print(1234); return nil }
         
-        self.init(name: name, description: recipeDescription, ingredients: ingredients, recipeSteps: recipeSteps, imageName: imageName)
+        self.init(name: name, description: recipeDescription, ingredients: ingredients, recipeSteps: recipeSteps, imageName: imageName, tags: ["asdf"])
     }
 
 }

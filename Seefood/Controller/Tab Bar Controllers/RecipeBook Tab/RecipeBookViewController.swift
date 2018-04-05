@@ -16,6 +16,7 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
         view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
+        navigationItem.largeTitleDisplayMode = .always
         if let nav = navigationController?.navigationBar {
             nav.prefersLargeTitles = true
             nav.barTintColor = .white //Constants.Colors().primaryColor

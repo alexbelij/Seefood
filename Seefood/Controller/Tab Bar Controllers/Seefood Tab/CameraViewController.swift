@@ -43,8 +43,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         return .lightContent
     }
     
-    var onTakePicture: (()->())?
-    
     let captureButton: SwiftyCamButton = {
         let button = SwiftyCamButton()
         button.backgroundColor = .clear

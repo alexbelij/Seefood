@@ -70,7 +70,9 @@ class RecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationItem.largeTitleDisplayMode = .always
         if let nav = navigationController?.navigationBar {
+            nav.prefersLargeTitles = true
             nav.barTintColor = .white
             nav.isTranslucent = true
             nav.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]

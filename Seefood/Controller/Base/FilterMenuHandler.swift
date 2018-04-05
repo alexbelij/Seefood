@@ -15,6 +15,7 @@ class FilterMenuHandler: NSObject {
     override init() {
         super.init()
         setupViews()
+        setupRx()
     }
 
     let filterCategories = ["Diet", "Another"]
@@ -82,6 +83,7 @@ class FilterMenuHandler: NSObject {
     
     func setupViews() {
         
+        
         guard let window = UIApplication.shared.keyWindow else {
             assert(false, "Window missing")
         }
@@ -129,7 +131,15 @@ class FilterMenuHandler: NSObject {
         
         darkView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(doneButtonTouchUpInside)))
         darkView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
-        //doneButton.addTarget(self, action: #selector(doneButtonTouchUpInside), for: .touchUpInside)
+        
+    }
+    
+    let disposeBag = DisposeBag()
+    
+    func setupRx() {
+        doneButton.rx.tap.bind {
+            self.doneButtonTouchUpInside()
+        }.disposed(by: disposeBag)
     }
     
     func showFilterMenu() {
@@ -203,20 +213,38 @@ class FiltersCollectionViewController: UICollectionViewController, UICollectionV
     let filterCellId = "filterCellId"
     var availableFilterHeaders = [String]()
     var availableFilters = [[String]]()
+    var notOnlyAvailableFilters = true
+    
+    var filterCellTapped: ((_ filter: String)->())?
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return availableFilterHeaders.count
+        if notOnlyAvailableFilters {
+            return availableFilterHeaders.count
+        } else {
+            return 1
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return availableFilters[section].count
+        if notOnlyAvailableFilters {
+            return availableFilters[section].count
+        } else {
+            return availableFilters[0].count
+        }
     }
     
     // MARK: Filter cell setup
     
+    // TODO: Check rx setup
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterCellId, for: indexPath) as! FilterCell
         cell.name = availableFilters[indexPath.section][indexPath.row]
+        cell.cellTapped = {
+            if self.notOnlyAvailableFilters {
+                self.filterCellTapped?(cell.name!)
+            }
+        }
         return cell
     }
     
@@ -251,7 +279,11 @@ class FiltersCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 40)
+        if notOnlyAvailableFilters {
+            return CGSize(width: collectionView.frame.width, height: 40)
+        } else {
+            return CGSize.zero
+        }
     }
     
     
@@ -265,6 +297,8 @@ class FilterCell: BaseCollectionViewCell {
             filterName.setTitle(name, for: .normal)
         }
     }
+    
+    var cellTapped: (()->())?
     
     let filterName: UIButton = {
         let button = UIButton()
@@ -280,11 +314,13 @@ class FilterCell: BaseCollectionViewCell {
         return button
     }()
     
+    let disposeBag = DisposeBag()
+    
     override func setupViews() {
         
         filterName.rx.tap.bind {
-            print(2134)
-        }
+            self.cellTapped?()
+        }.disposed(by: disposeBag)
         
         self.addSubview(filterName)
         
@@ -293,14 +329,7 @@ class FilterCell: BaseCollectionViewCell {
             filterName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
             filterName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
             filterName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
-            
-//            (filterName.titleLabel?.topAnchor.constraint(equalTo: filterName.topAnchor))!,
-//            (filterName.titleLabel?.leadingAnchor.constraint(equalTo: filterName.leadingAnchor))!,
-//            (filterName.titleLabel?.trailingAnchor.constraint(equalTo: filterName.trailingAnchor))!,
-//            (filterName.titleLabel?.bottomAnchor.constraint(equalTo: filterName.bottomAnchor))!,
             ])
-    
-        
     }
     
 }

@@ -20,7 +20,7 @@ class PreviewPictureCell: BaseCollectionViewCell {
     
     let deleteImageButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .red
+        button.backgroundColor = .white
         if let image = UIImage(named: "ic_close_white") {
             button.setImage(image, for: .normal)
         }

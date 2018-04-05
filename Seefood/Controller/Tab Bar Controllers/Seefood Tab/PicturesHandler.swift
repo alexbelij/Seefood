@@ -34,7 +34,6 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.alwaysBounceHorizontal = true
-        //collectionView.bounces = false
         collectionView.bouncesZoom = false
         return collectionView
     }()
@@ -94,6 +93,8 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
         return 10
     }
     
+    // MARK: Header and Footer setup
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
@@ -116,6 +117,8 @@ class PicturesHandler: NSObject, UICollectionViewDataSource, UICollectionViewDel
         let cellHeight = collectionHeight
         return CGSize(width: 10, height: cellHeight)
     }
+    
+    // MARK: Presenting and Dismissing pictures
     
     func dismissPictures() {
         if let window = UIApplication.shared.keyWindow {
