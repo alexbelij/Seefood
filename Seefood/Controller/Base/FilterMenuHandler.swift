@@ -243,6 +243,14 @@ class FiltersCollectionViewController: UICollectionViewController, UICollectionV
         cell.cellTapped = {
             if self.notOnlyAvailableFilters {
                 self.filterCellTapped?(cell.name!)
+            } else {
+                if let currentIndexPath = collectionView.indexPath(for: cell) {
+                    self.availableFilters[0].remove(at: currentIndexPath.row)
+                    collectionView.performBatchUpdates({
+                        collectionView.deleteItems(at: [currentIndexPath])
+                    }, completion: nil)
+                }
+                self.filterCellTapped?(cell.name!)
             }
         }
         return cell

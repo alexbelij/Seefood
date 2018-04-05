@@ -92,6 +92,14 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         vc.collectionView?.alwaysBounceVertical = false
         vc.collectionView?.showsHorizontalScrollIndicator = false
         vc.collectionView?.backgroundColor = .clear
+        vc.filterCellTapped = { (filter) -> () in
+            for i in 0..<self.activeFilters[0].count {
+                if self.activeFilters[0][i] == filter {
+                    self.activeFilters[0].remove(at: i)
+                    break
+                }
+            }
+        }
         return vc
     }()
     
