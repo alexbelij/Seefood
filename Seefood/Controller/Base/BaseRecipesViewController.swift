@@ -56,8 +56,12 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
                 lastIndex = IndexPath(item: self.activeFilters[0].count - 1, section: 0)
                 self.filtersCollectionViewController.collectionView?.insertItems(at: [lastIndex!])
             }, completion: { completed in
-
+                
             })
+            if self.activeFilters[0].count > 0 {
+                print(self.activeFilters.count)
+                self.updateFilterResults()
+            }
         }
         return handler
     }()
@@ -93,12 +97,13 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         vc.collectionView?.showsHorizontalScrollIndicator = false
         vc.collectionView?.backgroundColor = .clear
         vc.filterCellTapped = { (filter) -> () in
-            for i in 0..<self.activeFilters[0].count {
+            for i in 0 ..< self.activeFilters[0].count {
                 if self.activeFilters[0][i] == filter {
                     self.activeFilters[0].remove(at: i)
                     break
                 }
             }
+            self.updateFilterResults()
         }
         return vc
     }()
@@ -177,35 +182,38 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         return [Recipe]()
     }
     var recipesData = [Recipe]()
-    fileprivate var filtering = false
     fileprivate var filteredRecipes = [Recipe]()
     
     fileprivate var activeFilterHeaders = ["Active"]
-    fileprivate var activeFilters: [[String]] = [["asdf"]]
+    fileprivate var activeFilters: [[String]] = [[]]
+    
+    func updateFilterResults() {
+        // Filter by searchbar text
+        let searchController = self.navigationItem.searchController
+        if let text = searchController?.searchBar.text, !text.isEmpty {
+            self.filteredRecipes = self.recipesData.filter({ (recipe) -> Bool in
+                return recipe.name.lowercased().contains(text.lowercased())
+            })
+        } else {
+            self.filteredRecipes = self.recipesData
+        }
+        // Filter by selected filters
+        if activeFilters[0].count > 0 {
+            self.filteredRecipes = self.recipesData.filter({ (recipe) -> Bool in
+                for filter in activeFilters[0] {
+                    if recipe.tags.contains(filter) {
+                        return true
+                    }
+                }
+                return false
+            })
+        }
+        self.recipesCollectionViewController.recipesData = filteredRecipes
+        self.recipesCollectionViewController.collectionView?.reloadData()
+    }
     
     func updateSearchResults(for searchController: UISearchController) {
-        if let text = searchController.searchBar.text, !text.isEmpty {
-            self.filteredRecipes = self.recipesData.filter({ (recipe) -> Bool in
-                if activeFilters.count > 0 {
-                    for filter in activeFilters[0] {
-                        if recipe.tags.contains(filter) {
-                            return recipe.name.lowercased().contains(text.lowercased())
-                        }
-                    }
-                    return false
-                } else {
-                    return recipe.name.lowercased().contains(text.lowercased())
-                }
-            })
-            self.recipesCollectionViewController.recipesData = filteredRecipes
-            self.filtering = true
-        }
-        else {
-            self.filtering = false
-            self.recipesCollectionViewController.recipesData = calculateRecipes()
-            self.filteredRecipes.removeAll()
-        }
-        self.recipesCollectionViewController.collectionView?.reloadData()
+        updateFilterResults()
     }
     
     @objc func filterButtonTouchUpInside() {
