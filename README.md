@@ -7,8 +7,11 @@ The motivation of this app is to give users ideas as to what they can make with 
 
 ## H2 In-Progress app screenshots: 
 **1.** Camera Screen which lets you take pictures of available ingredients
+
 **2.** Ingredients menu which shows ingredients with identified labels and allows label editing in case ingredient is mis-identified
+
 **3.** Recipies menu which shows recipes that can be made with current ingredients
+
 **4.** An example recipe from the recipe menu
 ![alt text](https://i.imgur.com/wuau11u.png)
 
