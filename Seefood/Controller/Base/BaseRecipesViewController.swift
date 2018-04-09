@@ -55,9 +55,8 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
                 self.filtersCollectionViewController.availableFilters = self.activeFilters
                 lastIndex = IndexPath(item: self.activeFilters[0].count - 1, section: 0)
                 self.filtersCollectionViewController.collectionView?.insertItems(at: [lastIndex!])
-            }, completion: { completed in
-                
             })
+            self.showFilterMenu(show: true)
             self.updateFilterResults()
         }
         return handler
@@ -99,6 +98,9 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
                     self.activeFilters[0].remove(at: i)
                     break
                 }
+            }
+            if self.activeFilters[0].count == 0 {
+                self.showFilterMenu(show: false)
             }
             self.updateFilterResults()
         }
@@ -152,7 +154,7 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
             filtersContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             filtersContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             filtersContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            filtersContainerInitialHeightConstraint!,
+            filtersContainerClearedHeightConstraint!,
             
             blurView.topAnchor.constraint(equalTo: filtersContainer.topAnchor),
             blurView.leadingAnchor.constraint(equalTo: filtersContainer.leadingAnchor),
@@ -220,6 +222,12 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.navigationItem.searchController?.searchBar.endEditing(true)
+    }
+    
+    func showFilterMenu(show: Bool) {
+        self.viewWillLayoutSubviews()
+        filtersContainerInitialHeightConstraint?.isActive = show
+        filtersContainerClearedHeightConstraint?.isActive = !show
     }
     
 }
