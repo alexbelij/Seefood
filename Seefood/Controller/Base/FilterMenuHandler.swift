@@ -293,9 +293,6 @@ class FiltersCollectionViewController: UICollectionViewController, UICollectionV
             return CGSize.zero
         }
     }
-    
-    
-    
 }
 
 class FilterCell: BaseCollectionViewCell {

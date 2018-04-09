@@ -58,10 +58,7 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
             }, completion: { completed in
                 
             })
-            if self.activeFilters[0].count > 0 {
-                print(self.activeFilters.count)
-                self.updateFilterResults()
-            }
+            self.updateFilterResults()
         }
         return handler
     }()
@@ -201,11 +198,11 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         if activeFilters[0].count > 0 {
             self.filteredRecipes = self.recipesData.filter({ (recipe) -> Bool in
                 for filter in activeFilters[0] {
-                    if recipe.tags.contains(filter) {
-                        return true
+                    if !recipe.tags.contains(filter) {
+                        return false
                     }
                 }
-                return false
+                return true
             })
         }
         self.recipesCollectionViewController.recipesData = filteredRecipes
@@ -217,6 +214,7 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     }
     
     @objc func filterButtonTouchUpInside() {
+        self.navigationItem.searchController?.searchBar.resignFirstResponder()
         filterMenu.showFilterMenu()
     }
     
