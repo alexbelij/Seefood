@@ -40,6 +40,10 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
         setupViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.shouldRemoveShadow(false)
+    }
+    
     let recipeCategories = ["Bookmarked", "All"]
     let cellId = "cellId"
     

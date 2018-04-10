@@ -39,6 +39,12 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         setupViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if activeFilters[0].count > 0 {
+            self.navigationController?.navigationBar.shouldRemoveShadow(true)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         recipesData = calculateRecipes()
         DispatchQueue.main.async {
@@ -50,14 +56,19 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         let handler = FilterMenuHandler()
         handler.filtersCollectionViewController.filterCellTapped = { (filter) -> () in
             var lastIndex: IndexPath? = nil
+            let filtersWereEmpty = self.activeFilters[0].count == 0
             self.filtersCollectionViewController.collectionView?.performBatchUpdates({
                 self.activeFilters[0].append(filter)
                 self.filtersCollectionViewController.availableFilters = self.activeFilters
                 lastIndex = IndexPath(item: self.activeFilters[0].count - 1, section: 0)
                 self.filtersCollectionViewController.collectionView?.insertItems(at: [lastIndex!])
             })
-            self.showFilterMenu(show: true)
             self.updateFilterResults()
+            if filtersWereEmpty {
+                self.showFilterMenu(show: true)
+                self.filtersCollectionViewController.collectionView?.reloadData()
+                self.navigationController?.navigationBar.shouldRemoveShadow(true)
+            }
         }
         return handler
     }()
@@ -70,6 +81,13 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         let view = UIVisualEffectView(effect: blurEffect)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
+        return view
+    }()
+    
+    let filtersBottomBorder: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -99,10 +117,10 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
                     break
                 }
             }
+            self.updateFilterResults()
             if self.activeFilters[0].count == 0 {
                 self.showFilterMenu(show: false)
             }
-            self.updateFilterResults()
         }
         return vc
     }()
@@ -118,7 +136,6 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         let vc = RecipesCollectionViewController(collectionViewLayout: layout)
         vc.recipesData = self.recipesData
         vc.view.translatesAutoresizingMaskIntoConstraints = false
-        vc.collectionView?.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         return vc
     }()
     
@@ -143,6 +160,7 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         
         view.addSubview(filtersContainer)
         filtersContainer.addSubview(blurView)
+        filtersContainer.addSubview(filtersBottomBorder)
         addChildViewController(filtersCollectionViewController)
         filtersContainer.addSubview(filtersCollectionViewController.view)
         filtersCollectionViewController.didMove(toParentViewController: self)
@@ -160,6 +178,11 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
             blurView.leadingAnchor.constraint(equalTo: filtersContainer.leadingAnchor),
             blurView.trailingAnchor.constraint(equalTo: filtersContainer.trailingAnchor),
             blurView.bottomAnchor.constraint(equalTo: filtersContainer.bottomAnchor),
+            
+            filtersBottomBorder.leadingAnchor.constraint(equalTo: filtersContainer.leadingAnchor),
+            filtersBottomBorder.trailingAnchor.constraint(equalTo: filtersContainer.trailingAnchor),
+            filtersBottomBorder.bottomAnchor.constraint(equalTo: filtersContainer.bottomAnchor),
+            filtersBottomBorder.heightAnchor.constraint(equalToConstant: 0.5),
             
             recipesContainer.topAnchor.constraint(equalTo: view.topAnchor),
             recipesContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -225,9 +248,16 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     }
     
     func showFilterMenu(show: Bool) {
-        self.viewWillLayoutSubviews()
         filtersContainerInitialHeightConstraint?.isActive = show
         filtersContainerClearedHeightConstraint?.isActive = !show
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+            self.recipesCollectionViewController.collectionView?.contentInset = UIEdgeInsets(top: show ? 50 : 0, left: 0, bottom: 0, right: 0)
+        }, completion: { completed in
+            if (self.filtersContainerClearedHeightConstraint?.isActive)! {
+                self.navigationController?.navigationBar.shouldRemoveShadow(false)
+            }
+        })
     }
     
 }

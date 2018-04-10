@@ -72,6 +72,16 @@ public extension UIImage {
     
 }
 
+extension UINavigationBar {
+    func shouldRemoveShadow(_ value: Bool) -> Void {
+        if value {
+            self.setValue(true, forKey: "hidesShadow")
+        } else {
+            self.setValue(false, forKey: "hidesShadow")
+        }
+    }
+}
+
 // TODO: do something
 extension UICollectionView {
     func scrollToFooter(_ indexPath: IndexPath)  {

@@ -27,6 +27,10 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         setupViews()
         ingredientsCollectionView.reloadData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.shouldRemoveShadow(false)
+    }
 
     func setupViews() {
         view.addSubview(ingredientsCollectionView)

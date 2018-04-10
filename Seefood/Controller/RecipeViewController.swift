@@ -83,6 +83,10 @@ class RecipeViewController: UIViewController {
         setupNavBarButtons()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.shouldRemoveShadow(false)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         updateBookmarkButton()
     }
