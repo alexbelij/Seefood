@@ -54,20 +54,42 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     
     lazy var filterMenu: FilterMenuHandler = {
         let handler = FilterMenuHandler()
-        handler.filtersCollectionViewController.filterCellTapped = { (filter) -> () in
+        handler.filtersCollectionViewController.filterCellTapped = { (cell) -> () in
             var lastIndex: IndexPath? = nil
             let filtersWereEmpty = self.activeFilters[0].count == 0
-            self.filtersCollectionViewController.collectionView?.performBatchUpdates({
-                self.activeFilters[0].append(filter)
+            if !self.activeFilters[0].contains(cell.name!) {
+                cell.filterSelected = true
+                self.filtersCollectionViewController.collectionView?.performBatchUpdates({
+                    self.activeFilters[0].append(cell.name!)
+                    self.filtersCollectionViewController.availableFilters = self.activeFilters
+                    lastIndex = IndexPath(item: self.activeFilters[0].count - 1, section: 0)
+                    self.filtersCollectionViewController.collectionView?.insertItems(at: [lastIndex!])
+                })
+                if filtersWereEmpty {
+                    self.showFilterMenu(show: true)
+                    self.navigationController?.navigationBar.shouldRemoveShadow(true)
+                }
+                self.updateFilterResults()
+                self.filtersCollectionViewController.collectionView?.reloadItems(at: [lastIndex!])
+            } else {
+                if let currentIndexPath = self.filtersCollectionViewController.collectionView?.indexPath(for: cell) {
+                    self.filtersCollectionViewController.collectionView?.performBatchUpdates({
+                        self.filtersCollectionViewController.collectionView?.deleteItems(at: [currentIndexPath])
+                    }, completion: nil)
+                }
+                cell.filterSelected = false
+                for i in 0 ..< self.activeFilters[0].count {
+                    if self.activeFilters[0][i] == cell.name {
+                        self.activeFilters[0].remove(at: i)
+                        break
+                    }
+                }
+                self.updateFilterResults()
                 self.filtersCollectionViewController.availableFilters = self.activeFilters
-                lastIndex = IndexPath(item: self.activeFilters[0].count - 1, section: 0)
-                self.filtersCollectionViewController.collectionView?.insertItems(at: [lastIndex!])
-            })
-            self.updateFilterResults()
-            if filtersWereEmpty {
-                self.showFilterMenu(show: true)
                 self.filtersCollectionViewController.collectionView?.reloadData()
-                self.navigationController?.navigationBar.shouldRemoveShadow(true)
+                if self.activeFilters[0].count == 0 {
+                    self.showFilterMenu(show: false)
+                }
             }
         }
         return handler
@@ -110,9 +132,17 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
         vc.collectionView?.alwaysBounceVertical = false
         vc.collectionView?.showsHorizontalScrollIndicator = false
         vc.collectionView?.backgroundColor = .clear
-        vc.filterCellTapped = { (filter) -> () in
+        vc.filterCellTapped = { (cell) -> () in
+            let allFilterCells = self.filterMenu.filtersCollectionViewController.collectionView?.visibleCells
+            for visibleCell in allFilterCells! {
+                if let visibleFilterCell = visibleCell as? FilterCell {
+                    if cell.name! == visibleFilterCell.name! {
+                        visibleFilterCell.filterSelected = false
+                    }
+                }
+            }
             for i in 0 ..< self.activeFilters[0].count {
-                if self.activeFilters[0][i] == filter {
+                if self.activeFilters[0][i] == cell.name {
                     self.activeFilters[0].remove(at: i)
                     break
                 }

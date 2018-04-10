@@ -215,7 +215,7 @@ class FiltersCollectionViewController: UICollectionViewController, UICollectionV
     var availableFilters = [[String]]()
     var notOnlyAvailableFilters = true
     
-    var filterCellTapped: ((_ filter: String)->())?
+    var filterCellTapped: ((_ cell: FilterCell)->())?
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         if notOnlyAvailableFilters {
@@ -240,9 +240,10 @@ class FiltersCollectionViewController: UICollectionViewController, UICollectionV
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterCellId, for: indexPath) as! FilterCell
         cell.name = availableFilters[indexPath.section][indexPath.row]
+        cell.filterSelected = !notOnlyAvailableFilters
         cell.cellTapped = {
             if self.notOnlyAvailableFilters {
-                self.filterCellTapped?(cell.name!)
+                self.filterCellTapped?(cell)
             } else {
                 if let currentIndexPath = collectionView.indexPath(for: cell) {
                     self.availableFilters[0].remove(at: currentIndexPath.row)
@@ -250,7 +251,7 @@ class FiltersCollectionViewController: UICollectionViewController, UICollectionV
                         collectionView.deleteItems(at: [currentIndexPath])
                     }, completion: nil)
                 }
-                self.filterCellTapped?(cell.name!)
+                self.filterCellTapped?(cell)
             }
         }
         return cell
@@ -303,6 +304,18 @@ class FilterCell: BaseCollectionViewCell {
         }
     }
     
+    var filterSelected: Bool? {
+        didSet {
+            if filterSelected! {
+                filterName.backgroundColor = Constants.Colors().secondaryColor
+                filterName.setTitleColor(.white, for: .normal)
+            } else {
+                filterName.backgroundColor = Constants.Colors().primaryColor
+                filterName.setTitleColor(.black, for: .normal)
+            }
+        }
+    }
+
     var cellTapped: (()->())?
     
     let filterName: UIButton = {

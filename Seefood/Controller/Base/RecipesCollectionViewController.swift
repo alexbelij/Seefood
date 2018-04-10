@@ -59,6 +59,7 @@ class RecipesCollectionViewController: UICollectionViewController, UICollectionV
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipeCellId, for: indexPath) as! RecipeCell
         cell.recipe = recipesData[indexPath.row]
+        
         cell.handleRecipeTap = {
             let recipeViewController = RecipeViewController()
             recipeViewController.title = cell.recipe?.name
