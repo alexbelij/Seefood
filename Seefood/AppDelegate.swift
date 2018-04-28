@@ -28,12 +28,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let savedRecipes = try context.fetch(fetchRequest)
             for savedRecipe in savedRecipes {
                 context.delete(savedRecipe)
-                print((savedRecipe.recipe as! Recipe).name)
             }
-            print("-----")
         } catch {
             print("rip saved recipe")
         }
+        
+        if let path = Bundle.main.path(forResource: "test_recipes", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let person = jsonResult["person"] as? [Any] {
+                    print(jsonResult)
+                }
+            } catch {
+                print("json parse error")
+            }
+        }
+        
         
         let userDefaults = UserDefaults.standard
         if userDefaults.object(forKey: "limited_recipes") == nil {

@@ -53,7 +53,7 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     }
     
     lazy var filterMenu: FilterMenuHandler = {
-        let handler = FilterMenuHandler()
+        let handler = FilterMenuHandler(heightRatio: 0.5, title: "Add Filters")
         handler.filtersCollectionViewController.filterCellTapped = { (cell) -> () in
             var lastIndex: IndexPath? = nil
             let filtersWereEmpty = self.activeFilters[0].count == 0
@@ -270,7 +270,7 @@ class BaseRecipesViewController: UIViewController, UISearchResultsUpdating, UISe
     
     @objc func filterButtonTouchUpInside() {
         self.navigationItem.searchController?.searchBar.resignFirstResponder()
-        filterMenu.showFilterMenu()
+        filterMenu.showPopupMenu()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

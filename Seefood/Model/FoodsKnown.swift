@@ -8,7 +8,7 @@
 
 struct FoodsKnown {
     let foodLabels = ["potato", "apple", "banana", "flour"]
-    let allRecipes = [
+    var allRecipes: [Recipe] = [
         Recipe(name: "Apple Sauce",
                description: "A puree of stewed apples",
                ingredients: [RecipeIngredient(name: "apple", amount: "1"),

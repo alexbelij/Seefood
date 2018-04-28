@@ -54,13 +54,12 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
         return view
     }()
     
-    lazy var settingsContainer: UIView = {
-        let view = UIView()
-        let settingsViewController = SettingsViewController()
-        let navController = UINavigationController(rootViewController: settingsViewController)
-        view.addSubview(navController.view)
-        navController.didMove(toParentViewController: self)
-        return view
+    lazy var settingsContainer: SettingsHandler = {
+        guard let window = UIApplication.shared.keyWindow else {
+            assert(false, "window missing")
+        }
+        let handler = SettingsHandler(heightRatio: 1, title: "Settings")
+        return handler
     }()
     
     func setupViews() {
@@ -75,7 +74,7 @@ class RecipeBookViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func settingsButtonTapped() {
-        self.tabBarController?.present(UINavigationController(rootViewController: SettingsViewController()), animated: true, completion: nil)
+        settingsContainer.showPopupMenu()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

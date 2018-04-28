@@ -31,7 +31,9 @@
 		3C3F2FAC20303BFF0021F6CE /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3F2FAB20303BFF0021F6CE /* RecipeCell.swift */; };
 		3C3F2FB02031015E0021F6CE /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3F2FAF2031015E0021F6CE /* Recipe.swift */; };
 		3C3F2FB2203121450021F6CE /* RecipeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3F2FB1203121450021F6CE /* RecipeHandler.swift */; };
+		3C42324B2081BE720047F86C /* test_recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C42324A2081BE710047F86C /* test_recipes.json */; };
 		3C46EF3B203E5BF60045AF8C /* CalculatedRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C46EF3A203E5BF60045AF8C /* CalculatedRecipesViewController.swift */; };
+		3C6039242093F4820001E3A4 /* PopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6039232093F4820001E3A4 /* PopupController.swift */; };
 		3C94F1FA20466E5E00648566 /* FilterMenuHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C94F1F920466E5E00648566 /* FilterMenuHandler.swift */; };
 		3CA1254A202B66CF001931A1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA12549202B66CF001931A1 /* CameraViewController.swift */; };
 		3CA1254D202B763E001931A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1254C202B763E001931A1 /* Constants.swift */; };
@@ -100,7 +102,9 @@
 		3C3F2FAB20303BFF0021F6CE /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		3C3F2FAF2031015E0021F6CE /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		3C3F2FB1203121450021F6CE /* RecipeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeHandler.swift; sourceTree = "<group>"; };
+		3C42324A2081BE710047F86C /* test_recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_recipes.json; sourceTree = "<group>"; };
 		3C46EF3A203E5BF60045AF8C /* CalculatedRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatedRecipesViewController.swift; sourceTree = "<group>"; };
+		3C6039232093F4820001E3A4 /* PopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupController.swift; sourceTree = "<group>"; };
 		3C94F1F920466E5E00648566 /* FilterMenuHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMenuHandler.swift; sourceTree = "<group>"; };
 		3CA12549202B66CF001931A1 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		3CA1254C202B763E001931A1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 		3C200787202B605E00E72C20 /* Seefood */ = {
 			isa = PBXGroup;
 			children = (
+				3C42324A2081BE710047F86C /* test_recipes.json */,
 				3CD06E58203FC69B00CD28DB /* SettingsBundleHelper.swift */,
 				3C2CB0E420400D09004A558F /* Settings.bundle */,
 				3C3F2F99202EE3720021F6CE /* coreml.mlmodel */,
@@ -233,6 +238,7 @@
 				3C12FE79203EA69D001B6F7A /* BaseRecipesViewController.swift */,
 				3C12FE7B203EA70A001B6F7A /* RecipesCollectionViewController.swift */,
 				3C94F1F920466E5E00648566 /* FilterMenuHandler.swift */,
+				3C6039232093F4820001E3A4 /* PopupController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -410,7 +416,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Siddha Tiwari";
 				TargetAttributes = {
 					3C200784202B605E00E72C20 = {
@@ -456,6 +462,7 @@
 			files = (
 				3C2CB0E520400D09004A558F /* Settings.bundle in Resources */,
 				3C200793202B605E00E72C20 /* LaunchScreen.storyboard in Resources */,
+				3C42324B2081BE720047F86C /* test_recipes.json in Resources */,
 				3C200790202B605E00E72C20 /* Assets.xcassets in Resources */,
 				3C20078E202B605E00E72C20 /* Main.storyboard in Resources */,
 			);
@@ -587,6 +594,7 @@
 				3C18EF9A203B97F10049A614 /* SettingsViewController.swift in Sources */,
 				3C94F1FA20466E5E00648566 /* FilterMenuHandler.swift in Sources */,
 				3C3F2FA6202FC3860021F6CE /* IngredientsViewController.swift in Sources */,
+				3C6039242093F4820001E3A4 /* PopupController.swift in Sources */,
 				3C3F2FB02031015E0021F6CE /* Recipe.swift in Sources */,
 				3CA1255C202B7E66001931A1 /* BaseCell.swift in Sources */,
 				3C3F2FA0202EE6000021F6CE /* FoodsKnown.swift in Sources */,
@@ -658,6 +666,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -665,6 +674,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -715,6 +725,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -722,6 +733,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
