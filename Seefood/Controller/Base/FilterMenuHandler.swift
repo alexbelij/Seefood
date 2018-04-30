@@ -22,6 +22,7 @@ class FilterMenuHandler: PopupController {
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         vc.availableFilterHeaders = filterCategories
         vc.availableFilters = filters
+        vc.collectionView?.showsVerticalScrollIndicator = false
         return vc
     }()
     
@@ -29,16 +30,10 @@ class FilterMenuHandler: PopupController {
         super.setupViews()
         
         baseView.addSubview(filtersCollectionViewController.view)
-        NSLayoutConstraint.activate([
-            filtersCollectionViewController.view.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            filtersCollectionViewController.view.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: 14),
-            filtersCollectionViewController.view.trailingAnchor.constraint(equalTo: baseView.trailingAnchor, constant: -14),
-            filtersCollectionViewController.view.bottomAnchor.constraint(equalTo: baseView.bottomAnchor),
-            ])
+        setupContent(content: filtersCollectionViewController.view)
         
         darkView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(doneButtonTouchUpInside)))
         darkView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
-        
     }
     
 }
@@ -107,7 +102,7 @@ class FiltersCollectionViewController: UICollectionViewController, UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = availableFilters[indexPath.section][indexPath.row]
         let font = UIFont(name: "AvenirNext-Demibold", size: 30)
-        let fontAttributes = [NSAttributedStringKey.font: font]
+        let fontAttributes: [NSAttributedStringKey: UIFont] = [NSAttributedStringKey.font: font!]
         var baseSize = (text as NSString).size(withAttributes: fontAttributes)
         baseSize.height = 50
         return baseSize

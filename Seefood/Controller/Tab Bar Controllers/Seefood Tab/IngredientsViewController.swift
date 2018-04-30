@@ -112,6 +112,7 @@ class IngredientsViewController: UIViewController, UICollectionViewDataSource, U
         let stackedControllers = self.navigationController?.viewControllers
         for controller in stackedControllers! {
             if controller.isKind(of: CameraViewController.self) {
+                self.navigationController?.navigationBar.isHidden = true
                 self.navigationController?.popToViewController(controller, animated: true)
             }
         }

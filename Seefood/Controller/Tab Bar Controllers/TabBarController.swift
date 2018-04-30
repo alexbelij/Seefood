@@ -31,15 +31,6 @@ class TabBarController: UITabBarController {
             tabViewControllers.append(item.vc)
         }
         
-        /*let backgroundView = UIImageView(image: UIImage(named: "black_gradient"))
-        backgroundView.isOpaque = false
-        backgroundView.contentMode = .scaleToFill
-        var tabBarFrame = tabBar.frame.size
-        backgroundView.frame.size = tabBarFrame
-        
-        tabBar.addSubview(backgroundView)
-        tabBar.backgroundImage = UIImage(color: .clear)*/
-        
         tabBar.barStyle = UIBarStyle.black
         tabBar.unselectedItemTintColor = .lightGray
         tabBar.tintColor = Constants.Colors().primaryColor

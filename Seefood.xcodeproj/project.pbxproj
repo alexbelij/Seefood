@@ -38,7 +38,7 @@
 		3CA1254A202B66CF001931A1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA12549202B66CF001931A1 /* CameraViewController.swift */; };
 		3CA1254D202B763E001931A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1254C202B763E001931A1 /* Constants.swift */; };
 		3CA12556202B7BB1001931A1 /* PicturesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA12555202B7BB1001931A1 /* PicturesHandler.swift */; };
-		3CA1255C202B7E66001931A1 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1255B202B7E66001931A1 /* BaseCell.swift */; };
+		3CA1255C202B7E66001931A1 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1255B202B7E66001931A1 /* BaseCollectionViewCell.swift */; };
 		3CA12560202B8166001931A1 /* FoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1255F202B8166001931A1 /* FoodData.swift */; };
 		3CA12562202B8FB1001931A1 /* PreviewPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA12561202B8FB1001931A1 /* PreviewPictureCell.swift */; };
 		3CBB9BC72036959E00FCE03E /* ProcedureHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBB9BC62036959E00FCE03E /* ProcedureHeaderCell.swift */; };
@@ -109,7 +109,7 @@
 		3CA12549202B66CF001931A1 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		3CA1254C202B763E001931A1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3CA12555202B7BB1001931A1 /* PicturesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesHandler.swift; sourceTree = "<group>"; };
-		3CA1255B202B7E66001931A1 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		3CA1255B202B7E66001931A1 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		3CA1255F202B8166001931A1 /* FoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodData.swift; sourceTree = "<group>"; };
 		3CA12561202B8FB1001931A1 /* PreviewPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPictureCell.swift; sourceTree = "<group>"; };
 		3CBB9BC62036959E00FCE03E /* ProcedureHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureHeaderCell.swift; sourceTree = "<group>"; };
@@ -160,16 +160,9 @@
 				3CBB9BCA2037592B00FCE03E /* RecipeBookViewController.swift */,
 				3C18EF92203B88A60049A614 /* BookmarkedRecipesViewController.swift */,
 				3C18EF94203B8EB50049A614 /* AllRecipesViewController.swift */,
-			);
-			path = "RecipeBook Tab";
-			sourceTree = "<group>";
-		};
-		3C18EF97203B97BB0049A614 /* Settings Tab */ = {
-			isa = PBXGroup;
-			children = (
 				3C18EF99203B97F10049A614 /* SettingsViewController.swift */,
 			);
-			path = "Settings Tab";
+			path = "RecipeBook Tab";
 			sourceTree = "<group>";
 		};
 		3C20077C202B605E00E72C20 = {
@@ -315,7 +308,7 @@
 		3CCD893A203556EB002CDE47 /* Base Cells */ = {
 			isa = PBXGroup;
 			children = (
-				3CA1255B202B7E66001931A1 /* BaseCell.swift */,
+				3CA1255B202B7E66001931A1 /* BaseCollectionViewCell.swift */,
 				3CCD893820354B6E002CDE47 /* BaseTableViewCell.swift */,
 			);
 			path = "Base Cells";
@@ -327,7 +320,6 @@
 				3CBB9BC82036B65800FCE03E /* TabBarController.swift */,
 				3CBB9BD02037847100FCE03E /* Seefood Tab */,
 				3C18EF90203B7C280049A614 /* RecipeBook Tab */,
-				3C18EF97203B97BB0049A614 /* Settings Tab */,
 			);
 			path = "Tab Bar Controllers";
 			sourceTree = "<group>";
@@ -361,7 +353,6 @@
 				3C200782202B605E00E72C20 /* Frameworks */,
 				3C200783202B605E00E72C20 /* Resources */,
 				4423BD54E0428140E58665D5 /* [CP] Embed Pods Frameworks */,
-				0F49A31D6CBD0A8289B91B68 /* [CP] Copy Pods Resources */,
 				3C9D81A1203CB7F20009FD63 /* ShellScript */,
 			);
 			buildRules = (
@@ -485,21 +476,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F49A31D6CBD0A8289B91B68 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Seefood/Pods-Seefood-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3C9D81A1203CB7F20009FD63 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -596,7 +572,7 @@
 				3C3F2FA6202FC3860021F6CE /* IngredientsViewController.swift in Sources */,
 				3C6039242093F4820001E3A4 /* PopupController.swift in Sources */,
 				3C3F2FB02031015E0021F6CE /* Recipe.swift in Sources */,
-				3CA1255C202B7E66001931A1 /* BaseCell.swift in Sources */,
+				3CA1255C202B7E66001931A1 /* BaseCollectionViewCell.swift in Sources */,
 				3C3F2FA0202EE6000021F6CE /* FoodsKnown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

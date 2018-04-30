@@ -1,13 +1,12 @@
 //
-//  PopupController.swift
-//  Seefood
+//  PopupView.swift
+//  BandiNew
 //
-//  Created by Siddha Tiwari on 4/27/18.
+//  Created by Siddha Tiwari on 4/29/18.
 //  Copyright © 2018 Siddha Tiwari. All rights reserved.
 //
 
 import UIKit
-import RxSwift
 
 class PopupController: NSObject {
     
@@ -22,7 +21,6 @@ class PopupController: NSObject {
             darkView.isHidden = true
         }
         setupViews()
-        setupRx()
     }
     
     let darkView: UIView = {
@@ -113,17 +111,21 @@ class PopupController: NSObject {
             doneButton.widthAnchor.constraint(equalToConstant: 80)
             ])
         
+        doneButton.addTarget(self, action: #selector(doneButtonTouchUpInside), for: .touchUpInside)
         darkView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(doneButtonTouchUpInside)))
         darkView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
         
     }
     
-    let disposeBag = DisposeBag()
-    
-    func setupRx() {
-        doneButton.rx.tap.bind {
-            self.doneButtonTouchUpInside()
-        }.disposed(by: disposeBag)
+    func setupContent(content: UIView) {
+        baseView.addSubview(content)
+        
+        NSLayoutConstraint.activate([
+            content.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            content.bottomAnchor.constraint(equalTo: baseView.bottomAnchor),
+            content.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
+            content.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
+            ])
     }
     
     @objc func doneButtonTouchUpInside() {
@@ -178,3 +180,4 @@ class PopupController: NSObject {
     }
     
 }
+

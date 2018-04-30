@@ -9,11 +9,17 @@ DEPENDENCIES:
   - RxSwift (~> 4.0)
   - SwiftyCam
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - RxCocoa
+    - RxSwift
+    - SwiftyCam
+
 SPEC CHECKSUMS:
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SwiftyCam: 86c114177a1b1f5dc2c82384577d0c20b922a31b
 
-PODFILE CHECKSUM: 6df1b655d9d49f16e5dc0db2e67c2681d12b1071
+PODFILE CHECKSUM: 90c165cfb476e1a40af491021e650806f97c3dd2
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.0
